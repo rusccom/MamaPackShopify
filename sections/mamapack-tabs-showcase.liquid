@@ -82,90 +82,59 @@
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tabs {
-  display: grid;
-  grid-template-columns: repeat({% if tabs_count > 0 %}{{ tabs_count }}{% else %}1{% endif %}, minmax(0, 1fr));
-  gap: 12px;
-  align-items: end;
-  margin-bottom: 14px;
-  padding: 12px 0 4px;
-  overflow: visible;
-  scrollbar-width: none;
-}
+    display: grid;
+    grid-template-columns: repeat({% if tabs_count > 0 %}{{ tabs_count }}{% else %}1{% endif %}, minmax(0, 1fr));
+    gap: 12px;
+    align-items: end;
+    margin-bottom: 14px;
+    padding: 12px 0 4px;
+    overflow: visible;
+  }
 
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tabs::-webkit-scrollbar {
-  display: none;
-}
-
- .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-wrap {
-  min-width: 0;
-  padding: 0;
-  overflow: visible;
-}
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-wrap {
+    min-width: 0;
+    padding: 0;
+    overflow: visible;
+  }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  appearance: none;
-  -webkit-appearance: none;
-  cursor: pointer;
-  color: inherit;
-  text-align: left;
-  overflow: visible;
-  transform: translateY(0);
-  transform-origin: center bottom;
-  transition:
-    transform 0.22s ease,
-    opacity 0.2s ease,
-    box-shadow 0.2s ease;
-}
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    appearance: none;
+    cursor: pointer;
+    color: inherit;
+    text-align: left;
+    overflow: visible;
+    transform: translateY(0);
+    transform-origin: center bottom;
+    transition:
+      transform 0.22s ease,
+      opacity 0.2s ease,
+      box-shadow 0.2s ease;
+  }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab:focus-visible {
     outline: 2px solid var(--mp-accent);
     outline-offset: 4px;
   }
 
- .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media {
-  position: relative;
-  overflow: visible;
-  border-radius: 10px;
-  aspect-ratio: {{ section.settings.tab_image_aspect_ratio }};
-  background: transparent;
-  margin-bottom: 0;
-  box-shadow: none;
-}
-
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media img,
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    object-fit: cover;
-    filter: var(--mp-tab-shadow);
-    transition: filter 0.22s ease;
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media {
+    position: relative;
+    overflow: visible;
+    border-radius: 10px;
+    aspect-ratio: {{ section.settings.tab_image_aspect_ratio }};
+    background: transparent;
+    margin-bottom: 0;
+    box-shadow: none;
   }
-
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tabs,
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-wrap,
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab,
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media,
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media img,
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media svg {
-  background: transparent !important;
-}
-
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab,
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media {
-  border: none !important;
-}
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-title {
     margin: 10px 0 4px;
@@ -183,23 +152,13 @@
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab:hover {
-  transform: translateY(var(--mp-tab-hover-shift));
-  z-index: 2;
-}
+    transform: translateY(var(--mp-tab-hover-shift));
+    z-index: 2;
+  }
 
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab:hover .mp-tabs-showcase__tab-media img,
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab:hover .mp-tabs-showcase__tab-media svg {
-  filter: var(--mp-tab-hover-shadow);
-}
-
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab.is-active {
-  transform: translateY(var(--mp-tab-active-shift));
-  z-index: 4;
-}
-
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab.is-active .mp-tabs-showcase__tab-media img,
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab.is-active .mp-tabs-showcase__tab-media svg {
-    filter: var(--mp-tab-active-shadow);
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab.is-active {
+    transform: translateY(var(--mp-tab-active-shift));
+    z-index: 4;
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__content-panel {
@@ -318,7 +277,7 @@
     min-width: 0;
     border: 1px solid var(--mp-border);
     border-radius: calc(var(--mp-radius) + 2px);
-    background: #ffffff;
+    background: var(--mp-card-bg);
     padding: 12px;
     box-shadow: var(--mp-shadow-soft);
     text-decoration: none;
@@ -412,7 +371,7 @@
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-panel {
     border: 1px solid var(--mp-border);
     border-radius: calc(var(--mp-radius) + 8px);
-    background: #ffffff;
+    background: var(--mp-card-bg);
     box-shadow: var(--mp-shadow);
     overflow: hidden;
   }
@@ -500,29 +459,14 @@
     color: var(--text-strong);
   }
 
-  .ai-bundle-comparison__table--{{ section_token }} thead th:nth-child(2),
-  .ai-bundle-comparison__table--{{ section_token }} tbody td:nth-child(2) {
+  .ai-bundle-comparison__table--{{ section_token }} thead th:nth-child(even),
+  .ai-bundle-comparison__table--{{ section_token }} tbody td:nth-child(even) {
     background: var(--surface-col-b);
   }
 
-  .ai-bundle-comparison__table--{{ section_token }} thead th:nth-child(3),
-  .ai-bundle-comparison__table--{{ section_token }} tbody td:nth-child(3) {
+  .ai-bundle-comparison__table--{{ section_token }} thead th:nth-child(odd):not(:first-child),
+  .ai-bundle-comparison__table--{{ section_token }} tbody td:nth-child(odd):not(:first-child) {
     background: var(--surface-col-a);
-  }
-
-  .ai-bundle-comparison__table--{{ section_token }} thead th:nth-child(4),
-  .ai-bundle-comparison__table--{{ section_token }} tbody td:nth-child(4) {
-    background: var(--surface-col-b);
-  }
-
-  .ai-bundle-comparison__table--{{ section_token }} thead th:nth-child(5),
-  .ai-bundle-comparison__table--{{ section_token }} tbody td:nth-child(5) {
-    background: var(--surface-col-a);
-  }
-
-  .ai-bundle-comparison__table--{{ section_token }} thead th:nth-child(6),
-  .ai-bundle-comparison__table--{{ section_token }} tbody td:nth-child(6) {
-    background: var(--surface-col-b);
   }
 
   .ai-bundle-comparison__bundle-header--{{ section_token }} {
@@ -744,28 +688,23 @@
     }
 
     .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__inner {
-  padding: 0 6px;
-}
+      padding: 0 6px;
+    }
 
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tabs {
-  grid-template-columns: repeat({% if tabs_count > 0 %}{{ tabs_count }}{% else %}1{% endif %}, minmax(0, 1fr));
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  overflow-x: visible;
-  overflow-y: visible;
-  gap: 6px;
-  padding: 12px 0 4px;
-  scrollbar-width: none;
-}
+    .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tabs {
+      grid-template-columns: repeat({% if tabs_count > 0 %}{{ tabs_count }}{% else %}1{% endif %}, minmax(0, 1fr));
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      overflow-x: visible;
+      overflow-y: visible;
+      gap: 6px;
+      padding: 12px 0 4px;
+    }
 
-.mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tabs::-webkit-scrollbar {
-  display: none;
-}
-
-   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-wrap {
-  padding: 0;
-}
+    .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-wrap {
+      padding: 0;
+    }
 
     .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__content-panel {
       padding: 16px;
@@ -876,36 +815,14 @@
     }
   }
 
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-wrap,
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab {
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-  }
-
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab {
-    padding: 0 !important;
-    border-radius: 0 !important;
-    overflow: visible !important;
-  }
-
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media {
-    background: transparent !important;
-    border: 0 !important;
-    border-radius: 10px;
-    overflow: visible !important;
-    margin-bottom: 0;
-    box-shadow: none !important;
-  }
-
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab:hover .mp-tabs-showcase__tab-media img,
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab:hover .mp-tabs-showcase__tab-media svg {
-    filter: var(--mp-tab-hover-shadow) !important;
+    filter: var(--mp-tab-hover-shadow);
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab.is-active .mp-tabs-showcase__tab-media img,
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab.is-active .mp-tabs-showcase__tab-media svg {
-    filter: var(--mp-tab-active-shadow) !important;
+    filter: var(--mp-tab-active-shadow);
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media img,
@@ -915,10 +832,8 @@
     height: 100%;
     border-radius: inherit;
     object-fit: cover;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    filter: var(--mp-tab-shadow) !important;
+    filter: var(--mp-tab-shadow);
+    transition: filter 0.22s ease;
   }
 {% endstyle %}
 
@@ -1032,124 +947,92 @@
             aria-labelledby="mp-tab-{{ section_token }}-{{ tab_dom_key }}"
             {% unless is_active %}hidden{% endunless %}
           >
-            <div class="mp-tabs-showcase__content-top">
-              {% for block in section.blocks %}
-                {% assign block_tab_key = block.settings.tab_key | strip %}
-                {% if block_tab_key == tab_key %}
-                  {% case block.type %}
-                    {% when 'heading_block' %}
-                      {% if block.settings.position == 'top' and block.settings.heading != blank %}
-                        <div data-editor-tab-key="{{ tab_key }}" {{ block.shopify_attributes }}>
-                          <{{ block.settings.heading_tag }} class="mp-tabs-showcase__block-heading mp-tabs-showcase__block-heading--{{ block.settings.heading_tag }}">
-                            {{ block.settings.heading }}
-                          </{{ block.settings.heading_tag }}>
-                        </div>
-                      {% endif %}
+            {% assign positions = 'top,bottom' | split: ',' %}
+            {% for position in positions %}
+              <div class="mp-tabs-showcase__content-{{ position }}">
+                {% for block in section.blocks %}
+                  {% assign block_tab_key = block.settings.tab_key | strip %}
+                  {% if block_tab_key == tab_key and block.settings.position == position %}
+                    {% case block.type %}
+                      {% when 'heading_block' %}
+                        {% if block.settings.heading != blank %}
+                          <div data-editor-tab-key="{{ tab_key }}" {{ block.shopify_attributes }}>
+                            <{{ block.settings.heading_tag }} class="mp-tabs-showcase__block-heading mp-tabs-showcase__block-heading--{{ block.settings.heading_tag }}">
+                              {{ block.settings.heading }}
+                            </{{ block.settings.heading_tag }}>
+                          </div>
+                        {% endif %}
 
-                    {% when 'text_block' %}
-                      {% if block.settings.position == 'top' and block.settings.text != blank %}
-                        <div class="mp-tabs-showcase__block-text" data-editor-tab-key="{{ tab_key }}" {{ block.shopify_attributes }}>
-                          {{ block.settings.text }}
-                        </div>
-                      {% endif %}
+                      {% when 'text_block' %}
+                        {% if block.settings.text != blank %}
+                          <div class="mp-tabs-showcase__block-text" data-editor-tab-key="{{ tab_key }}" {{ block.shopify_attributes }}>
+                            {{ block.settings.text }}
+                          </div>
+                        {% endif %}
 
-                    {% when 'button_block' %}
-                      {% if block.settings.position == 'top' and block.settings.label != blank %}
-                        <div class="mp-tabs-showcase__button-row" data-editor-tab-key="{{ tab_key }}" {{ block.shopify_attributes }}>
-                          <a
-                            href="{% if block.settings.link != blank %}{{ block.settings.link }}{% else %}#{% endif %}"
-                            class="mp-tabs-showcase__button mp-tabs-showcase__button--{{ block.settings.style }}"
-                          >
-                            {{ block.settings.label }}
-                          </a>
-                        </div>
-                      {% endif %}
-                  {% endcase %}
-                {% endif %}
-              {% endfor %}
-            </div>
-
-            {% liquid
-              assign visible_products_count = 0
-            %}
-            <div class="mp-tabs-showcase__products">
-              {% for block in section.blocks %}
-                {% assign block_tab_key = block.settings.tab_key | strip %}
-                {% if block.type == 'product_card' and block.settings.product != blank and block_tab_key == tab_key and visible_products_count < 5 %}
-                  {% assign visible_products_count = visible_products_count | plus: 1 %}
-                  {% assign product = block.settings.product %}
-
-                  <a
-                    href="{{ product.url }}"
-                    class="mp-tabs-showcase__product"
-                    data-editor-tab-key="{{ tab_key }}"
-                    {{ block.shopify_attributes }}
-                  >
-                    <div class="mp-tabs-showcase__product-media">
-                      {% if product.featured_image %}
-                        {{
-                          product.featured_image
-                          | image_url: width: 700
-                          | image_tag:
-                            loading: 'lazy',
-                            widths: '180,240,320,400,520,700',
-                            sizes: '(max-width: 749px) 44vw, 18vw',
-                            alt: product.title
-                        }}
-                      {% else %}
-                        {{ 'product-1' | placeholder_svg_tag }}
-                      {% endif %}
-                    </div>
-
-                    <p class="mp-tabs-showcase__product-title">{{ product.title }}</p>
-                    <p class="mp-tabs-showcase__product-price">{{ product.price | money }}</p>
-                  </a>
-                {% endif %}
-              {% endfor %}
-            </div>
-
-            {% if visible_products_count == 0 %}
-              <div class="mp-tabs-showcase__empty" style="margin-top: 14px;">
-                Для этой вкладки пока не добавлены товары.
+                      {% when 'button_block' %}
+                        {% if block.settings.label != blank %}
+                          <div class="mp-tabs-showcase__button-row" data-editor-tab-key="{{ tab_key }}" {{ block.shopify_attributes }}>
+                            <a
+                              href="{% if block.settings.link != blank %}{{ block.settings.link }}{% else %}#{% endif %}"
+                              class="mp-tabs-showcase__button mp-tabs-showcase__button--{{ block.settings.style }}"
+                            >
+                              {{ block.settings.label }}
+                            </a>
+                          </div>
+                        {% endif %}
+                    {% endcase %}
+                  {% endif %}
+                {% endfor %}
               </div>
-            {% endif %}
 
-            <div class="mp-tabs-showcase__content-bottom">
-              {% for block in section.blocks %}
-                {% assign block_tab_key = block.settings.tab_key | strip %}
-                {% if block_tab_key == tab_key %}
-                  {% case block.type %}
-                    {% when 'heading_block' %}
-                      {% if block.settings.position == 'bottom' and block.settings.heading != blank %}
-                        <div data-editor-tab-key="{{ tab_key }}" {{ block.shopify_attributes }}>
-                          <{{ block.settings.heading_tag }} class="mp-tabs-showcase__block-heading mp-tabs-showcase__block-heading--{{ block.settings.heading_tag }}">
-                            {{ block.settings.heading }}
-                          </{{ block.settings.heading_tag }}>
-                        </div>
-                      {% endif %}
+              {% if position == 'top' %}
+                {% liquid
+                  assign visible_products_count = 0
+                %}
+                <div class="mp-tabs-showcase__products">
+                  {% for block in section.blocks %}
+                    {% assign block_tab_key = block.settings.tab_key | strip %}
+                    {% if block.type == 'product_card' and block.settings.product != blank and block_tab_key == tab_key and visible_products_count < 5 %}
+                      {% assign visible_products_count = visible_products_count | plus: 1 %}
+                      {% assign product = block.settings.product %}
 
-                    {% when 'text_block' %}
-                      {% if block.settings.position == 'bottom' and block.settings.text != blank %}
-                        <div class="mp-tabs-showcase__block-text" data-editor-tab-key="{{ tab_key }}" {{ block.shopify_attributes }}>
-                          {{ block.settings.text }}
+                      <a
+                        href="{{ product.url }}"
+                        class="mp-tabs-showcase__product"
+                        data-editor-tab-key="{{ tab_key }}"
+                        {{ block.shopify_attributes }}
+                      >
+                        <div class="mp-tabs-showcase__product-media">
+                          {% if product.featured_image %}
+                            {{
+                              product.featured_image
+                              | image_url: width: 700
+                              | image_tag:
+                                loading: 'lazy',
+                                widths: '180,240,320,400,520,700',
+                                sizes: '(max-width: 749px) 44vw, 18vw',
+                                alt: product.title
+                            }}
+                          {% else %}
+                            {{ 'product-1' | placeholder_svg_tag }}
+                          {% endif %}
                         </div>
-                      {% endif %}
 
-                    {% when 'button_block' %}
-                      {% if block.settings.position == 'bottom' and block.settings.label != blank %}
-                        <div class="mp-tabs-showcase__button-row" data-editor-tab-key="{{ tab_key }}" {{ block.shopify_attributes }}>
-                          <a
-                            href="{% if block.settings.link != blank %}{{ block.settings.link }}{% else %}#{% endif %}"
-                            class="mp-tabs-showcase__button mp-tabs-showcase__button--{{ block.settings.style }}"
-                          >
-                            {{ block.settings.label }}
-                          </a>
-                        </div>
-                      {% endif %}
-                  {% endcase %}
+                        <p class="mp-tabs-showcase__product-title">{{ product.title }}</p>
+                        <p class="mp-tabs-showcase__product-price">{{ product.price | money }}</p>
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                {% if visible_products_count == 0 %}
+                  <div class="mp-tabs-showcase__empty" style="margin-top: 14px;">
+                    Для этой вкладки пока не добавлены товары.
+                  </div>
                 {% endif %}
-              {% endfor %}
-            </div>
+              {% endif %}
+            {% endfor %}
           </div>
         {% endif %}
       {% endfor %}
@@ -1176,21 +1059,32 @@
                 assign tab_key = tab_block.id
               endif
 
+              assign compare_table = tab_block.settings.compare_table
+              assign compare_table_header_products = blank
+              assign compare_table_rows = blank
               assign compare_rows_count = 0
               assign compare_products_count = 0
 
-              for block in section.blocks
-                assign block_tab_key = block.settings.tab_key | strip
+              if compare_table != blank
+                assign compare_table_header_products = compare_table.header_products.value
+                assign compare_table_rows = compare_table.rows.value
 
-                if block.type == 'compare_row' and block_tab_key == tab_key
-                  assign compare_rows_count = compare_rows_count | plus: 1
+                if compare_table_rows != blank
+                  for compare_row in compare_table_rows
+                    if compare_row != blank
+                      assign compare_rows_count = compare_rows_count | plus: 1
+                    endif
+                  endfor
                 endif
 
-                if block.type == 'product_card' and block.settings.product != blank and block_tab_key == tab_key and compare_products_count < 5
-                  assign compare_products_count = compare_products_count | plus: 1
+                if compare_table_header_products != blank
+                  for bundle_product in compare_table_header_products limit: 5
+                    if bundle_product != blank
+                      assign compare_products_count = compare_products_count | plus: 1
+                    endif
+                  endfor
                 endif
-              endfor
-
+              endif
               assign has_compare = false
               if compare_rows_count > 0 and compare_products_count > 0
                 assign has_compare = true
@@ -1219,24 +1113,7 @@
                             {{ section.settings.compare_table_heading }}
                           </th>
 
-                          {% for i in (1..5) %}
-                            {% liquid
-                              assign bundle_product = blank
-                              assign tab_product_index = 0
-
-                              for block in section.blocks
-                                assign block_tab_key = block.settings.tab_key | strip
-
-                                if block.type == 'product_card' and block.settings.product != blank and block_tab_key == tab_key
-                                  assign tab_product_index = tab_product_index | plus: 1
-                                  if tab_product_index == i
-                                    assign bundle_product = block.settings.product
-                                    break
-                                  endif
-                                endif
-                              endfor
-                            %}
-
+                          {% for bundle_product in compare_table_header_products limit: 5 %}
                             <th class="ai-bundle-comparison__header-cell--{{ section_token }}">
                               {% if bundle_product != blank %}
                                 {% assign bundle_image_class = 'ai-bundle-comparison__bundle-image--' | append: section_token %}
@@ -1307,22 +1184,16 @@
                           {% endfor %}
                         </tr>
                       </thead>
-
                       <tbody>
-                        {% for row_block in section.blocks %}
-                          {% assign row_tab_key = row_block.settings.tab_key | strip %}
-                          {% if row_block.type == 'compare_row' and row_tab_key == tab_key %}
+                        {% for compare_row in compare_table_rows %}
+                          {% if compare_row != blank %}
                             {% liquid
-                              assign row_category_collection = row_block.settings.category_collection
-                              assign row_product = row_block.settings.product
-                              assign row_custom_label = row_block.settings.custom_label
-
-                              assign row_category_name = ''
-                              if row_category_collection != blank
-                                assign row_category_name = row_category_collection.title
-                              endif
-
+                              assign row_category_name = compare_row.category_title.value
+                              assign row_product = compare_row.item_product.value
+                              assign row_custom_label = compare_row.custom_label.value
                               assign row_display_name = ''
+                              assign row_included_products = compare_row.included_in_products.value
+
                               if row_custom_label != blank
                                 assign row_display_name = row_custom_label
                               elsif row_product != blank
@@ -1330,7 +1201,7 @@
                               endif
                             %}
 
-                            <tr class="ai-bundle-comparison__row--{{ section_token }}" data-editor-tab-key="{{ tab_key }}" {{ row_block.shopify_attributes }}>
+                            <tr class="ai-bundle-comparison__row--{{ section_token }}" data-editor-tab-key="{{ tab_key }}">
                               <td class="ai-bundle-comparison__category-cell--{{ section_token }}">
                                 {% if section.settings.compare_show_category_title and row_category_name != blank %}
                                   <div class="ai-bundle-comparison__category-title--{{ section_token }}">{{ row_category_name }}</div>
@@ -1359,40 +1230,22 @@
                                 {% endif %}
                               </td>
 
-                              {% for i in (1..5) %}
+                              {% for bundle_product in compare_table_header_products limit: 5 %}
                                 {% liquid
-                                  assign tab_header_product = blank
-                                  assign tab_header_product_index = 0
+                                  assign is_included = false
 
-                                  for block in section.blocks
-                                    assign block_tab_key = block.settings.tab_key | strip
-
-                                    if block.type == 'product_card' and block.settings.product != blank and block_tab_key == tab_key
-                                      assign tab_header_product_index = tab_header_product_index | plus: 1
-                                      if tab_header_product_index == i
-                                        assign tab_header_product = block.settings.product
+                                  if bundle_product != blank and row_included_products != blank
+                                    for included_product in row_included_products
+                                      if included_product != blank and included_product.id == bundle_product.id
+                                        assign is_included = true
                                         break
                                       endif
-                                    endif
-                                  endfor
-
-                                  assign is_included = false
-                                  case i
-                                    when 1
-                                      assign is_included = row_block.settings.include_in_product_1
-                                    when 2
-                                      assign is_included = row_block.settings.include_in_product_2
-                                    when 3
-                                      assign is_included = row_block.settings.include_in_product_3
-                                    when 4
-                                      assign is_included = row_block.settings.include_in_product_4
-                                    when 5
-                                      assign is_included = row_block.settings.include_in_product_5
-                                  endcase
+                                    endfor
+                                  endif
                                 %}
 
                                 <td class="ai-bundle-comparison__check-cell--{{ section_token }}">
-                                  {% if tab_header_product != blank %}
+                                  {% if bundle_product != blank %}
                                     {% if is_included %}
                                       <span class="ai-bundle-comparison__checkmark--{{ section_token }}" aria-hidden="true">
                                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -1400,7 +1253,7 @@
                                         </svg>
                                       </span>
                                     {% else %}
-                                      <span class="ai-bundle-comparison__empty--{{ section_token }}" aria-hidden="true">—</span>
+                                      <span class="ai-bundle-comparison__empty--{{ section_token }}" aria-hidden="true">&mdash;</span>
                                     {% endif %}
                                   {% endif %}
                                 </td>
@@ -1844,7 +1697,7 @@
           "type": "text",
           "id": "tab_key",
           "label": "Ключ таба",
-          "info": "Одинаковый ключ используй в текстах, товарах и строках сравнения. Например: mama, baby, duo"
+          "info": "Одинаковый ключ используй в текстах и товарах. Например: mama, baby, duo"
         },
         {
           "type": "image_picker",
@@ -1868,6 +1721,12 @@
           "id": "default_open",
           "label": "Открывать по умолчанию",
           "default": false
+        },
+        {
+          "type": "metaobject",
+          "id": "compare_table",
+          "label": "Compare table",
+          "metaobject_type": "compare_table"
         }
       ]
     },
@@ -1991,62 +1850,6 @@
           "type": "product",
           "id": "product",
           "label": "Товар"
-        }
-      ]
-    },
-    {
-      "type": "compare_row",
-      "name": "Compare row",
-      "settings": [
-        {
-          "type": "text",
-          "id": "tab_key",
-          "label": "Ключ таба"
-        },
-        {
-          "type": "collection",
-          "id": "category_collection",
-          "label": "Категория (collection)"
-        },
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Товар для строки"
-        },
-        {
-          "type": "text",
-          "id": "custom_label",
-          "label": "Своя подпись вместо товара"
-        },
-        {
-          "type": "checkbox",
-          "id": "include_in_product_1",
-          "label": "Есть в товаре 1",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "include_in_product_2",
-          "label": "Есть в товаре 2",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "include_in_product_3",
-          "label": "Есть в товаре 3",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "include_in_product_4",
-          "label": "Есть в товаре 4",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "include_in_product_5",
-          "label": "Есть в товаре 5",
-          "default": false
         }
       ]
     }
