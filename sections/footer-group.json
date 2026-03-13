@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text_BLpnUD": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "subtext": "<p>SMART TRADE Ruslan Yurchenko</p><p>Krakowskie Przedmiescie 28<br/>20-002<br/>Lublin</p><p>NIP: 7123475744<br/>REGON: 528700786<br/>smarttradeorg@gmail.com</p><p>+48517288538</p>"
+          }
+        },
+        "image_kyVgLn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/iconLogo1mod1_649fa81c-3d33-42b0-abac-338d7ad1517d.png",
+            "image_width": 100,
+            "alignment": "right"
+          }
+        }
+      },
+      "block_order": [
+        "text_BLpnUD",
+        "image_kyVgLn"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

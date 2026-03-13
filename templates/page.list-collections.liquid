@@ -1,0 +1,1785 @@
+<div class="baseSettingCustomPage">
+  <div class="infoImageDesktop" style="padding-top: 10px; padding-bottom: 0px;">
+    <img src="{{"ListBox_desktop-1.jpg" | file_img_url: '2550x577'}}" style="max-width: 100%; height: auto;">
+  </div>
+  <div class="infoImageMobile" style="padding-top: 10px; padding-bottom: 0px;">
+    <img src="{{"mobile.jpg" | file_img_url: '1536x742'}}" style="max-width: 100%; height: auto;">
+  </div>
+
+<!-- Триггер-блок для открытия видео -->
+<div class="ivm-container" role="region" aria-label="Видеоинструкция">
+  <button class="ivm-trigger" type="button" aria-controls="instructionVideoModal" aria-expanded="false">
+    <span class="ivm-icon" aria-hidden="true">▶</span>
+    <span class="ivm-text">
+      <span class="ivm-title">Zobacz szybką instrukcję</span>
+      
+    </span>
+  </button>
+</div>
+
+<!-- Модальное окно с видео -->
+<div id="instructionVideoModal" class="ivm-modal" aria-hidden="true">
+  <div class="ivm-modal__dialog" role="dialog" aria-modal="true" aria-label="Инструкционное видео">
+    <button class="ivm-modal__close" type="button" aria-label="Закрыть">×</button>
+    <div class="ivm-aspect">
+      <video id="ivm-player" class="ivm-video" controls playsinline preload="metadata">
+        <!-- Если файл загружен в Settings → Files, используем file_url -->
+        <source src="{{ 'Instruction1.mp4' | file_url }}" type="video/mp4">
+        <!-- Если храните в assets темы, замените на asset_url:
+        <source src="{{ 'Instruction1.mp4' | asset_url }}" type="video/mp4">
+        -->
+        Ваш браузер не поддерживает воспроизведение видео.
+      </video>
+    </div>
+  </div>
+</div>
+
+
+  <div id="global-modal" class="modal">
+    <table style="table-layout: fixed; width: 100%;">
+      <tr>
+        <td style="width: 100px; height: 100px;">
+          <span class="modal-close">&times;</span>
+          <div class="modal-content-container">
+            <img class="modal-content full-size-image">
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+          </div>
+          <div class="modalCaption modal-caption"></div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 100px;">
+          <div class="modal-thumbnails"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="productModal" class="pModal">
+    <div class="contentMP">
+      <span id="closeModalProduct" class="closeMP">&times;</span>
+      <h2>Opis</h2>
+      <div id="modalDescription" class="descriptionProduct">
+        <!-- Динамически загружаемое описание -->
+        <p>Load...</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="categorySelectMainButtons">
+    {% assign sorted_collections = collections | sort: 'metafields.custom.collectionusertype' | reverse %}
+    {% for collection in sorted_collections %}
+      {% assign usertype = collection.metafields.custom.collectionusertype %}
+      {% if usertype == '1' or usertype == '2' %}
+        <button
+          name="baseCatButton-{{ usertype }}"
+          class="categorySelectMainButton"
+          id="categorySelectMainButton-{{ usertype }}"
+          onclick="toggleGroup('{{ collection.handle }}', {{ usertype }})"
+        >
+          {{ collection.title }}
+        </button>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% for collection in sorted_collections %}
+    {% assign usertype = collection.metafields.custom.collectionusertype %}
+    {% if usertype == '1' or usertype == '2' %}
+      <div id="group-{{ collection.handle }}" class="product-group">
+        {% assign coll_strings = '' %}
+
+        {% for coll in collections %}
+          {% if coll.metafields.custom.sortbyvalue %}
+            {% assign coll_string = coll.metafields.custom.sortbyvalue
+              | append: ','
+              | append: coll.handle
+              | append: ','
+              | append: coll.id
+            %}
+            {% assign coll_strings = coll_strings | append: coll_string | append: ';' %}
+          {% endif %}
+        {% endfor %}
+
+        {% assign coll_strings = coll_strings | remove_last: ';' %}
+        {% assign coll_array = coll_strings | split: ';' | sort %}
+
+        {% for child_collection in coll_array %}
+          {% assign coll = child_collection | split: ',' %}
+          {% assign coll_id = coll[2] %}
+          {% assign coll_handle = coll[1] %}
+
+          {% assign child_usertype = collections[coll_handle].metafields.custom.collectionusertype %}
+          {% if child_usertype contains usertype and child_usertype != usertype %}
+            <div class="categoryHeadBody">
+              <table class="categoryNameTable">
+                <tbody>
+                  <tr class="categoryTr">
+                    <td class="categoryTd1">
+                      {{ collections[coll_handle].title }}
+                      <button class="groupInfoButton" onclick="productsGroupInfo('{{ collections[coll_handle].id }}')">
+                        ?
+                      </button>
+                    </td>
+                    <td class="categoryTd2">
+                      <button
+                        class="showCategoryButton"
+                        onclick="toggleProducts('{{ collections[coll_handle].handle }}')"
+                      >
+                        &gt;
+                      </button>
+                    </td>
+                  </tr>
+                  <tr id="categoryTr-{{ collections[coll_handle].id }}" class="categoryTrInfo">
+                    <td colspan="2" class="categoryTdInfo">
+                      <div class="groupInfoDescription">{{ collections[coll_handle].description }}</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table class="productsCategoryTable" id="products-{{ collections[coll_handle].handle }}">
+                <tbody>
+                  {% for product in collections[coll_handle].products %}
+                    <tr class="productRow-1">
+                      <td class="cbTd">
+                        <div class="checkbox-wrapper">
+                          <input
+                            type="checkbox"
+                            class="add-to-cart-checkbox"
+                            id="cbProduct-{{ product.id }}"
+                            data-variant-id="{{ product.id }}/{{ product.variants.first.id }}"
+
+                            onchange="CheckBoxHandler('{{ product.id }}', '{{ product.variants.first.id }}', 'cbProduct-{{ product.id }}', 'cbProduct-{{ product.id }}-2')"
+                          >
+                        </div>
+                      </td>
+                      <td class="imTd">
+                        <!-- Изображение продукта с добавленным data-product-handle -->
+                        <img
+                          src="{{ product.featured_image | img_url: '200x200' }}"
+                          alt="{{ product.title | escape }}"
+                          class="product-image-thumbnail"
+                          data-fullsize-image="{{ product.featured_image | img_url:'1800x2700' }}"
+                          style="cursor: pointer;"
+                          data-product-id="{{ product.id }}"
+                          data-product-handle="{{ product.handle }}"
+                        >
+                      </td>
+                      <td class="product-details">
+                        <div>
+                          <div style="width: 100%; margin-bottom: 0px;" class="prName">
+                            {{ product.title }}
+                            <button
+                              type="button"
+                              class="buttonDescription"
+                              onclick="ShowProductDescriprion('{{ product.handle }}')"
+                            >
+                              ?
+                            </button>
+                          </div>
+
+                          <div class="prPrice-{{ product.id }}">Cena: {{ product.price | money }}</div>
+                        </div>
+                        <div class="variantsButtons">
+                          {% for variant in product.variants %}
+                            {% if variant and variant.title != blank and variant.title != 'Default Title' %}
+                              <button
+                                type="button"
+                                class="variantProduct-{{ product.id }}"
+                                id="variantSelectForProductId-{{ product.id }}-{{ variant.id }}"
+                                onclick="variantSelect({{ product.id }}, {{ variant.id }})"
+                                data-selected-id="0"
+                                data-product-id="{{ product.id }}"
+                                data-variant-id="{{ variant.id }}"
+                                data-variant-price="{{ variant.price }}"
+                              >
+                                {{ variant.title }}
+                              </button>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </td>
+                      <td class="product-quantity">
+                        <div class="quantity-stepper-{{ product.id }}">
+                          <div class="selected-quantity-{{ product.id }}">
+                            <button
+                              data-product-id="{{ product.id }}"
+                              data-plus="0"
+                              type="button"
+                              class="decrease-quantity"
+                              aria-label="Уменьшить количество"
+                              onclick="HandleQuantity({{ false }}, {{ product.id }})"
+                            >
+                              -
+                            </button>
+                            <input
+                              type="number"
+                              class="quantity-input"
+                              id="quantity-input-{{ product.id }}"
+                              value="1"
+                              min="1"
+                              data-variant-id="{{ product.variants.first.id }}"
+                              data-product-price="{{ product.price }}"
+                              aria-label="Количество"
+                              readonly
+                            >
+                            <button
+                              data-product-id="{{ product.id }}"
+                              data-plus="1"
+                              type="button"
+                              class="increase-quantity"
+                              aria-label="Увеличить количество"
+                              onclick="HandleQuantity({{ true }}, {{ product.id }})"
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div class="prTotalCost-{{ product.id }}">{{ product.price | money }}</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="productRow-2">
+                      <td class="cbTd">
+                        <div class="checkbox-wrapper">
+                          <input
+                            type="checkbox"
+                            class="add-to-cart-checkbox"
+                            id="cbProduct-{{ product.id }}-2"
+                            data-variant-id="{{ product.id }}/{{ product.variants.first.id }}"
+                            onchange="CheckBoxHandler('{{ product.id }}', '{{ product.variants.first.id }}', 'cbProduct-{{ product.id }}-2', 'cbProduct-{{ product.id }}')"
+                          >
+                        </div>
+                      </td>
+                      <td class="imTd">
+                        <img
+                          src="{{ product.featured_image | img_url: '200x200' }}"
+                          alt="{{ product.title | escape }}"
+                          class="product-image-thumbnail"
+                          data-fullsize-image="{{ product.featured_image | img_url:'1800x2700' }}"
+                          style="cursor: pointer;"
+                          data-product-id="{{ product.id }}"
+                          data-product-handle="{{ product.handle }}"
+                        >
+                      </td>
+                      <td class="product-details">
+                        <div>
+                          <div class="prPrice-{{ product.id }}">Cena: {{ product.price | money }}</div>
+                        </div>
+                        <div class="variantsButtons">
+                          {% for variant in product.variants %}
+                            {% if variant and variant.title != blank and variant.title != 'Default Title' %}
+                              <button
+                                type="button"
+                                class="variantProduct-{{ product.id }}"
+                                id="variantSelectForProductId-{{ product.id }}-{{ variant.id }}-2"
+                                onclick="variantSelect({{ product.id }}, {{ variant.id }})"
+                                data-selected-id="0"
+                                data-product-id="{{ product.id }}"
+                                data-variant-id="{{ variant.id }}"
+                                data-variant-price="{{ variant.price }}"
+                              >
+                                {{ variant.title }}
+                              </button>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </td>
+                      <td class="product-quantity">
+                        <div class="quantity-stepper-{{ product.id }}">
+                          <div class="selected-quantity-{{ product.id }}">
+                            <button
+                              data-product-id="{{ product.id }}"
+                              data-plus="0"
+                              type="button"
+                              class="decrease-quantity"
+                              aria-label="Уменьшить количество"
+                              onclick="HandleQuantity({{ false }}, {{ product.id }})"
+                            >
+                              -
+                            </button>
+                            <input
+                              type="number"
+                              class="quantity-input"
+                              id="quantity-input-{{ product.id }}-2"
+                              value="1"
+                              min="1"
+                              data-variant-id="{{ product.variants.first.id }}"
+                              data-product-price="{{ product.price }}"
+                              aria-label="Количество"
+                              readonly
+                            >
+                            <button
+                              data-product-id="{{ product.id }}"
+                              data-plus="1"
+                              type="button"
+                              class="increase-quantity"
+                              aria-label="Увеличить количество"
+                              onclick="HandleQuantity({{ true }}, {{ product.id }})"
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div class="prTotalCost-{{ product.id }}">{{ product.price | money }}</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="productRow-2-2">
+                      <td colspan="3">
+                        <div class="prNameTitle">
+                          {{ product.title }}
+                          <button
+                            type="button"
+                            class="buttonDescription"
+                            onclick="ShowProductDescriprion('{{ product.handle }}')"
+                          >
+                            ?
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  <div class="categorySelectMainButtons">
+    {% assign sorted_collections = collections | sort: 'metafields.custom.collectionusertype' | reverse %}
+    {% for collection in sorted_collections %}
+      {% assign usertype = collection.metafields.custom.collectionusertype %}
+      {% if usertype == '1' or usertype == '2' %}
+        <button
+          name="baseCatButton-{{ usertype }}"
+          class="categorySelectMainButton"
+          id="categorySelectMainButton-{{ usertype }}-2"
+          onclick="toggleGroup('{{ collection.handle }}', {{ usertype }})"
+        >
+          {{ collection.title }}
+        </button>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<script
+  defer
+>
+
+(function(){
+  var modal   = document.getElementById('instructionVideoModal');
+  var trigger = document.querySelector('.ivm-trigger');
+  var closeBtn= modal.querySelector('.ivm-modal__close');
+  var video   = document.getElementById('ivm-player');
+
+  function openModal(){
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden','false');
+    trigger.setAttribute('aria-expanded','true');
+    document.body.classList.add('no-scroll');
+    try { video.currentTime = 0; video.play(); } catch(e){}
+  }
+
+  function closeModal(){
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+    trigger.setAttribute('aria-expanded','false');
+    document.body.classList.remove('no-scroll');
+    try { video.pause(); } catch(e){}
+  }
+
+  if (trigger) trigger.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function(e){
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal.style.display === 'block') closeModal();
+  });
+})();
+
+
+
+
+
+  function UpdateListByCart() {
+  fetch('/cart.js')
+    .then(response => response.json())
+    .then(cart => {
+      cart.items.forEach(item => {
+        UpdateProductByCart(item);
+      });
+    })
+    .catch(error => {
+      console.error('Ошибка при обновлении UI корзины:', error);
+    });
+}
+
+        function UpdateProductByCart(item)
+    {
+
+      var quantityEl1 = document.getElementById("quantity-input-" + item.product_id);
+      var quantityEl2 = document.getElementById("quantity-input-" + item.product_id +"-2");
+      
+      quantityEl1.value = item.quantity;
+      quantityEl2.value = item.quantity;
+
+
+      variantSelect(item.product_id, item.variant_id);
+
+      var cbEl1 = document.getElementById("cbProduct-" + item.product_id);
+      var cbEl2 = document.getElementById("cbProduct-" + item.product_id +"-2");
+
+      cbEl1.checked = true;
+      cbEl2.checked = true;
+
+      document.querySelectorAll('.prTotalCost-' + item.product_id).forEach(function(priceField) {
+      priceField.textContent = HandlePriceByLocale(item.line_price);
+      });
+
+      enableElements(item.product_id, false);            
+    }
+ 
+
+function productsGroupInfo(GroupId)
+  {
+    var group = document.getElementById("categoryTr-" + GroupId);
+    if (group) {
+    if(group.style.display)
+    {
+      console.log(group.style.display);
+    group.style.display = group.style.display === "none" ? "table-row" : "none";
+    }
+    else
+    {
+      console.log(group.style.display);
+      group.style.display = "table-row";
+    }
+  }
+  }
+
+  function HandleQuantity(plus, productId)
+    {
+      var element1 = document.getElementById("quantity-input-" + productId);
+      var element2 = document.getElementById("quantity-input-" + productId +"-2");
+
+      var value = parseInt(element1.value, 10);
+      var userNeedSelect = false;
+      
+      if(plus)
+      {
+        value = value + 1;
+        userNeedSelect = HandleTotalCostField(value, productId, element1.dataset.productPrice);
+
+        if(userNeedSelect)
+        {
+          element1.value = value;
+          element2.value = value;
+        }
+        
+      } else {
+             if (value > 1) {
+              value = value - 1;
+              userNeedSelect = HandleTotalCostField(value, productId, element1.dataset.productPrice);
+                if(userNeedSelect)
+                {
+                   element1.value = value;
+                   element2.value = value;
+                }
+      }
+      }
+    }
+
+  function HandleTotalCostField(quantity, productId, prPrice)
+    {
+      var result = false;
+      
+      var variant = GetVariantId(productId);
+
+      var variantPrice = variant.variantPrice;
+      var variantId = variant.variantId;
+      
+      if(variantId != "0")
+      {
+        if(variantPrice === "0")
+          variantPrice = prPrice;
+
+          variantPrice = HandlePriceByLocale(variantPrice * quantity);
+      
+          document.querySelectorAll('.prTotalCost-' + productId).forEach(function(priceField) {
+          priceField.textContent = variantPrice;
+        });
+        result = true;
+      }
+
+      return result;
+    }
+
+
+  
+function HandlePriceByLocale(price)
+    {
+      var localePrice = "";
+
+      localePrice = price / 100;
+      localePrice = localePrice.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN' });
+      
+      return localePrice;
+    }
+
+function GetVariantId(productId) {
+  var variantId = "0";
+  var variantPrice = "0";
+  
+  var buttonsVariant = document.querySelectorAll('.variantProduct-' + productId);
+  
+  if(buttonsVariant.length > 0)
+  {
+    buttonsVariant.forEach(function(vButton) {
+      if(vButton.dataset.selectedId && vButton.dataset.selectedId !== "0")
+      {
+        variantId = vButton.dataset.selectedId;
+        variantPrice = vButton.dataset.variantPrice;
+      }
+    });
+
+    if(variantId === "0")
+    {
+      alert("Najpierw wybierz opcję produktu.");
+    }
+  } else {
+    variantId = "-1";
+  }
+  return {variantId, variantPrice};
+}
+  
+function variantSelect(productId, variantId) {
+  document.querySelectorAll('.variantProduct-' + productId).forEach(function(vButton) {
+    vButton.style.backgroundColor = "#FFB7AB";
+    vButton.style.color = "#3F575A";
+    vButton.dataset.selectedId = 0;
+  });
+
+  var element1 = document.getElementById("variantSelectForProductId-" + productId + "-" + variantId);
+  var element2 = document.getElementById("variantSelectForProductId-" + productId + "-" + variantId + "-2");
+  
+  if (element1) {
+    element1.style.backgroundColor = "#3F575A";
+    element1.style.color = "white";
+    element1.dataset.selectedId = variantId;
+  }
+    if (element2) {
+      element2.style.backgroundColor = "#3F575A";
+    element2.style.color = "white";
+    element2.dataset.selectedId = variantId;
+  }
+
+  if(element1 && element2)
+  {
+      price = HandlePriceByLocale(element1.dataset.variantPrice);
+
+      document.querySelectorAll('.prPrice-' + productId).forEach(function(priceField) {
+        priceField.textContent = "Cena: " + price;
+      });
+    
+      var userInputField = document.getElementById("quantity-input-" + productId);
+
+      var totalCost = HandlePriceByLocale(userInputField.value * element1.dataset.variantPrice);
+    
+      document.querySelectorAll('.prTotalCost-' + productId).forEach(function(totalCostField) {
+        totalCostField.textContent = totalCost;
+      });
+  }
+}
+  
+function toggleGroup(handle, usertype) {
+  document.querySelectorAll('.product-group').forEach(function(group) {
+    group.style.display = 'none';
+    
+  });
+  document.getElementById("group-" + handle).style.display = "block";
+
+document.querySelectorAll('.categorySelectMainButton').forEach(function(cButton) {
+        cButton.style.backgroundColor = "#FFB7AB";
+    cButton.style.color = "#3F575A";
+    
+  });
+  
+    var element1 = document.getElementById("categorySelectMainButton-" + usertype);
+
+  var element2 = document.getElementById("categorySelectMainButton-" + usertype +"-2");
+  
+  if (element1) {
+    element1.style.backgroundColor = "#3F575A";
+    element1.style.color = "white";
+  }
+    if (element2) {
+      element2.style.backgroundColor = "#3F575A";
+    element2.style.color = "white";
+  }
+  
+}
+
+function toggleProducts(handle) {
+  var element = document.getElementById("products-" + handle);
+  if (element) {
+    if(element.style.display)
+    {
+    element.style.display = element.style.display === "none" ? "block" : "none";
+    }
+    else
+    {
+      element.style.display = "block";
+    }
+  }
+}
+
+function createCartCountBubble(count) {
+  const cartCountBubble = document.createElement('div');
+  cartCountBubble.className = 'cart-count-bubble';
+
+  const countSpan = document.createElement('span');
+  countSpan.setAttribute('aria-hidden', 'true');
+  countSpan.textContent = count;
+
+  const textSpan = document.createElement('span');
+  textSpan.className = 'visually-hidden';
+  textSpan.textContent = `${count} items`;
+
+  cartCountBubble.appendChild(countSpan);
+  cartCountBubble.appendChild(textSpan);
+
+  return cartCountBubble;
+}  
+
+function updateCartUI() {
+  fetch('/cart.js')
+    .then(response => response.json())
+    .then(cart => {
+      let cartCountBubble = document.querySelector('.cart-count-bubble');
+      var totalPriceElement = document.getElementById("cart-total-price");
+      var totalPrice = HandlePriceByLocale(cart.total_price);
+      if (!cartCountBubble && cart.item_count > 0) {
+        const cartElement = document.getElementById('cart-icon-bubble');
+        if (cartElement) {
+          totalPriceElement.textContent = totalPrice;
+        cartElement.appendChild(createCartCountBubble(cart.item_count));
+        } else {
+        console.error('Элемент корзины не найден');
+        }
+      }
+      if (cartCountBubble) {
+        const span = cartCountBubble.querySelector('span[aria-hidden="true"]');
+        if (span) {
+          totalPriceElement.textContent = totalPrice;
+          span.textContent = cart.item_count;
+          } else {
+          console.error('Элемент не найден');
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка при обновлении UI корзины:', error);
+    });
+}
+
+
+  async function CheckBoxHandler(productId, firstVariantId, callCbId, secondCbId)
+    {
+      var callCb = document.getElementById(callCbId);
+      var secondCb = document.getElementById(secondCbId);
+
+      disableElementInteraction(".add-to-cart-checkbox");
+      
+      callCb.disabled  = true;
+      secondCb.disabled  = true;
+      
+
+      console.log(callCb.checked + " - " + secondCb.checked);
+      
+       var variantId = GetVariantId(productId).variantId;
+
+    if (variantId === "-1")
+    {
+      variantId = firstVariantId;
+    }
+    if(variantId !== "0")
+    {
+
+    const quantityInput = callCb.closest('[class^="productRow-"]').querySelector('.quantity-input'); // Находим поле ввода количества
+    const quantity = quantityInput ? parseInt(quantityInput.value, 10) : 1; // Получаем значение или ставим 1, если не найдено
+
+     var isSuccess = false;
+      
+    if (callCb.checked) {
+      isSuccess = await addItemToCart(productId, variantId, quantity);
+      callCb.checked = isSuccess ? true : false;
+    } else {
+      isSuccess = await removeItemFromCart(productId, variantId);
+      callCb.checked = isSuccess ? false : true;
+    }
+    } else {
+      callCb.checked = false;
+    }
+
+secondCb.checked = callCb.checked;
+
+      callCb.disabled  = false;
+      secondCb.disabled  = false;
+
+      enableElementInteraction(".add-to-cart-checkbox");
+    }
+
+
+function disabledElementClickEvent()
+  {
+    alert("Aby zmienić szczegóły, dezaktywuj pole wyboru.");
+  }
+  
+  function enableElements(productId, isEnable)
+    {
+      if(!isEnable)
+      {
+          document.querySelectorAll('.variantProduct-' + productId).forEach(function(vButton) {
+            vButton.onclick = disabledElementClickEvent;
+              if(vButton.dataset.selectedId && vButton.dataset.selectedId === "0")
+              {
+                vButton.classList.add("disabledElement"); 
+              }
+            });
+
+          document.querySelectorAll('.selected-quantity-' + productId).forEach(function(stepper) {
+            stepper.querySelectorAll('*').forEach(function(vButton) {
+              vButton.onclick = disabledElementClickEvent;
+              vButton.classList.add("disabledElement");
+            });
+          });
+      }
+      else
+      {
+          document.querySelectorAll('.variantProduct-' + productId).forEach(function(vButton) {
+            vButton.onclick = function() {
+        variantSelect(vButton.dataset.productId, vButton.dataset.variantId);
+      };
+              if(vButton.dataset.selectedId && vButton.dataset.selectedId === "0")
+                {
+                  vButton.classList.remove("disabledElement");
+                }
+          });
+
+          document.querySelectorAll('.selected-quantity-' + productId).forEach(function(stepper) {
+            stepper.querySelectorAll('*').forEach(function(vButton) {
+               vButton.onclick = function() {
+                 var isPlus;
+                 if (vButton.getAttribute('data-plus') === "0") {
+                     isPlus = false;
+                  } else if(vButton.getAttribute('data-plus') === "1") {
+                     isPlus = true;
+                    }
+                HandleQuantity(isPlus, vButton.dataset.productId);
+              };
+              vButton.classList.remove("disabledElement");
+            });
+          });
+      }
+
+    }
+
+function disableElementInteraction(selector) {
+  const elements = document.querySelectorAll(selector);
+  elements.forEach(element => {
+    element.classList.add('disable-interactions');
+  });
+}
+
+function enableElementInteraction(selector) {
+  const elements = document.querySelectorAll(selector);
+  elements.forEach(element => {
+    element.classList.remove('disable-interactions');
+  });
+}
+  
+  async function addItemToCart(productId, variantId, quantity) {
+    var result = false;
+
+    let formData = {
+ 'items': [{
+  'id': variantId,
+  'quantity': quantity
+  }]
+};
+    
+  try {
+    // Отправляем POST-запрос к серверу
+   const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(formData)
+});
+
+    if(!response.ok)
+    {
+      throw new Error('HTTP error, status = ' + response.status);
+    }
+    
+    // Ожидаем и преобразуем ответ от сервера в JSON
+    const data = await response.json();
+    
+    // Логика после успешного добавления товара в корзину
+    enableElements(productId, false); // Эта функция предположительно обновляет UI
+    updateCartUI(); // Обновляем UI корзины
+    result = true;
+
+  } catch (error) {
+    // Обработка возможных ошибок во время запроса или преобразования ответа
+    console.error('Ошибка добавления товара:', error);
+  }
+
+    return result;
+}
+
+async function removeItemFromCart(productId, variantId) {
+  var result = false;
+
+  let updates = {};
+  updates[variantId] = 0;
+  
+  try {
+    // Отправляем POST-запрос к серверу для удаления (установки количества в 0) товара
+    const response = await fetch(window.Shopify.routes.root + 'cart/update.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+      body: JSON.stringify({ updates })
+    });
+
+    if(!response.ok)
+    {
+      throw new Error('HTTP error, status = ' + response.status);
+    }
+    
+    // Ожидаем и преобразуем ответ от сервера в JSON
+    const data = await response.json();
+
+    // Логика после успешного удаления товара из корзины
+    enableElements(productId, true); // Предположительно включает обратно элементы UI, связанные с товаром
+    updateCartUI(); // Обновляем UI корзины
+    result = true;
+  } catch (error) {
+    // Обработка возможных ошибок во время запроса или преобразования ответа
+    console.error('Ошибка удаления товара:', error);
+  }
+
+  return result;
+}
+
+let scrollPosition = 0;
+  
+document.addEventListener('DOMContentLoaded', function() {
+
+  var navigationType = "";
+            
+  if (performance.getEntriesByType("navigation").length > 0) {
+                navigationType = performance.getEntriesByType("navigation")[0].type;
+            } 
+
+  console.log(navigationType);
+  if(navigationType == "back_forward")
+  {
+    location.reload(true)
+    console.log("PageReload");
+  }
+  
+  var globalModal = document.getElementById('global-modal');
+  var fullImage = globalModal.querySelector('.modal-content.full-size-image');
+  var captionText = globalModal.querySelector('.modalCaption');
+  var closeModal = globalModal.querySelector('.modal-close');
+  var prevBtn = globalModal.querySelector('.prev');
+  var nextBtn = globalModal.querySelector('.next');
+  var thumbnailsContainer = globalModal.querySelector('.modal-thumbnails');
+  var currentIndex = 0;
+  var images = [];
+  var productImagesCache = {};
+
+  // Собираем все изображения продуктов на странице
+  var productImageThumbnails = document.querySelectorAll('.product-image-thumbnail');
+  
+
+  productImageThumbnails.forEach(function(imgThumbnail) {
+    var productId = imgThumbnail.getAttribute('data-product-id');
+    var productHandle = imgThumbnail.getAttribute('data-product-handle');
+
+    imgThumbnail.addEventListener('click', function() {
+      if (productImagesCache[productHandle]) {
+        images = productImagesCache[productHandle];
+        openModal(imgThumbnail);
+      } else {
+        fetchProductData(productHandle, function(productData) {
+          images = productData.images.map(function(image) {
+            return {
+              src: image,
+              thumbnail: image.replace(/(\.[^.]*)$/, '_100x100$1'),
+              alt: productData.title
+            };
+          });
+          productImagesCache[productHandle] = images;
+          openModal(imgThumbnail);
+        });
+      }
+    });
+  });
+
+  
+
+  function openModal(imgThumbnail) {
+    currentIndex = images.findIndex(function(img) {
+      return img.src === imgThumbnail.getAttribute('data-fullsize-image');
+    });
+
+    if (currentIndex === -1) {
+      currentIndex = 0;
+    }
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    showImage(currentIndex);
+    globalModal.style.display = "block";
+    document.body.classList.add("no-scroll");
+
+    // Обработчики для стрелок и кнопки закрытия
+    prevBtn.onclick = function() {
+      var newIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(newIndex);
+    };
+
+    nextBtn.onclick = function() {
+      var newIndex = (currentIndex + 1) % images.length;
+      showImage(newIndex);
+    };
+
+    closeModal.onclick = function() {
+      closeModalWindow();
+    };
+
+    window.onclick = function(event) {
+      if (event.target == globalModal) {
+        closeModalWindow();
+      }
+    };
+
+    document.onkeydown = function(e) {
+      if (globalModal.style.display === "block") {
+        if (e.key === "ArrowLeft") {
+          prevBtn.click();
+        } else if (e.key === "ArrowRight") {
+          nextBtn.click();
+        } else if (e.key === "Escape") {
+          closeModalWindow();
+        }
+      }
+    };
+  }
+
+  function showImage(index) {
+    var img = images[index];
+    fullImage.src = img.src;
+    captionText.innerHTML = img.alt;
+    currentIndex = index;
+
+    // Очищаем предыдущие миниатюры
+    thumbnailsContainer.innerHTML = '';
+
+    // Создаем миниатюры внутри модального окна
+    images.forEach(function(image, idx) {
+      var thumb = document.createElement('img');
+      thumb.src = image.thumbnail;
+      thumb.alt = image.alt;
+      thumb.classList.add('modal-thumbnail');
+      thumb.dataset.index = idx;
+
+      if (idx === currentIndex) {
+        thumb.classList.add('active');
+      }
+
+      thumb.onclick = function() {
+        showImage(parseInt(this.dataset.index));
+      };
+
+      thumbnailsContainer.appendChild(thumb);
+    });
+  }
+
+  function closeModalWindow() {
+    globalModal.style.display = "none";
+    document.body.classList.remove("no-scroll");
+    // Очищаем обработчики событий
+    prevBtn.onclick = null;
+    nextBtn.onclick = null;
+    closeModal.onclick = null;
+    window.onclick = null;
+    document.onkeydown = null;
+    window.scrollTo(0, scrollPosition);
+  }
+});
+
+function fetchProductData(handle, callback) {
+    fetch('/products/' + handle + '.js')
+      .then(response => response.json())
+      .then(data => {
+        callback(data);
+      })
+      .catch(error => {
+        console.error('Ошибка при получении данных о продукте:', error);
+      });
+  }
+  
+function ShowProductDescriprion(productHandle)
+  {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    // Получаем элементы модального окна
+    const modal = document.getElementById("productModal");
+    const modalDescription = document.getElementById("modalDescription");
+    const closeBtn = document.getElementById("closeModalProduct");
+document.body.classList.add("no-scroll");
+      // Отображаем модальное окно
+      modal.style.display = "block";
+      // Устанавливаем временное сообщение
+      modalDescription.innerHTML = "<p>Load...</p>";
+
+      // Используем Fetch API для получения данных продукта в формате JSON
+fetchProductData(productHandle, function(productData) {
+             modalDescription.innerHTML = productData.description;
+          });
+
+    // Когда пользователь нажимает на <span> (x), закрываем модальное окно
+    closeBtn.onclick = function() {
+closeModal();
+    }
+
+    // Когда пользователь кликает вне модального окна, закрываем его
+    window.onclick = function(event) {
+      if (event.target == modal) {
+closeModal();
+      }
+    }
+    function closeModal(){
+              modal.style.display = "none";
+        document.body.classList.remove("no-scroll");
+        window.scrollTo(0, scrollPosition);
+      closeBtn.onclick = null;
+      window.onclick = null;
+    }
+  }
+
+
+ UpdateListByCart();
+
+  document.querySelectorAll('[class^="variantProduct-"], [class*=" variantProduct-"]').forEach(function(elem) {
+    elem.classList.add('variantProduct-common');
+});
+
+  document.querySelectorAll('[class^="quantity-stepper-"], [class*=" quantity-stepper-"]').forEach(function(elem) {
+    elem.classList.add('quantity-stepper-common');
+});
+
+    document.querySelectorAll('[class^="prTotalCost-"], [class*=" prTotalCost-"]').forEach(function(elem) {
+    elem.classList.add('prTotalCost-common');
+});
+
+      document.querySelectorAll('[class^="prPrice-"], [class*=" prPrice-"]').forEach(function(elem) {
+    elem.classList.add('prPrice-common');
+});
+  
+  document.querySelector('#categorySelectMainButton-1').click();
+</script>
+
+<style>
+            .disable-interactions {
+              pointer-events: none; /* Отключает клики и другие взаимодействия */
+              opacity: 0.5; /* Делает элемент полупрозрачным для визуального отображения отключения */
+            }
+
+                    /* Скрывает стрелочки для Google Chrome, Safari */
+                    input[type="number"]::-webkit-inner-spin-button,
+                    input[type="number"]::-webkit-outer-spin-button {
+                      -webkit-appearance: none;
+                      margin: 0;
+                    }
+
+                    /* Скрывает стрелочки для Mozilla Firefox */
+                    input[type="number"] {
+                      -moz-appearance: textfield;
+                    }
+
+              .categoryTrInfo {
+                display: none;
+              }
+              .groupInfoDescription{
+                padding: 10px;
+              }
+
+                    .quantity-input {
+                      width: 100px; /* Ширина */
+                      height: 40px; /* Высота */
+                      border: 1px solid #ccc; /* Граница */
+                      border-radius: 5px; /* Скругление углов */
+
+                      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Тень */
+
+                      font-size: 20px; /* Размер шрифта */
+                      text-align: center; /* Выравнивание текста */
+
+                        background-color: #f8f8f8; /* Цвет фона */
+                      color: #333; /* Цвет текста */
+                    }
+
+
+                    .decrease-quantity, .increase-quantity {
+                                  cursor: pointer;
+                            font-weight: bold;
+                            background-color: #FFB7AB;
+                            border: 1px solid #d0d0d0;
+                            border-radius: 5px;
+                            color: #3F575A;
+                            width: 40px;
+                            height: 40px;
+                      font-size: 20px; /* Размер шрифта */
+                      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Тень */
+                    }
+
+                .prTotalCost-common {
+                    text-align: center;
+
+                    font-size: 17px; /* Размер шрифта */
+                  }
+                  .prNameTitle {
+                    font-size: 17px; /* Размер шрифта */
+                    line-height: calc(1 + 0.4 / var(--font-body-scale))
+                  }
+
+                  .prPrice-common {
+                    font-weight: bold;
+                    padding-bottom: 10px;
+                  }
+
+                          .variantProduct-common {
+                                cursor: pointer;
+                            padding: 2px;
+                            font-weight: bold;
+                            background-color: #FFB7AB;
+                            border: 1px solid #d0d0d0;
+                            border-radius: 20px;
+                            color: #3F575A;
+                            width: 40px;
+                            height: 40px;
+                            margin-right: 5px;
+                              box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Тень */
+                          }
+
+
+                            .baseSettingCustomPage {
+                              margin-left: 50px;
+                              margin-right: 50px;
+                            }
+
+                          .categorySelectMainButtons {
+                            margin-top: 20px;
+                            margin-bottom: 20px;
+                          }
+                          .categorySelectMainButton {
+                            cursor: pointer;
+                            padding: 10px;
+                            font-weight: bold;
+                            background-color: #FFB7AB;
+                            border: 1px solid #d0d0d0;
+                            border-radius: 10px;
+                            color: #3F575A;
+                            width: 110px;
+                            height: 40px;
+                            margin-right: 5px;
+                              box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Тень */
+                            font-size: 14px;
+                          }
+
+
+                          .groupInfoButton, .showCategoryButton {
+                            cursor: pointer;
+                            font-weight: bold;
+                            color: black;
+                            font-size: 20px;
+                            border: none;
+                            border-radius: 5px;
+                            transition-duration: 0.4s;
+                          }
+
+                          .groupInfoButton {
+                            margin-left: 15px;
+                          }
+
+                          .showCategoryButton {
+                          padding: 2px 15px;
+                          margin-right: 15px;
+                          }
+
+                          .groupInfoButton:hover, .showCategoryButton:hover {
+                            background-color: white;
+                          }
+
+                            .categoryHeadBody
+                            {
+                              margin-top: 15px;
+                            }
+
+
+
+                           .categoryNameTable {
+                            border-collapse: separate;
+                            border-spacing: 0;
+                            overflow: hidden;
+                             border-radius: 10px;
+                             width: 100%;
+                             background-color: #FFB7AB;
+                             border: 1px solid #d0d0d0;
+                          }
+
+                          .categoryTr{
+                            height: 40px;
+                          }
+
+                          .categoryTd1 {
+                            text-align: left;
+                            width: 80%;
+
+                            padding-left: 15px;
+                            font-size: 22px;
+                          }
+
+                            .categoryTd2 {
+                              text-align: right;
+                              width: 20%;
+                            }
+
+
+                          /* required css to make rounded table (below) */
+                          .categoryTr:first-child th:first-child {
+                            border-top-left-radius: 10px;
+                          }
+                          .categoryTr:first-child th:last-child {
+                            border-top-right-radius: 10px;
+                          }
+                          .categoryTr:last-child td:first-child {
+                            border-bottom-left-radius: 10px;
+                          }
+                          .categoryTr:last-child td:last-child {
+                            border-bottom-right-radius: 10px;
+                          }
+
+
+
+
+                          input[type='number']{
+                              width: 40px;
+                          }
+
+
+
+
+                            .productsCategoryTable {
+                              display:none; /чтобы первый раз группы были не раскрыты
+                               width: 100%; /* или любая другая фиксированная ширина */
+                              table-layout: auto;
+
+                            }
+
+
+
+                          .cbTd {
+                              text-align: center;
+                            padding-right: 30px;
+                            padding-left: 30px;
+                            }
+
+                            .imTd {
+                          text-align: center;
+                            }
+
+                            .product-details {
+                              width:70%;
+                              text-align: left;
+                              padding-left: 30px;
+                              vertical-align:top;
+                            }
+
+                            .product-quantity {
+                              vertical-align:top;
+                              width:30%;
+                              text-align: right;
+                              padding-right: 30px;
+
+                            }
+
+
+
+
+                         .productsCategoryTable tbody{
+                              width: 100%;
+                              display: table;
+                          }
+
+                      .productRow-2, .productRow-2-2 {
+                        display: none;
+                      }
+
+                  .productRow-1, .productRow-2 {
+                    padding-top: 10px !important;
+                  }
+
+
+                      .productRow-2-2, .productRow-1 {
+                        border-bottom: .1rem solid rgba(18, 18, 18, .08);
+                    }
+
+                          .quantity-stepper-common {
+                          position: absolute;
+                        }
+
+                          input[type="checkbox"] {
+                          transform: scale(2.5); /* Изменение размера */
+                          transition: transform 0.2s ease; /* Плавный переход при наведении */
+                        }
+
+                        input[type="checkbox"]:hover {
+                          transform: scale(2.6); /* Немного увеличиваем при наведении */
+                        }
+
+                            .disabledElement{
+                  background-color: #E6E4E2 !important;
+                              color: #A3A298 !important;
+                          }
+
+
+          /* Стили модального окна */
+        .modal {
+          display: none; /* Скрыто по умолчанию */
+          position: fixed;
+          z-index: 1000;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto; /* Включаем прокрутку при необходимости */
+          background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Контейнер для основного изображения и стрелок */
+        .modal-content-container {
+          display: flex;
+          position: relative; /* Для позиционирования стрелок относительно этого контейнера */
+          max-width: 90%;
+          max-height: 80vh;
+          margin: auto;
+          padding-top: 60px; /* Отступ для кнопки закрытия */
+              flex-direction: row;
+          justify-content: center;
+        }
+
+        /* Основное изображение */
+        .modal-content.full-size-image {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+        }
+
+        /* Стрелки навигации */
+        .modal .prev,
+        .modal .next {
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 50px;
+          height: 50px;
+          color: #333; /* Тёмный цвет */
+          font-weight: bold;
+          font-size: 50px;
+          user-select: none;
+          background-color: rgba(255, 255, 255, 0.7); /* Полупрозрачный фон */
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1;
+        }
+
+        .modal .prev {
+          left: 10px;
+        }
+
+        .modal .next {
+          right: 10px;
+        }
+
+        .modal .prev:hover,
+        .modal .next:hover {
+          background-color: rgba(255, 255, 255, 1); /* Более заметный фон при наведении */
+          color: #000; /* Более тёмный цвет стрелок при наведении */
+        }
+
+        /* Кнопка закрытия */
+        .modal-close {
+          position: absolute;
+          top: 20px;
+          right: 35px;
+          color: #fff;
+          font-size: 40px;
+          font-weight: bold;
+          cursor: pointer;
+          z-index: 2; /* Обеспечивает нахождение кнопки над другими элементами */
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+          color: #bbb;
+          text-decoration: none;
+        }
+
+        /* Контейнер для миниатюр */
+        .modal-thumbnails {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 10px auto;
+          overflow-x: auto;
+          max-width: 90%;
+        }
+
+        /* Стили для миниатюр */
+        .modal-thumbnails .modal-thumbnail {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          margin: 0 5px;
+          cursor: pointer;
+          opacity: 0.6;
+          transition: opacity 0.3s;
+        }
+
+        .modal-thumbnails .modal-thumbnail.active {
+          border: 2px solid #fff;
+          opacity: 1;
+        }
+
+        .modal-thumbnails .modal-thumbnail:hover {
+          opacity: 1;
+        }
+
+
+          /* Блокировка прокрутки при открытом модальном окне */
+          .no-scroll {
+            overflow: hidden;
+          position: fixed;
+          width: 100%;
+          }
+
+
+      /* Модальное окно описания продукта */
+      /* Стили для кнопок */
+
+
+      /* Стили для модального окна */
+      .pModal {
+        display: none; /* Скрыто по умолчанию */
+        position: fixed; /* Остается на месте */
+        z-index: 1000; /* Поверх всего */
+        left: 0;
+        top: 0;
+        width: 100%; /* Полная ширина */
+        height: 100%; /* Полная высота */
+        overflow: auto; /* Включить прокрутку, если нужно */
+        background-color: rgba(0, 0, 0, 0.5); /* Черный фон с прозрачностью */
+      }
+
+      /* Стили для содержимого модального окна */
+      .contentMP {
+        background-color: #fefefe;
+        margin: 5% auto; /* Центрирование */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 95%; /* Ширина модального окна */
+        max-width: 1000px; /* Максимальная ширина */
+        border-radius: 10px;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        animation: fadeIn 0.3s;
+      }
+
+      /* Анимация появления */
+      @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+      }
+
+      /* Стили для кнопки закрытия */
+      .closeMP {
+        color: #aaa;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .closeMP:hover,
+      .closeMP:focus {
+        color: black;
+        text-decoration: none;
+      }
+
+
+  /* Стиль для кнопки с нежно красным фоном */
+  .buttonDescription {
+    background-color: #ff6b6b; /* Нежно красный фон */
+    color: #ffffff;            /* Белый текст */
+    border: none;              /* Без границы */
+    padding: 0px 7px;        /* Внутренние отступы */
+    border-radius: 25px;       /* Круглая форма */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* Небольшая тень */
+    cursor: pointer;           /* Курсор-указатель при наведении */
+    font-size: 20px;           /* Размер шрифта */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Плавные переходы */
+
+  }
+
+  /* Эффект при наведении курсора */
+  .buttonDescription:hover {
+    background-color: #ff5252; /* Немного более насыщенный красный */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Усиленная тень */
+  }
+
+  /* Эффект при нажатии */
+  .buttonDescription:active {
+    background-color: #ff3b3b; /* Ещё более насыщенный красный */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Слабая тень */
+  }
+
+
+
+
+            .infoImageDesktop{
+              display: block;
+            }
+
+              .infoImageMobile{
+              display: none;
+            }
+
+
+                            @media (max-width: 768px) {
+
+                              .baseSettingCustomPage {
+                              margin-left: 15px;
+                              margin-right: 15px;
+                            }
+
+                            .product-details {
+                              text-align: right;
+                              width:100%;
+                              vertical-align:bottom;
+                              padding-left: 0px;
+                            }
+
+                            .product-quantity {
+                              vertical-align:top;
+                              width:0%;
+                              text-align: right;
+                              padding-right: 0px;
+
+                            }
+
+                          .cbTd {
+                              text-align: center;
+                            padding-right: 8px;
+                            padding-left: 8px;
+
+                            }
+
+                        input[type="checkbox"] {
+                          transform: scale(2.2); /* Изменение размера */
+                          transition: transform 0.2s ease; /* Плавный переход при наведении */
+                        }
+
+                        input[type="checkbox"]:hover {
+                          transform: scale(2.3); /* Немного увеличиваем при наведении */
+                        }
+
+
+
+                          .variantProduct-common {
+                                cursor: pointer;
+                            padding: 0px;
+                            font-weight: bold;
+                            background-color: #FFB7AB;
+                            border: 1px solid #d0d0d0;
+                            border-radius: 20px;
+                            color: #3F575A;
+                            width: 40px;
+                            height: 40px;
+                            margin: 0px;
+                            margin-top: 0px;
+                            margin-right: 0px;
+                              box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Тень */
+                          }
+
+                        .quantity-stepper-common {
+                          position: absolute;
+                          right: 23px; /* Выталкивает элемент на 100px вправо от правого края ячейки */
+                        }
+
+                      .productRow-1 {
+                        display: none;
+                      }
+                                .productRow-2, .productRow-2-2 {
+                        display: block;
+                      }
+
+                          .categoryTd1 {
+                            padding-left: 7px;
+                            font-size: 17px;
+                            width: 85%;
+                          }
+                               .categoryTd2 {
+                                 width: 15%;
+                               }
+
+
+                               .groupInfoButton {
+                            margin-left: 7px;
+                          }
+
+                                     .showCategoryButton {
+                          padding: 2px 15px;
+                          margin-right: 7px;
+                          }
+
+            .infoImageDesktop{
+              display: none;
+            }
+
+              .infoImageMobile{
+              display: block;
+            }
+
+                          }
+
+
+/* ====== Видимый триггер-блок ====== */
+.ivm-container{
+  margin: 20px 0 10px 0;
+}
+.ivm-trigger{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid #d0d0d0;
+  background: #FFB7AB;
+  color: #3F575A;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  transition: transform .08s ease, box-shadow .2s ease;
+  text-align: left;
+}
+.ivm-trigger:hover{ box-shadow: 0 4px 10px rgba(0,0,0,.12); }
+.ivm-trigger:active{ transform: translateY(1px); }
+
+.ivm-icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.85);
+  font-size: 18px;
+}
+
+.ivm-text{ display: flex; flex-direction: column; }
+.ivm-title{ font-size: 18px; line-height: 1.2; }
+.ivm-subtitle{ font-size: 13px; opacity: .8; }
+
+/* ====== Модалка с видео ====== */
+.ivm-modal{
+  display: none; /* управляется скриптом */
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  padding: 24px;
+}
+.ivm-modal__dialog{
+  position: relative;
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #000;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+.ivm-modal__close{
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  color: #000;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.ivm-modal__close:hover{ background: #fff; }
+
+/* Соотношение 16:9 */
+.ivm-aspect{
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #000;
+}
+.ivm-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  display: block;
+}
+
+/* Мобильные правки */
+@media (max-width: 768px){
+  .ivm-trigger{ padding: 14px; }
+  .ivm-icon{ width: 38px; height: 38px; font-size: 16px; }
+  .ivm-title{ font-size: 16px; }
+  .ivm-subtitle{ font-size: 12px; }
+  .ivm-modal{ padding: 12px; }
+  .ivm-modal__dialog{ margin: 20px auto; }
+}
+
+
+
+</style>

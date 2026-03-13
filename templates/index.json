@@ -1,0 +1,681 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1760541151c9f01a4f": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "image_with_text_DyyULx": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Kq7G9U": {
+          "type": "heading",
+          "settings": {
+            "heading": "Spakuj własną torbę",
+            "heading_size": "h1"
+          }
+        },
+        "text_hTYxGW": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Skorzystaj z wygodnego projektanta, aby wybrać to, czego potrzebujesz.</h4>",
+            "text_style": "body"
+          }
+        },
+        "button_XG3WTY": {
+          "type": "button",
+          "settings": {
+            "button_label": "Chcę zobaczyć",
+            "button_link": "shopify://pages/zlozsam",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Kq7G9U",
+        "text_hTYxGW",
+        "button_XG3WTY"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Gemini_Generated_Image_vvokd9vvokd9vvok.png",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "center",
+        "content_layout": "overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-558c04f3-8cc9-49d5-b182-8c720bcf7f5a",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "center",
+        "padding_top": 12,
+        "padding_bottom": 24
+      }
+    },
+    "image_with_text_aCWynz": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_86nDtU": {
+          "type": "heading",
+          "settings": {
+            "heading": "Gotowe torby",
+            "heading_size": "h1"
+          }
+        },
+        "text_P7Tdm4": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Wybierz gotową torbę, która pomieści wszystko, czego potrzebujesz.</h4>",
+            "text_style": "body"
+          }
+        },
+        "button_iatbNi": {
+          "type": "button",
+          "settings": {
+            "button_label": "Chcę zobaczyć",
+            "button_link": "shopify://pages/gotowe-torby",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_86nDtU",
+        "text_P7Tdm4",
+        "button_iatbNi"
+      ],
+      "custom_css": [],
+      "settings": {
+        "image": "shopify://shop_images/Gemini_Generated_Image_kueuczkueuczkueu.png",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "center",
+        "content_layout": "overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-b80f97e5-8e96-4a79-9202-38cbcb721e6f",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "center",
+        "padding_top": 4,
+        "padding_bottom": 12
+      }
+    },
+    "image_banner_4q77eN": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_KhaiPr": {
+          "type": "heading",
+          "settings": {
+            "heading": "Gotowe torby",
+            "heading_size": "h1"
+          }
+        },
+        "text_d7qVAr": {
+          "type": "text",
+          "settings": {
+            "text": "Którą przygotowaliśmy, zawiera wszystko, co niezbędne. Wybierz odpowiednią torbę.",
+            "text_style": "body"
+          }
+        },
+        "buttons_UAbVcd": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Chcę zobaczyć",
+            "button_link_1": "shopify://pages/gotowe-torby",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_KhaiPr",
+        "text_d7qVAr",
+        "buttons_UAbVcd"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".banner__box.content-container.content-container--full-width-mobile {background-color: rgba(238, 238, 238, 0.8);}",
+        "@media (max-width: 800px) {.banner__box.content-container.content-container--full-width-mobile {margin-top: 15px; margin-bottom: auto; margin-left: 15px; margin-right: 15px; padding: 15px; } .banner__box > * + .banner__buttons {margin-top: 1rem; } .banner__content {min-height: 0rem; height: 220px; } .banner__text.rte.body {margin-top: 0.5rem; line-height: 1.5; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Bags.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "top-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-805bfd18-f519-4ea5-9bb0-73cc857d3954",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
+    "rich_text_fhVRtJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MMEaMK": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_zUVzbp": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_t6jRFh": {
+          "type": "button",
+          "settings": {
+            "button_label": "Chcę zobaczyć",
+            "button_link": "shopify://pages/gotowe-torby",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_MMEaMK",
+        "text_zUVzbp",
+        "button_t6jRFh"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-805bfd18-f519-4ea5-9bb0-73cc857d3954",
+        "full_width": true,
+        "padding_top": 32,
+        "padding_bottom": 16
+      }
+    },
+    "collage_rL9KtM": {
+      "type": "collage",
+      "blocks": {
+        "collection_djHRNE": {
+          "type": "collection",
+          "settings": {
+            "collection": "torebki"
+          }
+        },
+        "product_C7H4XE": {
+          "type": "product",
+          "settings": {
+            "product": "torba-do-szpitala-1",
+            "second_image": false
+          }
+        },
+        "product_Ek3qKW": {
+          "type": "product",
+          "settings": {
+            "product": "torba-do-szpitala",
+            "second_image": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_djHRNE",
+        "product_C7H4XE",
+        "product_Ek3qKW"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Zestawy dla mamy",
+        "heading_size": "h2",
+        "desktop_layout": "left",
+        "mobile_layout": "collage",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_hkTn8n": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_GjdpyL": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "caption_bzwNbe": {
+          "type": "caption",
+          "settings": {
+            "caption": "· Zestawy dla mamy",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large"
+          }
+        },
+        "text_8pVJgV": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_GjdpyL",
+        "caption_bzwNbe",
+        "text_8pVJgV"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".caption-with-letter-spacing--large {font-size: 1.8rem; letter-spacing: 0.2rem;}",
+        "@media (min-width: 800px) {.rich-text__caption.caption-with-letter-spacing.caption-with-letter-spacing--large.scroll-trigger.animate--slide-in {font-size: 2.5rem; letter-spacing: 0.2rem; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-558c04f3-8cc9-49d5-b182-8c720bcf7f5a",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection_QapMGH": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Zestawy dla mamy",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "gotowe-torby",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_wMrkLE": {
+      "type": "featured-product",
+      "blocks": {
+        "text_ehFWR9": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_iq9348": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_bAQRRL": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_Q68MHa": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_rthwPL": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons_bYyjtU": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_cLcmEg": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_ehFWR9",
+        "title_iq9348",
+        "price_bAQRRL",
+        "variant_picker_Q68MHa",
+        "quantity_selector_rthwPL",
+        "buy_buttons_bYyjtU",
+        "share_cLcmEg"
+      ],
+      "disabled": true,
+      "settings": {
+        "product": "torba-wyprawka-dla-noworodkamamy-do-szpitala-podstawowa-rozowa",
+        "color_scheme": "scheme-805bfd18-f519-4ea5-9bb0-73cc857d3954",
+        "secondary_background": false,
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_VADXp6": {
+      "type": "featured-product",
+      "blocks": {
+        "text_9iQgM6": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_VUxtL3": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_6bACNr": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_CGzJfe": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_P7E4KF": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons_6EmWd9": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_kRBFme": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_9iQgM6",
+        "title_VUxtL3",
+        "price_6bACNr",
+        "variant_picker_CGzJfe",
+        "quantity_selector_P7E4KF",
+        "buy_buttons_6EmWd9",
+        "share_kRBFme"
+      ],
+      "disabled": true,
+      "settings": {
+        "product": "torba-do-szpitala-1",
+        "color_scheme": "scheme-805bfd18-f519-4ea5-9bb0-73cc857d3954",
+        "secondary_background": false,
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "media_position": "right",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_PMgkQC": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_biBA9B": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/zestaw-must-have-box-wyprawkowy-do-szpitala-dla-mam-do-porodu-1.webp",
+            "title": "",
+            "text": "<h2>Komplet Startowy</h2>",
+            "link_label": "Chcę zobaczyć",
+            "link": ""
+          }
+        },
+        "column_KUFVRQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/1682415984989-54ce1a800bca45be850c1c09a0535d7a-goods_1.webp",
+            "title": "",
+            "text": "<h2>Komplet Komfortowy</h2>",
+            "link_label": "Chcę zobaczyć",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_biBA9B",
+        "column_KUFVRQ"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".link,.customer a {color: #ff5252;}",
+        ".title-wrapper-with-link.title-wrapper--self-padded-mobile.title-wrapper--no-top-margin {justify-content: center;}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-805bfd18-f519-4ea5-9bb0-73cc857d3954",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
+    "multicolumn_7TM8Pt": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_bd9C9P": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/zestaw-must-have-box-wyprawkowy-do-szpitala-dla-mam-do-porodu-1.webp",
+            "title": "",
+            "text": "<h2>Komplet Startowy</h2>",
+            "link_label": "Chcę zobaczyć",
+            "link": ""
+          }
+        },
+        "column_j9tQVr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/1682415984989-54ce1a800bca45be850c1c09a0535d7a-goods_1.webp",
+            "title": "",
+            "text": "<h2>Komplet Komfortowy</h2>",
+            "link_label": "Chcę zobaczyć",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_bd9C9P",
+        "column_j9tQVr"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".link,.customer a {color: #ff5252;}",
+        ".title-wrapper-with-link.title-wrapper--self-padded-mobile.title-wrapper--no-top-margin {justify-content: center;}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-805bfd18-f519-4ea5-9bb0-73cc857d3954",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_7Gx38y": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_3wHFRV": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/1_17684cdf-d4a2-48b5-94aa-31e309b3e524.png",
+            "title": "<a href=\"/pages/zlozsam\" title=\"ZłóżSam\"><strong>Skonfiguruj swoją torbę</strong></a>",
+            "text": "<p><a href=\"/pages/zlozsam\" title=\"ZłóżSam\">Zaprojektuj swoją idealną torbę</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_UBQKh9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/2_10993913-a630-4757-9cd6-1b2a44c7ac46.png",
+            "title": "<strong>Gotowe torby</strong>",
+            "text": "<p>Znajdź torbę idealną dla siebie</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_cKT796": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/3_4465fb61-8de9-4755-8fc6-6556b85f1719.png",
+            "title": "<strong>Prezent</strong>",
+            "text": "<p>Złóż zamówienie za 100 zł, a <strong>TORBA </strong>i <strong>DOSTAWA </strong>gratis!</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_PTeP3U": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/4_041009b9-797d-4b3f-bf4b-e74a7e78ebac.png",
+            "title": "<strong>Ekspresowa dostawa</strong>",
+            "text": "<p>Realizujemy wysyłkę w ciągu 24 godzin</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_3wHFRV",
+        "column_UBQKh9",
+        "column_cKT796",
+        "column_PTeP3U"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "half",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-b80f97e5-8e96-4a79-9202-38cbcb721e6f",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 28,
+        "padding_bottom": 0
+      }
+    },
+    "featured_blog_WJNz4K": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Porady i artykuły",
+        "heading_size": "h1",
+        "blog": "przydatne-artykuly",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-805bfd18-f519-4ea5-9bb0-73cc857d3954",
+        "show_image": true,
+        "show_date": false,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "contact_form_nLW4Rb": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Kontakt",
+        "heading_size": "h1",
+        "color_scheme": "scheme-558c04f3-8cc9-49d5-b182-8c720bcf7f5a",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "1760541151c9f01a4f",
+    "image_with_text_DyyULx",
+    "image_with_text_aCWynz",
+    "image_banner_4q77eN",
+    "rich_text_fhVRtJ",
+    "collage_rL9KtM",
+    "rich_text_hkTn8n",
+    "featured_collection_QapMGH",
+    "featured_product_wMrkLE",
+    "featured_product_VADXp6",
+    "multicolumn_PMgkQC",
+    "multicolumn_7TM8Pt",
+    "multicolumn_7Gx38y",
+    "featured_blog_WJNz4K",
+    "contact_form_nLW4Rb"
+  ]
+}

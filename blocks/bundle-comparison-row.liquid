@@ -1,0 +1,97 @@
+{% comment %}
+  Child block for one comparison row.
+  Wrapper tag is set to "tr" in schema, so this file must output ONLY <td> cells.
+  Category is chosen as a Collection (acts like a "category").
+{% endcomment %}
+
+{% liquid
+  assign category_collection = block.settings.category_collection
+  assign product = block.settings.product
+  assign custom_label = block.settings.custom_label
+
+  assign show_category_title = section.settings.show_category_title
+  if section.settings.compare_show_category_title != blank
+    assign show_category_title = section.settings.compare_show_category_title
+  endif
+
+  assign category_name = ''
+  if category_collection != blank
+    assign category_name = category_collection.title
+  endif
+
+  assign display_name = ''
+  if custom_label != blank
+    assign display_name = custom_label
+  elsif product != blank
+    assign display_name = product.title
+  endif
+%}
+
+<td class="ai-bundle-comparison__category-cell">
+  {% if show_category_title and category_name != blank %}
+    <div class="ai-bundle-comparison__category-title">{{ category_name }}</div>
+  {% endif %}
+
+  {% if display_name != blank %}
+    <div class="ai-bundle-comparison__item-cell">
+      {% if product %}
+        <a href="{{ product.url }}" class="ai-bundle-comparison__product-link" aria-label="{{ product.title | escape }}">
+          {% if product.featured_image %}
+            <img
+              src="{{ product.featured_image | image_url: width: 140 }}"
+              alt="{{ product.title | escape }}"
+              class="ai-bundle-comparison__product-image"
+              loading="lazy"
+              width="48"
+              height="48"
+            >
+          {% endif %}
+
+          <span class="ai-bundle-comparison__product-name">{{ display_name }}</span>
+        </a>
+      {% else %}
+        <div class="ai-bundle-comparison__product-name">{{ display_name }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+</td>
+
+{% for i in (1..5) %}
+  {% liquid
+    assign include_key = 'include_in_bundle_' | append: i
+    assign is_included = block.settings[include_key]
+  %}
+  <td class="ai-bundle-comparison__check-cell">
+    {% if is_included %}
+      <svg class="ai-bundle-comparison__checkmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    {% else %}
+      <span class="ai-bundle-comparison__empty" aria-hidden="true">—</span>
+    {% endif %}
+  </td>
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Row",
+  "tag": "tr",
+  "class": "ai-bundle-comparison__row",
+  "settings": [
+    { "type": "text", "id": "tab_key", "label": "Tab key (optional for tabs showcase)" },
+
+    { "type": "collection", "id": "category_collection", "label": "Category (collection)" },
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "custom_label", "label": "Custom label" },
+
+    { "type": "checkbox", "id": "include_in_bundle_1", "label": "Include in bundle 1", "default": false },
+    { "type": "checkbox", "id": "include_in_bundle_2", "label": "Include in bundle 2", "default": false },
+    { "type": "checkbox", "id": "include_in_bundle_3", "label": "Include in bundle 3", "default": false },
+    { "type": "checkbox", "id": "include_in_bundle_4", "label": "Include in bundle 4", "default": false },
+    { "type": "checkbox", "id": "include_in_bundle_5", "label": "Include in bundle 5", "default": false }
+  ],
+  "presets": [
+    { "name": "Row" }
+  ]
+}
+{% endschema %}

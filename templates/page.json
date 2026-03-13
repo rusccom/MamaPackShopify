@@ -1,0 +1,1938 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "mamapack_tabs_showcase_7PjxJY": {
+      "type": "mamapack-tabs-showcase",
+      "blocks": {
+        "product_card_XXRwtR": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "3",
+            "product": "podstawowy-md"
+          }
+        },
+        "product_card_JhX9NF": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "3",
+            "product": "podstawowy-md-1"
+          }
+        },
+        "product_card_HRi8qc": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "3",
+            "product": "kompletny-md"
+          }
+        },
+        "product_card_X78C3Y": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "3",
+            "product": "podstawowy-md-2"
+          }
+        },
+        "product_card_qYrtpJ": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "2",
+            "product": "torba-do-szpitala-dla-noworodka-gotowa-wyprawka-premium"
+          }
+        },
+        "product_card_gD9dmA": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "2",
+            "product": "torba-do-szpitala-dla-noworodka-gotowa-wyprawka-premium-1"
+          }
+        },
+        "product_card_Fqd4qD": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "2",
+            "product": "torba-do-szpitala-dla-noworodka-gotowa-wyprawka-premium-2"
+          }
+        },
+        "product_card_YcMk9H": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "2",
+            "product": "bundle-product-21"
+          }
+        },
+        "product_card_M4RX3r": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "1",
+            "product": "bundle-product-13"
+          }
+        },
+        "product_card_4aFdAx": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "1",
+            "product": "bundle-product-14"
+          }
+        },
+        "product_card_ge3JF9": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "1",
+            "product": "bundle-product-15"
+          }
+        },
+        "product_card_xzAFpp": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "1",
+            "product": "bundle-product-16"
+          }
+        },
+        "compare_row_WKWFN7": {
+          "type": "compare_row",
+          "settings": {
+            "tab_key": "1",
+            "category_collection": "",
+            "product": "akuku-a0003-platki-kosmetyczne-dla-niemowlat-0m-60szt",
+            "custom_label": "",
+            "include_in_product_1": true,
+            "include_in_product_2": true,
+            "include_in_product_3": false,
+            "include_in_product_4": false,
+            "include_in_product_5": false
+          }
+        },
+        "compare_row_ELKrUb": {
+          "type": "compare_row",
+          "settings": {
+            "tab_key": "1",
+            "category_collection": "",
+            "product": "canpol-78-001-oddychajace-podklady-poporodowe-na-noc-10szt",
+            "custom_label": "",
+            "include_in_product_1": false,
+            "include_in_product_2": false,
+            "include_in_product_3": false,
+            "include_in_product_4": false,
+            "include_in_product_5": false
+          }
+        },
+        "tab_item_HDwzAG": {
+          "type": "tab_item",
+          "settings": {
+            "tab_key": "1",
+            "image": "shopify://shop_images/Gemini_Generated_Image_8bnjdr8bnjdr8bnj_1_1.png",
+            "title": "",
+            "subtitle": "",
+            "default_open": false
+          }
+        },
+        "tab_item_KCwN4z": {
+          "type": "tab_item",
+          "settings": {
+            "tab_key": "2",
+            "image": "shopify://shop_images/Gemini_Generated_Image_8bnjdr8bnjdr8bnj_1_2.png",
+            "title": "",
+            "subtitle": "",
+            "default_open": true
+          }
+        },
+        "tab_item_64mNmM": {
+          "type": "tab_item",
+          "settings": {
+            "tab_key": "3",
+            "image": "shopify://shop_images/Gemini_Generated_Image_8bnjdr8bnjdr8bnj_1_3.png",
+            "title": "",
+            "subtitle": "",
+            "default_open": false
+          }
+        }
+      },
+      "block_order": [
+        "product_card_XXRwtR",
+        "product_card_JhX9NF",
+        "product_card_HRi8qc",
+        "product_card_X78C3Y",
+        "product_card_qYrtpJ",
+        "product_card_gD9dmA",
+        "product_card_Fqd4qD",
+        "product_card_YcMk9H",
+        "product_card_M4RX3r",
+        "product_card_4aFdAx",
+        "product_card_ge3JF9",
+        "product_card_xzAFpp",
+        "compare_row_WKWFN7",
+        "compare_row_ELKrUb",
+        "tab_item_HDwzAG",
+        "tab_item_KCwN4z",
+        "tab_item_64mNmM"
+      ],
+      "name": "MamaPack tabs showcase",
+      "settings": {
+        "section_heading": "Gotowe torby do szpitala",
+        "section_subtext": "<p>Wybierz zestaw dla mamy, dla noworodka lub dla mamy i dziecka.</p>",
+        "compare_show_label": "Porównaj zawartość",
+        "compare_hide_label": "Ukryj porównanie",
+        "compare_table_heading": "Porównanie zawartości",
+        "tab_image_aspect_ratio": "2 / 3",
+        "max_width": 1200,
+        "border_radius": 14,
+        "section_background": "#ffffff",
+        "card_background": "#ffffff",
+        "soft_background": "#faf7f5",
+        "border_color": "#e8dfda",
+        "text_color": "#2a211d",
+        "muted_text_color": "#7d6f69",
+        "accent_color": "#e7b7ab",
+        "accent_text_color": "#2a211d",
+        "compare_desktop_width_percent": 100,
+        "compare_show_category_title": true,
+        "compare_background_color": "#ffffff",
+        "compare_header_background": "#f3f3f3",
+        "compare_category_background": "#f9f9f9",
+        "compare_text_color": "#121212",
+        "compare_border_color": "#e0e0e0",
+        "compare_checkmark_color": "#008060",
+        "compare_empty_color": "#cccccc",
+        "compare_button_background": "#121212",
+        "compare_button_text_color": "#ffffff",
+        "compare_button_hover_background": "#000000",
+        "compare_border_radius": 8
+      }
+    },
+    "image_banner_UNJwUc": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/2_27f47981-cc57-4efb-80b7-0a4b1654a379.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "rich_text_zGrYkM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_qpwCGY": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>GOTOWE WYPRAWKI</strong> dla mamy i noworodka",
+            "heading_size": "h1"
+          }
+        },
+        "text_Beajtb": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>Starannie skompletowane zestawy, dzięki którym przygotujesz się do porodu szybciej, wygodniej i bez chaosu.</h3>"
+          }
+        },
+        "button_PyxR8z": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_qpwCGY",
+        "text_Beajtb",
+        "button_PyxR8z"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-b80f97e5-8e96-4a79-9202-38cbcb721e6f",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_E88XbB": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_gxf4Gq": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "<p><br/>Gotowe zestawy<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Erwdp8": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "<p><br/>Szybka wysyłka<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_XW8mq9": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "<p><br/>Starannie dobrane produkty<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_mzPKeU": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "<p><br/>Mniej stresu przed porodem<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_gxf4Gq",
+        "column_Erwdp8",
+        "column_XW8mq9",
+        "column_mzPKeU"
+      ],
+      "disabled": true,
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Multicolumn",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-805bfd18-f519-4ea5-9bb0-73cc857d3954",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "bundle_compare_section_iEwiae": {
+      "type": "bundle-compare-section",
+      "blocks": {
+        "bundle_comparison_row_XzMPQK": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "torebki",
+            "product": "torba-do-szpitala",
+            "custom_label": "Torba GRATIS (mix kolorów) - 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": false,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_Ma6yBE": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "torebki",
+            "product": "pikowana-torba-do-szpitala-z-niedzwiedziem",
+            "custom_label": "Pikowana torba do szpitala (L) — 1 szt.",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_t4GkYx": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "podklady-higieniczne",
+            "product": "akuku-a0501-podklad-jednorazowy-60x90-cm-sensitive-10-szt",
+            "custom_label": "Podkład (60x90) jednoraz. (Akuku) -10 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_nBbrL8": {
+          "type": "bundle-comparison-row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "jednorazowe-majtki",
+            "product": "akuku-a0549-majtki-jednorazowe-poporodowe-s",
+            "custom_label": "Majtki poporodowe (Akuku), roz. L — 5 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_cxmQHY": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higieniczne-wkladki",
+            "product": "bella-podklad-higieniczny-mamma-34x11-cm-z-folia-10-szt",
+            "custom_label": "Podpaski poporodowe (Bella)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_mqFPqU": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "wkladki-laktacyjne",
+            "product": "bella-wkladki-laktacyjne-mamma-30-szt",
+            "custom_label": "Wkładki laktacyjne",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_PKFcKQ": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higiena-intymna",
+            "product": "bella-chusteczki-do-higieny-intymnej-sensitiv-10-szt",
+            "custom_label": "Chusteczki intymne (Bella) -10 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_WjayXq": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "produkty-papierowe",
+            "product": "nakladka-sedesowa-jednorazowa-1-szt",
+            "custom_label": "Nakładka jednorazowa na sedes — 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_fT8hwa": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higieniczne-wkladki",
+            "product": "akuku-a0069-podklad-poporodowy-slim",
+            "custom_label": "Podpaski poporodowe ze Skrzydełkami (Akuku)",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_XG4FPp": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higiena-intymna",
+            "product": "ziaja-plyn-do-higieny-intymnej-mamma-mia-300-ml",
+            "custom_label": "Płyn intymny (Ziaja) -  300 ml",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_KCTQnx": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "pielegnacja-piersi",
+            "product": "canpol-14-000-masc-lanolinowa-do-brodawek-sutkowych-7-g",
+            "custom_label": "Lanolina (Canpol ) — 7 g",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_yVTEHf": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "pieluchy-reczniki-koce",
+            "product": "atk-miniania-pielucha-flanelowa-80x70-biala-bez-nadruku-cena-za-1szt-pakowane-po-5szt",
+            "custom_label": "Pielucha flanelowa biała 80×70 cm  — 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_TdkXAt": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "pieluchy-reczniki-koce",
+            "product": "fara-pielucha-tetra-druk-70x80-mix-kolorow",
+            "custom_label": "Pieluszka tetrowa  (mix kolorów) 70×80 cm— 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_tNKCLe": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "pieluchy-reczniki-koce",
+            "product": "pieluszka-wielorazowa-ega-ch-622-biala-1-szt",
+            "custom_label": "Pieluszka tetrowa biała 40×80 cm — 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_KcJJkc": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "wlokniaste-chusteczki",
+            "product": "luba-tuli-chusteczki-nawilzane-dla-dzieci-z-aloesem-60-szt",
+            "custom_label": "Chusteczki nawilżane 0+ (Luba Tuli) — 60 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_hz9Aif": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "produkty-z-waty",
+            "product": "kindii-platki-baby-a-60szt-12863",
+            "custom_label": "Płatki bawełniane (Kindii Pure) — 60 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_Ugk6a6": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "produkty-z-waty",
+            "product": "akuku-a0710-bezpieczne-patyczki-do-uszu-dla-niemowlat-60-szt",
+            "custom_label": "Patyczki do uszu 0+ (Akuku) — 60 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_E7LNKy": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "produkty-z-waty",
+            "product": "chusteczki-dezynfekcyjne-nasaczone-alkoholem-70-apteo-30-x-30-mm-5-szt",
+            "custom_label": "Gaziki nasączone alkoholem 70% — 4 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_kxLR3c": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "sol-fizjologiczna-aspiratory-do-nosa",
+            "product": "roztwor-fizjologiczny-inhalacja-soli-5-ampulek",
+            "custom_label": "Sól fizjologiczna — 5 amp.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_3wQbqF": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "smoczki-do-butelek-butelki",
+            "product": "akuku-a0004-butelka-do-karmienia-125ml",
+            "custom_label": "Butelka ze smoczkiem 125 ml (Akuku) — 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_rGcPV7": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "smoczki-do-butelek-butelki",
+            "product": "akuku-a0338-szczotka-do-butelek",
+            "custom_label": "Szczotka do butelek (Akuku) - 1szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_xf4CHf": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "smoczki",
+            "product": "canpol-34-920-smoczek-silikonowy-0-m-symetryczny-exotic-koala",
+            "custom_label": "Smoczek symetryczny 0+ (Canpol) — 1szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_gFVfrt": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "szczotki-i-grzebienie",
+            "product": "akuku-a0307-szczotka-i-grzebien-z-naturalnym-wlosiem-biala",
+            "custom_label": "Szczotka + grzebień (Akuku) biała —1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_YDrdRE": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "zele-mydla-szampony",
+            "product": "szampon-i-zel-do-kapieli-2w1-bebble-200ml",
+            "custom_label": "Żel do mycia ciała i włosów 0+ (Bobini ) — 300 ml",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_HqVQnA": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "krem-prysypka-pod-pieluche",
+            "product": "ziajka-masc-na-posladki-przeciw-odparzeniom-50-ml",
+            "custom_label": "Maść na odparzenia (Ziajka) — 50 ml",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_VkAz3C": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "krem-mleczko-olejek-dla-dzieci",
+            "product": "ziajka-krem-do-pielegnacji-dzieci-i-niemowlat",
+            "custom_label": "Krem pielęgnacyjny 0+ (Ziajka) - 50 ml",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_eb6G8r": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "termometry-i-aspiratory-do-nosa",
+            "product": "akuku-a0394-termometr-plywajacy-do-kapieli-zyrafa",
+            "custom_label": "Termometr do kąpieli (Akuku) — 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_Jh3qMY": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "pielegnacja-w-domu",
+            "product": "akuku-a0473-zestaw-do-pielegnacji-apple-case-szary",
+            "custom_label": "Zestaw do paznokci (Akuku) szary - 1 szt.",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_KQ49LV": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "podguzniki",
+            "product": "5903933668482-pieluszki-dada-extra-care-rozm-1-2-5-kg-26-szt",
+            "custom_label": "Pieluszki jednoraz. (DADA 2–5 kg) — 26 szt.",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_74jzNF": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "reczniki-do-kapieli",
+            "product": "akuku-a1231-okrycie-kapielowe-80x80-cm-100-bawelna-ecru",
+            "custom_label": "Okrycie kąpielowe 80×80 cm (Akuku) ecruc — 1 szt",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_qaVjaG": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "kocyki",
+            "product": "rozek-niemowlecy-standard-80x80-cm-na-rzep-bawelna-100-szary-w-gwiazdki",
+            "custom_label": "Rożek 80×80 cm (na rzep) — szary w gwiazdki",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": false,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_3rz9iW": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "kocyki",
+            "product": "rozek-niemowlecy-teddy-standard-80x80-cm-dwustronny-bawelna",
+            "custom_label": "Rożek  80×80 cm (dwustronny) — 1 szt.",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_tcNJMH": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "kocyki",
+            "product": "skarpetki-niemowlece-z-misiami-0-3-m",
+            "custom_label": "Skarpetki GRATIS (0–3 m) - 1 szt.",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "bundle_comparison_row_XzMPQK",
+        "bundle_comparison_row_Ma6yBE",
+        "bundle_comparison_row_t4GkYx",
+        "bundle_comparison_row_nBbrL8",
+        "bundle_comparison_row_cxmQHY",
+        "bundle_comparison_row_mqFPqU",
+        "bundle_comparison_row_PKFcKQ",
+        "bundle_comparison_row_WjayXq",
+        "bundle_comparison_row_fT8hwa",
+        "bundle_comparison_row_XG4FPp",
+        "bundle_comparison_row_KCTQnx",
+        "bundle_comparison_row_yVTEHf",
+        "bundle_comparison_row_TdkXAt",
+        "bundle_comparison_row_tNKCLe",
+        "bundle_comparison_row_KcJJkc",
+        "bundle_comparison_row_hz9Aif",
+        "bundle_comparison_row_Ugk6a6",
+        "bundle_comparison_row_E7LNKy",
+        "bundle_comparison_row_kxLR3c",
+        "bundle_comparison_row_3wQbqF",
+        "bundle_comparison_row_rGcPV7",
+        "bundle_comparison_row_xf4CHf",
+        "bundle_comparison_row_gFVfrt",
+        "bundle_comparison_row_YDrdRE",
+        "bundle_comparison_row_HqVQnA",
+        "bundle_comparison_row_VkAz3C",
+        "bundle_comparison_row_eb6G8r",
+        "bundle_comparison_row_Jh3qMY",
+        "bundle_comparison_row_KQ49LV",
+        "bundle_comparison_row_74jzNF",
+        "bundle_comparison_row_qaVjaG",
+        "bundle_comparison_row_3rz9iW",
+        "bundle_comparison_row_tcNJMH"
+      ],
+      "name": "Bundle compare",
+      "settings": {
+        "bundle_1_product": "podstawowy-md",
+        "bundle_1_custom_label": "Podstawowy - M+D",
+        "bundle_2_product": "podstawowy-md-1",
+        "bundle_2_custom_label": "Rozszerzony M+D",
+        "bundle_3_product": "podstawowy-md-2",
+        "bundle_3_custom_label": "Kompletny M+D",
+        "bundle_4_product": "kompletny-md",
+        "bundle_4_custom_label": "Premium - M+D",
+        "bundle_5_product": "",
+        "bundle_5_custom_label": "",
+        "desktop_width_percent": 95,
+        "show_category_title": true,
+        "background_color": "#ffffff",
+        "header_background": "#f3f3f3",
+        "category_background": "#f9f9f9",
+        "text_color": "#121212",
+        "border_color": "#e0e0e0",
+        "checkmark_color": "#008060",
+        "empty_color": "#cccccc",
+        "button_background": "#121212",
+        "button_text_color": "#ffffff",
+        "button_hover_background": "#000000",
+        "border_radius": 8
+      }
+    },
+    "rich_text_nbwnkC": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_E4yWxq": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>GOTOWE WYPRAWKI</strong>  dla mamy",
+            "heading_size": "h1"
+          }
+        },
+        "text_YEbYVy": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<h2><strong><br/>Przejrzyj porównanie i wybierz zestaw, który najlepiej odpowiada Twoim oczekiwaniom.<br/><br/></strong></h2>"
+          }
+        },
+        "button_AM9wFR": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_E4yWxq",
+        "text_YEbYVy",
+        "button_AM9wFR"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-b80f97e5-8e96-4a79-9202-38cbcb721e6f",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "bundle_compare_section_t4khXe": {
+      "type": "bundle-compare-section",
+      "blocks": {
+        "bundle_comparison_row_bWjXMp": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "torebki",
+            "product": "torba-do-szpitala",
+            "custom_label": "Torba (mix kolorów) - 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": false,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_dkjzrx": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "torebki",
+            "product": "pikowana-torba-do-szpitala-z-niedzwiedziem",
+            "custom_label": "Pikowana torba do szpitala (L) — 1 szt.",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_a7e4Y8": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "akcesoria-dla-mam",
+            "product": "teczka-na-dokumenty-rozmiar-a4-mix-kolorow",
+            "custom_label": "Teczka na dokumenty (A4) - 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_HzPiwe": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "akcesoria-dla-mam",
+            "product": "gumki-do-wlosow-elastyczne",
+            "custom_label": "Gumki do włosów - 3 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_giMXD3": {
+          "type": "bundle-comparison-row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "podklady-higieniczne",
+            "product": "akuku-a0501-podklad-jednorazowy-60x90-cm-sensitive-10-szt",
+            "custom_label": "Podkład (60x90) jednoraz. (Akuku) -10 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_DbgfBd": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "wkladki-laktacyjne",
+            "product": "bella-wkladki-laktacyjne-mamma-30-szt",
+            "custom_label": "Wkładki laktacyjne (Bella)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_trqMAB": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higieniczne-wkladki",
+            "product": "bella-podklad-higieniczny-mamma-34x11-cm-z-folia-10-szt",
+            "custom_label": "Podpaski poporodowe (Bella)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_7xjCrW": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higieniczne-wkladki",
+            "product": "akuku-a0549-majtki-jednorazowe-poporodowe-s",
+            "custom_label": "Majtki poporodowe (Akuku), roz. L — 5 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_8TgLAf": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higiena-intymna",
+            "product": "bella-chusteczki-do-higieny-intymnej-sensitiv-10-szt",
+            "custom_label": "Chusteczki intymne (Bella) -10 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_DQ7YMJ": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higiena-intymna",
+            "product": "ziaja-plyn-do-higieny-intymnej-mamma-mia-300-ml",
+            "custom_label": "Płyn intymny (Ziaja) - 300 ml",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_pqBG9k": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "pielegnacja-piersi",
+            "product": "canpol-14-000-masc-lanolinowa-do-brodawek-sutkowych-7-g",
+            "custom_label": "Lanolina (Canpol ) — 7 g",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_KHAYhe": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "produkty-papierowe",
+            "product": "jednorazowe-nakladki-na-toalete-biodegradowalne-podkladki-8-szt",
+            "custom_label": "Jednorazowe nakładki na sedes — 6 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_ErKiDd": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higieniczne-wkladki",
+            "product": "akuku-a0069-podklad-poporodowy-slim",
+            "custom_label": "Podpaski poporodowe ze Skrzydełkami (Akuku)",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_jD7iMd": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "jednorazowe-majtki",
+            "product": "akuku-a0234-majtki-siateczkowe-wielorazowe-l",
+            "custom_label": "Majtki siateczkowe (Akuku), roz. L — 2 szt.",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_j4Wqqz": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "kosmetyki-dla-mam",
+            "product": "szampon-z-keratyna-kozie-mleko-ziaja-400ml",
+            "custom_label": "Szampon z keratyną - Kozie Mleko -(Ziaja )",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_CKQett": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "kosmetyki-dla-mam",
+            "product": "odzywka-z-keratyna-kondycjonujaca-kozie-mleko-ziaja-200-ml",
+            "custom_label": "Odżywka z keratyną - Kozie Mleko- (Ziaja )",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_hYYeLB": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higiena-intymna",
+            "product": "akuku-a0684-butelka-do-podmywania-peri-350-ml",
+            "custom_label": "Butelka Peri do podmywania (Akuku)",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_WCtiPi": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "higiena-intymna",
+            "product": "akuku-a0683k-kompres-zelowy-do-okolic-intymnych",
+            "custom_label": "Kompres żelowy intymny (Akuku) - 2 szt",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_Difjrf": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "kosmetyki-dla-mam",
+            "product": "ziaja-antyperspirant",
+            "custom_label": "Antyperspirant (Ziaja)",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_xTmeg9": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "produkty-papierowe",
+            "product": "akuku-a0030-nawilzany-papier-toaletowy-50-szt",
+            "custom_label": "Papier toaletowy Nawilżany - (Akuku) - 50 szt.",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_rDLeW3": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "szlafroki-i-koszule-nocne",
+            "product": "koszula-do-karmienia-deep-blue-xl-doctor-nap",
+            "custom_label": "Koszula do karmienia -(Doctor Nap) - roz. L",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_L36b6i": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "gumowe-klapki",
+            "product": "klapki-damskie-rozowy-1",
+            "custom_label": "Klapki damskie – różowe, żółte, brązowe (36, 37, 39)",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "bundle_comparison_row_bWjXMp",
+        "bundle_comparison_row_dkjzrx",
+        "bundle_comparison_row_a7e4Y8",
+        "bundle_comparison_row_HzPiwe",
+        "bundle_comparison_row_giMXD3",
+        "bundle_comparison_row_DbgfBd",
+        "bundle_comparison_row_trqMAB",
+        "bundle_comparison_row_7xjCrW",
+        "bundle_comparison_row_8TgLAf",
+        "bundle_comparison_row_DQ7YMJ",
+        "bundle_comparison_row_pqBG9k",
+        "bundle_comparison_row_KHAYhe",
+        "bundle_comparison_row_ErKiDd",
+        "bundle_comparison_row_jD7iMd",
+        "bundle_comparison_row_j4Wqqz",
+        "bundle_comparison_row_CKQett",
+        "bundle_comparison_row_hYYeLB",
+        "bundle_comparison_row_WCtiPi",
+        "bundle_comparison_row_Difjrf",
+        "bundle_comparison_row_xTmeg9",
+        "bundle_comparison_row_rDLeW3",
+        "bundle_comparison_row_L36b6i"
+      ],
+      "name": "Bundle compare",
+      "settings": {
+        "bundle_1_product": "bundle-product-13",
+        "bundle_1_custom_label": "Podstawowy - M",
+        "bundle_2_product": "bundle-product-14",
+        "bundle_2_custom_label": "Rozszerzony - M",
+        "bundle_3_product": "bundle-product-15",
+        "bundle_3_custom_label": "Kompletny - M",
+        "bundle_4_product": "bundle-product-16",
+        "bundle_4_custom_label": "Premium - M",
+        "bundle_5_product": "",
+        "bundle_5_custom_label": "",
+        "desktop_width_percent": 95,
+        "show_category_title": true,
+        "background_color": "#ffffff",
+        "header_background": "#f3f3f3",
+        "category_background": "#f9f9f9",
+        "text_color": "#121212",
+        "border_color": "#e0e0e0",
+        "checkmark_color": "#008060",
+        "empty_color": "#cccccc",
+        "button_background": "#121212",
+        "button_text_color": "#ffffff",
+        "button_hover_background": "#000000",
+        "border_radius": 8
+      }
+    },
+    "rich_text_Pcdh4H": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Baqmz9": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>GOTOWE WYPRAWKI </strong>dla noworodka",
+            "heading_size": "h1"
+          }
+        },
+        "text_mT6hVw": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<h2><strong><br/>Przejrzyj porównanie i wybierz zestaw, który najlepiej odpowiada Twoim oczekiwaniom.<br/><br/></strong></h2>"
+          }
+        },
+        "button_7GPbrw": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Baqmz9",
+        "text_mT6hVw",
+        "button_7GPbrw"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-b80f97e5-8e96-4a79-9202-38cbcb721e6f",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "bundle_compare_section_WPYyQb": {
+      "type": "bundle-compare-section",
+      "blocks": {
+        "bundle_comparison_row_VMHJHh": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "torba-do-szpitala",
+            "custom_label": "Torba (mix kolorów) – 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": false,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_G3MrwN": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "pikowana-torba-do-szpitala-z-niedzwiedziem",
+            "custom_label": "Pikowana torba do szpitala (rozmiar L) – 1 szt.",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_pzcaj6": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "5903933668482-pieluszki-dada-extra-care-rozm-1-2-5-kg-26-szt",
+            "custom_label": "Pieluszki jednorazowe (Dada 2–5 kg) – 26 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_RUU48R": {
+          "type": "bundle-comparison-row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "pielucha-flanela-70x80-jednokolorowa",
+            "custom_label": "Pielucha flanelowa (JEDNOKOL.) 80×70 cm",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_PNJ7pg": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "pieluszka-wielorazowa-ega-ch-622-biala-1-szt",
+            "custom_label": "Pieluszka tetrowa biała 40×80 cm",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_ByG6AK": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "fara-pielucha-tetra-druk-70x80-mix-kolorow",
+            "custom_label": "Pieluszka tetrowa 70×80 cm (mix)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_9JQnqm": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "bella-podkl-a-5szt-hig-40x60-seni-soft-super",
+            "custom_label": "Podkłady higieniczne (SENI 40x60cm) - 5 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_dLrqi9": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "akuku-a0031-jednorazowe-chusteczki-nawilzane-woda-70-szt",
+            "custom_label": "Chusteczki nawilżane 0+ AKUKU (70 szt.)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_tQMcAb": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "kindii-platki-baby-a-60szt-12863",
+            "custom_label": "Płatki bawełniane Kindii Pure (60 szt.)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_iXFPA8": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "akuku-a0710-bezpieczne-patyczki-do-uszu-dla-niemowlat-60-szt",
+            "custom_label": "Patyczki do uszu 0+ Akuku (60 szt.)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_Vkm6YL": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "szampon-i-zel-do-kapieli-2w1-bebble-200ml",
+            "custom_label": "Żel do mycia ciała i włosów 0+ Bobini (300 ml)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_QCQWiF": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "ziajka-krem-do-pielegnacji-dzieci-i-niemowlat",
+            "custom_label": "Krem pielęgnacyjny 0+ Ziaja (50 ml)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_H3qHUL": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "ziajka-masc-na-posladki-przeciw-odparzeniom-50-ml",
+            "custom_label": "Maść na odparzenia Ziaja (50 ml)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_69ByLQ": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "akuku-a0473-zestaw-do-pielegnacji-apple-case-szary",
+            "custom_label": "Zestaw do paznokci Akuku (szary)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_FLTjRM": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "akuku-a0307-szczotka-i-grzebien-z-naturalnym-wlosiem-biala",
+            "custom_label": "Szczotka + grzebień (Akuku)  biała - 1 szt.",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_eWC8mX": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "akuku-a0394-termometr-plywajacy-do-kapieli-zyrafa",
+            "custom_label": "Termometr do kąpieli Akuku",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_37HY7H": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "canpol-34-920-smoczek-silikonowy-0-m-symetryczny-exotic-koala",
+            "custom_label": "Smoczek symetryczny 0+ (Canpol)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_Dd9gTi": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "akuku-a0338-szczotka-do-butelek",
+            "custom_label": "Szczotka do butelek Akuku",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_4KmRV9": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "akuku-a0004-butelka-do-karmienia-125ml",
+            "custom_label": "Butelka 125 ml ze smoczkiem Akuku",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_Um4HDj": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "chusteczki-dezynfekcyjne-nasaczone-alkoholem-70-apteo-30-x-30-mm-5-szt",
+            "custom_label": "Gaziki z alkoholem 70% (4 szt.)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_bn76pR": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "roztwor-fizjologiczny-inhalacja-soli-5-ampulek",
+            "custom_label": "Sól fizjologiczna (5 amp.)",
+            "include_in_bundle_1": true,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_GDJzpf": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "akuku-a1231-okrycie-kapielowe-80x80-cm-100-bawelna-ecru",
+            "custom_label": "Okrycie kąpielowe Akuku 80×80 cm (ecru)",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_bFMXQA": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "canpol-2-118-gruszka-do-nosa",
+            "custom_label": "Gruszka do nosa (CANPOL) biała",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_TFXFNz": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "akuku-a0258-podklad-peva-55x70-sowy-szare",
+            "custom_label": "Ceratka Akuku 55×70 (szare sowy)",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": true,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_NAgiLD": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "rozek-niemowlecy-teddy-standard-80x80-cm-dwustronny-bawelna",
+            "custom_label": "Rożek 80×80 cm dwustronny",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": true,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_AGzFWh": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "organizer-na-pieluchy-i-akcesoria-z-misiem-37-5-25-18-cm",
+            "custom_label": "Organizer na pieluchy i akcesoria - z misiem",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        },
+        "bundle_comparison_row_zaBnF7": {
+          "type": "bundle-comparison-row",
+          "name": "Row",
+          "settings": {
+            "tab_key": "",
+            "category_collection": "",
+            "product": "skarpetki-niemowlece-z-misiami-0-3-m",
+            "custom_label": "Skarpetki GRATIS 0–3 m",
+            "include_in_bundle_1": false,
+            "include_in_bundle_2": false,
+            "include_in_bundle_3": false,
+            "include_in_bundle_4": true,
+            "include_in_bundle_5": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "bundle_comparison_row_VMHJHh",
+        "bundle_comparison_row_G3MrwN",
+        "bundle_comparison_row_pzcaj6",
+        "bundle_comparison_row_RUU48R",
+        "bundle_comparison_row_PNJ7pg",
+        "bundle_comparison_row_ByG6AK",
+        "bundle_comparison_row_9JQnqm",
+        "bundle_comparison_row_dLrqi9",
+        "bundle_comparison_row_tQMcAb",
+        "bundle_comparison_row_iXFPA8",
+        "bundle_comparison_row_Vkm6YL",
+        "bundle_comparison_row_QCQWiF",
+        "bundle_comparison_row_H3qHUL",
+        "bundle_comparison_row_69ByLQ",
+        "bundle_comparison_row_FLTjRM",
+        "bundle_comparison_row_eWC8mX",
+        "bundle_comparison_row_37HY7H",
+        "bundle_comparison_row_Dd9gTi",
+        "bundle_comparison_row_4KmRV9",
+        "bundle_comparison_row_Um4HDj",
+        "bundle_comparison_row_bn76pR",
+        "bundle_comparison_row_GDJzpf",
+        "bundle_comparison_row_bFMXQA",
+        "bundle_comparison_row_TFXFNz",
+        "bundle_comparison_row_NAgiLD",
+        "bundle_comparison_row_AGzFWh",
+        "bundle_comparison_row_zaBnF7"
+      ],
+      "name": "Bundle compare",
+      "settings": {
+        "bundle_1_product": "torba-do-szpitala-dla-noworodka-gotowa-wyprawka-premium",
+        "bundle_1_custom_label": "Podstawowy - D",
+        "bundle_2_product": "torba-do-szpitala-dla-noworodka-gotowa-wyprawka-premium-1",
+        "bundle_2_custom_label": "Rozszerzony - D",
+        "bundle_3_product": "torba-do-szpitala-dla-noworodka-gotowa-wyprawka-premium-2",
+        "bundle_3_custom_label": "Kompletny - D",
+        "bundle_4_product": "bundle-product-21",
+        "bundle_4_custom_label": "Premium - D",
+        "bundle_5_product": "",
+        "bundle_5_custom_label": "",
+        "desktop_width_percent": 100,
+        "show_category_title": true,
+        "background_color": "#ffffff",
+        "header_background": "#f3f3f3",
+        "category_background": "#f9f9f9",
+        "text_color": "#121212",
+        "border_color": "#e0e0e0",
+        "checkmark_color": "#008060",
+        "empty_color": "#cccccc",
+        "button_background": "#121212",
+        "button_text_color": "#ffffff",
+        "button_hover_background": "#000000",
+        "border_radius": 8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "mamapack_tabs_showcase_7PjxJY",
+    "image_banner_UNJwUc",
+    "rich_text_zGrYkM",
+    "multicolumn_E88XbB",
+    "bundle_compare_section_iEwiae",
+    "rich_text_nbwnkC",
+    "bundle_compare_section_t4khXe",
+    "rich_text_Pcdh4H",
+    "bundle_compare_section_WPYyQb"
+  ]
+}

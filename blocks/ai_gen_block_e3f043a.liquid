@@ -1,0 +1,407 @@
+{% doc %}
+  Parent theme block: Bundle comparison table (up to 5 bundles)
+  - Bundles configured via product pickers (up to 5)
+  - Rows are added as child blocks (bundle-comparison-row)
+{% enddoc %}
+
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% liquid
+  assign active_bundles = 0
+  for i in (1..5)
+    assign k = 'bundle_' | append: i | append: '_product'
+    if block.settings[k] != blank
+      assign active_bundles = active_bundles | plus: 1
+    endif
+  endfor
+
+  if active_bundles == 0
+    assign active_bundles = 1
+  endif
+%}
+
+{% style %}
+  .ai-bundle-comparison-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Wrapper: NO horizontal scroll */
+  .ai-bundle-comparison__wrapper-{{ ai_gen_id }} {
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow-x: hidden; /* <-- no left-right scroll */
+    overflow-y: visible;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  /* Scaler layer for transform: scale() */
+  .ai-bundle-comparison__scaler-{{ ai_gen_id }} {
+    transform-origin: top left;
+    will-change: transform;
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: {{ block.settings.background_color }};
+    table-layout: fixed; /* helps squeezing */
+  }
+
+  /* Column widths (first col + dynamic bundle cols) */
+  .ai-bundle-comparison-{{ ai_gen_id }} {
+    --first-col: 42%;
+    --bundle-col: calc((100% - var(--first-col)) / {{ active_bundles }});
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} th,
+  .ai-bundle-comparison__table-{{ ai_gen_id }} td {
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} th:first-child,
+  .ai-bundle-comparison__table-{{ ai_gen_id }} td:first-child {
+    width: var(--first-col);
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} th:not(:first-child),
+  .ai-bundle-comparison__table-{{ ai_gen_id }} td:not(:first-child) {
+    width: var(--bundle-col);
+  }
+
+  /* Sticky header on desktop (stable: sticky on th, not tr) */
+  .ai-bundle-comparison__table-{{ ai_gen_id }} thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: {{ block.settings.header_background }};
+  }
+
+  /* When scaled: sticky breaks with transform => disable sticky */
+  .ai-bundle-comparison-{{ ai_gen_id }}.is-scaled .ai-bundle-comparison__table-{{ ai_gen_id }} thead th {
+    position: static !important;
+  }
+
+  .ai-bundle-comparison__header-cell-{{ ai_gen_id }} {
+    padding: 18px 12px;
+    text-align: center;
+    border-bottom: 2px solid {{ block.settings.border_color }};
+    vertical-align: top;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-bundle-comparison__header-cell-{{ ai_gen_id }}:first-child {
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .ai-bundle-comparison__bundle-header-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ai-bundle-comparison__bundle-image-{{ ai_gen_id }} {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .ai-bundle-comparison__bundle-name-{{ ai_gen_id }} {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    color: {{ block.settings.text_color }};
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .ai-bundle-comparison__bundle-link-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: 999px;
+    font-size: 13px;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+  }
+
+  .ai-bundle-comparison__bundle-link-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_background }};
+  }
+
+  /* Rows (child blocks are <tr class="ai-bundle-comparison__row">) */
+  .ai-bundle-comparison__table-{{ ai_gen_id }} tbody tr.ai-bundle-comparison__row {
+    border-bottom: 1px solid {{ block.settings.border_color }};
+  }
+
+  /* Cell styles used by child row blocks */
+  .ai-bundle-comparison__category-cell {
+    padding: 14px 12px;
+    font-weight: 600;
+    color: {{ block.settings.text_color }};
+    background-color: {{ block.settings.category_background }};
+    vertical-align: top;
+  }
+
+  .ai-bundle-comparison__item-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ai-bundle-comparison__product-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .ai-bundle-comparison__product-name {
+    font-size: 13px;
+    color: {{ block.settings.text_color }};
+    font-weight: 400;
+    line-height: 1.25;
+  }
+
+  .ai-bundle-comparison__check-cell {
+    padding: 14px 8px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .ai-bundle-comparison__checkmark {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    color: {{ block.settings.checkmark_color }};
+  }
+
+  .ai-bundle-comparison__empty {
+    color: {{ block.settings.empty_color }};
+    font-size: 16px;
+  }
+
+  /* Hide columns that have no selected product */
+  {% for i in (1..5) %}
+    {% liquid
+      assign bundle_product_key = 'bundle_' | append: i | append: '_product'
+      assign bundle_product = block.settings[bundle_product_key]
+      assign col_index = i | plus: 1
+    %}
+    {% if bundle_product == blank %}
+      .ai-bundle-comparison__table-{{ ai_gen_id }} th:nth-child({{ col_index }}),
+      .ai-bundle-comparison__table-{{ ai_gen_id }} td:nth-child({{ col_index }}) {
+        display: none;
+      }
+    {% endif %}
+  {% endfor %}
+
+  @media screen and (max-width: 749px) {
+    .ai-bundle-comparison__wrapper-{{ ai_gen_id }} {
+      border-radius: {{ block.settings.border_radius | divided_by: 2 }}px;
+    }
+
+    .ai-bundle-comparison-{{ ai_gen_id }} {
+      --first-col: 48%;
+    }
+
+    .ai-bundle-comparison__header-cell-{{ ai_gen_id }} {
+      padding: 12px 8px;
+    }
+
+    .ai-bundle-comparison__bundle-image-{{ ai_gen_id }} {
+      width: 44px;
+      height: 44px;
+    }
+
+    .ai-bundle-comparison__bundle-name-{{ ai_gen_id }} {
+      font-size: 12px;
+    }
+
+    .ai-bundle-comparison__bundle-link-{{ ai_gen_id }} {
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+
+    .ai-bundle-comparison__category-cell,
+    .ai-bundle-comparison__check-cell {
+      padding: 10px 6px;
+    }
+
+    .ai-bundle-comparison__product-image {
+      width: 32px;
+      height: 32px;
+    }
+
+    .ai-bundle-comparison__product-name {
+      font-size: 12px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-bundle-comparison-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-bundle-comparison__wrapper-{{ ai_gen_id }}">
+    <div class="ai-bundle-comparison__scaler-{{ ai_gen_id }}" data-scale="1">
+      <table class="ai-bundle-comparison__table-{{ ai_gen_id }}">
+        <thead>
+          <tr>
+            <th class="ai-bundle-comparison__header-cell-{{ ai_gen_id }}">Category / Item</th>
+
+            {% for i in (1..5) %}
+              {% liquid
+                assign bundle_product_key = 'bundle_' | append: i | append: '_product'
+                assign bundle_product = block.settings[bundle_product_key]
+              %}
+
+              <th class="ai-bundle-comparison__header-cell-{{ ai_gen_id }}">
+                {% if bundle_product != blank %}
+                  <div class="ai-bundle-comparison__bundle-header-{{ ai_gen_id }}">
+                    {% if bundle_product.featured_image %}
+                      <img
+                        src="{{ bundle_product.featured_image | image_url: width: 120 }}"
+                        alt="{{ bundle_product.title | escape }}"
+                        class="ai-bundle-comparison__bundle-image-{{ ai_gen_id }}"
+                        loading="lazy"
+                        width="56"
+                        height="56"
+                      >
+                    {% endif %}
+
+                    <div class="ai-bundle-comparison__bundle-name-{{ ai_gen_id }}">
+                      {{ bundle_product.title }}
+                    </div>
+
+                    <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-link-{{ ai_gen_id }}">
+                      View
+                    </a>
+                  </div>
+                {% endif %}
+              </th>
+            {% endfor %}
+          </tr>
+        </thead>
+
+        <tbody>
+          {% content_for 'blocks' %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var root = document.querySelector('.ai-bundle-comparison-{{ ai_gen_id }}');
+  if (!root || root.dataset.scalerInit === '1') return;
+  root.dataset.scalerInit = '1';
+
+  var wrapper = root.querySelector('.ai-bundle-comparison__wrapper-{{ ai_gen_id }}');
+  var scaler  = root.querySelector('.ai-bundle-comparison__scaler-{{ ai_gen_id }}');
+  var table   = root.querySelector('.ai-bundle-comparison__table-{{ ai_gen_id }}');
+
+  if (!wrapper || !scaler || !table) return;
+
+  function applyScale() {
+    // Reset for correct measurements
+    scaler.style.transform = 'scale(1)';
+    wrapper.style.height = 'auto';
+    root.classList.remove('is-scaled');
+
+    // If hidden (accordion/tab/editor), width can be 0
+    var wrapW = wrapper.clientWidth;
+    if (!wrapW) return;
+
+    // Natural table width
+    var naturalW = table.scrollWidth;
+    if (!naturalW) return;
+
+    var scale = Math.min(1, wrapW / naturalW);
+
+    if (scale < 0.999) {
+      scaler.style.transform = 'scale(' + scale.toFixed(4) + ')';
+      scaler.dataset.scale = scale.toFixed(4);
+      root.classList.add('is-scaled');
+
+      // Fix wrapper height because transform doesn't affect layout height
+      var naturalH = table.offsetHeight;
+      wrapper.style.height = (naturalH * scale) + 'px';
+    } else {
+      scaler.style.transform = 'scale(1)';
+      scaler.dataset.scale = '1';
+      wrapper.style.height = 'auto';
+    }
+  }
+
+  // Run twice to catch fonts/images
+  requestAnimationFrame(applyScale);
+  setTimeout(applyScale, 150);
+  window.addEventListener('resize', applyScale, { passive: true });
+
+  // Best reliability (including editor changes)
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(function () { applyScale(); });
+    ro.observe(wrapper);
+    ro.observe(table);
+  }
+
+  // Shopify Theme Editor events (Dawn): re-apply after editor rerenders
+  document.addEventListener('shopify:section:load', function () { setTimeout(applyScale, 50); });
+  document.addEventListener('shopify:section:reorder', function () { setTimeout(applyScale, 50); });
+  document.addEventListener('shopify:block:select', function () { setTimeout(applyScale, 50); });
+  document.addEventListener('shopify:block:deselect', function () { setTimeout(applyScale, 50); });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Bundle compare",
+  "settings": [
+    { "type": "header", "content": "Bundles" },
+
+    { "type": "product", "id": "bundle_1_product", "label": "Bundle 1 product" },
+    { "type": "product", "id": "bundle_2_product", "label": "Bundle 2 product" },
+    { "type": "product", "id": "bundle_3_product", "label": "Bundle 3 product" },
+    { "type": "product", "id": "bundle_4_product", "label": "Bundle 4 product" },
+    { "type": "product", "id": "bundle_5_product", "label": "Bundle 5 product" },
+
+    { "type": "header", "content": "Display options" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+
+    { "type": "header", "content": "Style" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "header_background", "label": "Header background", "default": "#f3f3f3" },
+    { "type": "color", "id": "category_background", "label": "Category background", "default": "#f9f9f9" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#121212" },
+    { "type": "color", "id": "border_color", "label": "Border", "default": "#e0e0e0" },
+    { "type": "color", "id": "checkmark_color", "label": "Checkmark", "default": "#008060" },
+    { "type": "color", "id": "empty_color", "label": "Empty state", "default": "#cccccc" },
+    { "type": "color", "id": "button_background", "label": "Button background", "default": "#121212" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#ffffff" },
+    { "type": "color", "id": "button_hover_background", "label": "Button hover background", "default": "#000000" },
+    { "type": "range", "id": "border_radius", "label": "Border radius", "min": 0, "max": 20, "step": 2, "unit": "px", "default": 8 }
+  ],
+
+  "blocks": [
+    { "type": "bundle-comparison-row" }
+  ],
+
+  "presets": [
+    {
+      "name": "Bundle compare",
+      "blocks": [
+        { "type": "bundle-comparison-row" }
+      ]
+    }
+  ]
+}
+{% endschema %}

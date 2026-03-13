@@ -1,0 +1,778 @@
+{% liquid
+  assign ai_gen_id = table_id | replace: '_', '' | replace: '-', '' | downcase
+
+  assign tab_mode = false
+  if current_tab_key != blank
+    assign tab_mode = true
+  endif
+
+  assign cmp_desktop_width_percent = section.settings.desktop_width_percent
+  if section.settings.compare_desktop_width_percent != blank
+    assign cmp_desktop_width_percent = section.settings.compare_desktop_width_percent
+  endif
+  if cmp_desktop_width_percent == blank
+    assign cmp_desktop_width_percent = 100
+  endif
+
+  assign cmp_show_category_title = section.settings.show_category_title
+  if section.settings.compare_show_category_title != blank
+    assign cmp_show_category_title = section.settings.compare_show_category_title
+  endif
+
+  assign cmp_background_color = section.settings.background_color
+  if section.settings.compare_background_color != blank
+    assign cmp_background_color = section.settings.compare_background_color
+  endif
+  if cmp_background_color == blank
+    assign cmp_background_color = '#ffffff'
+  endif
+
+  assign cmp_header_background = section.settings.header_background
+  if section.settings.compare_header_background != blank
+    assign cmp_header_background = section.settings.compare_header_background
+  endif
+  if cmp_header_background == blank
+    assign cmp_header_background = '#f3f3f3'
+  endif
+
+  assign cmp_category_background = section.settings.category_background
+  if section.settings.compare_category_background != blank
+    assign cmp_category_background = section.settings.compare_category_background
+  endif
+  if cmp_category_background == blank
+    assign cmp_category_background = '#f9f9f9'
+  endif
+
+  assign cmp_text_color = section.settings.text_color
+  if section.settings.compare_text_color != blank
+    assign cmp_text_color = section.settings.compare_text_color
+  endif
+  if cmp_text_color == blank
+    assign cmp_text_color = '#121212'
+  endif
+
+  assign cmp_border_color = section.settings.border_color
+  if section.settings.compare_border_color != blank
+    assign cmp_border_color = section.settings.compare_border_color
+  endif
+  if cmp_border_color == blank
+    assign cmp_border_color = '#e0e0e0'
+  endif
+
+  assign cmp_checkmark_color = section.settings.checkmark_color
+  if section.settings.compare_checkmark_color != blank
+    assign cmp_checkmark_color = section.settings.compare_checkmark_color
+  endif
+  if cmp_checkmark_color == blank
+    assign cmp_checkmark_color = '#008060'
+  endif
+
+  assign cmp_empty_color = section.settings.empty_color
+  if section.settings.compare_empty_color != blank
+    assign cmp_empty_color = section.settings.compare_empty_color
+  endif
+  if cmp_empty_color == blank
+    assign cmp_empty_color = '#cccccc'
+  endif
+
+  assign cmp_button_background = section.settings.button_background
+  if section.settings.compare_button_background != blank
+    assign cmp_button_background = section.settings.compare_button_background
+  endif
+  if cmp_button_background == blank
+    assign cmp_button_background = '#121212'
+  endif
+
+  assign cmp_button_text_color = section.settings.button_text_color
+  if section.settings.compare_button_text_color != blank
+    assign cmp_button_text_color = section.settings.compare_button_text_color
+  endif
+  if cmp_button_text_color == blank
+    assign cmp_button_text_color = '#ffffff'
+  endif
+
+  assign cmp_button_hover_background = section.settings.button_hover_background
+  if section.settings.compare_button_hover_background != blank
+    assign cmp_button_hover_background = section.settings.compare_button_hover_background
+  endif
+  if cmp_button_hover_background == blank
+    assign cmp_button_hover_background = '#000000'
+  endif
+
+  assign cmp_border_radius = section.settings.border_radius
+  if section.settings.compare_border_radius != blank
+    assign cmp_border_radius = section.settings.compare_border_radius
+  endif
+  if cmp_border_radius == blank
+    assign cmp_border_radius = 8
+  endif
+
+  assign active_bundles = 0
+  assign compare_rows_count = 0
+
+  if tab_mode
+    for block in section.blocks
+      assign block_tab_key = block.settings.tab_key | strip
+
+      if block.type == 'product_card' and block.settings.product != blank and block_tab_key == current_tab_key and active_bundles < 5
+        assign active_bundles = active_bundles | plus: 1
+      endif
+
+      if block.type == 'bundle-comparison-row' and block_tab_key == current_tab_key
+        assign compare_rows_count = compare_rows_count | plus: 1
+      endif
+    endfor
+  else
+    for i in (1..5)
+      assign k = 'bundle_' | append: i | append: '_product'
+      if section.settings[k] != blank
+        assign active_bundles = active_bundles | plus: 1
+      endif
+    endfor
+
+    for block in section.blocks
+      if block.type == 'bundle-comparison-row'
+        assign compare_rows_count = compare_rows_count | plus: 1
+      endif
+    endfor
+  endif
+
+  if active_bundles == 0
+    assign active_bundles = 1
+  endif
+%}
+
+{% style %}
+  .ai-bundle-comparison-{{ ai_gen_id }} {
+    display: block;
+    width: {{ cmp_desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    --first-col: 42%;
+    --bundle-col: calc((100% - var(--first-col)) / {{ active_bundles }});
+    --surface-main: {{ cmp_background_color }};
+    --surface-soft: {{ cmp_category_background }};
+    --surface-col-a: rgba(255, 248, 244, 0.96);
+    --surface-col-b: rgba(255, 255, 255, 0.98);
+    --line-soft: {{ cmp_border_color }};
+    --line-main: {{ cmp_border_color }};
+    --text-strong: {{ cmp_text_color }};
+    --text-muted: #8b7a73;
+  }
+
+  .ai-bundle-comparison__wrapper-{{ ai_gen_id }} {
+    border: 1px solid var(--line-main);
+    border-radius: {{ cmp_border_radius | plus: 10 }}px;
+    overflow-x: hidden;
+    overflow-y: visible;
+    background: var(--surface-main);
+    box-shadow: 0 18px 50px rgba(39, 24, 18, 0.08);
+  }
+
+  .ai-bundle-comparison__scaler-{{ ai_gen_id }} {
+    transform-origin: top left;
+    will-change: transform;
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background: transparent;
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} th,
+  .ai-bundle-comparison__table-{{ ai_gen_id }} td {
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} th:first-child,
+  .ai-bundle-comparison__table-{{ ai_gen_id }} td:first-child {
+    width: var(--first-col);
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} th:not(:first-child),
+  .ai-bundle-comparison__table-{{ ai_gen_id }} td:not(:first-child) {
+    width: var(--bundle-col);
+    border-left: 1px solid var(--line-soft);
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: inset 0 -1px 0 rgba(18, 18, 18, 0.06);
+  }
+
+  .ai-bundle-comparison-{{ ai_gen_id }}.is-scaled .ai-bundle-comparison__table-{{ ai_gen_id }} thead th {
+    position: static !important;
+  }
+
+  .ai-bundle-comparison__header-cell-{{ ai_gen_id }} {
+    padding: 8px 4px 10px;
+    text-align: center;
+    vertical-align: top;
+    color: {{ cmp_text_color }};
+    border-bottom: 1px solid var(--line-main);
+    background: {{ cmp_header_background }};
+  }
+
+  .ai-bundle-comparison__header-cell-{{ ai_gen_id }}:first-child {
+    text-align: left;
+    padding-left: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-strong);
+    background: {{ cmp_header_background }};
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} thead th:nth-child(2),
+  .ai-bundle-comparison__table-{{ ai_gen_id }} tbody td:nth-child(2) {
+    background: var(--surface-col-b);
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} thead th:nth-child(3),
+  .ai-bundle-comparison__table-{{ ai_gen_id }} tbody td:nth-child(3) {
+    background: var(--surface-col-a);
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} thead th:nth-child(4),
+  .ai-bundle-comparison__table-{{ ai_gen_id }} tbody td:nth-child(4) {
+    background: var(--surface-col-b);
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} thead th:nth-child(5),
+  .ai-bundle-comparison__table-{{ ai_gen_id }} tbody td:nth-child(5) {
+    background: var(--surface-col-a);
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} thead th:nth-child(6),
+  .ai-bundle-comparison__table-{{ ai_gen_id }} tbody td:nth-child(6) {
+    background: var(--surface-col-b);
+  }
+
+  .ai-bundle-comparison__bundle-header-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 4px 8px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #fdf7f4 100%);
+    border: 1px solid rgba(18, 18, 18, 0.05);
+    box-shadow: 0 6px 16px rgba(39, 24, 18, 0.06);
+    min-height: 100%;
+  }
+
+  .ai-bundle-comparison__bundle-imglink-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    line-height: 0;
+    text-decoration: none;
+  }
+
+  .ai-bundle-comparison__bundle-image-{{ ai_gen_id }} {
+    width: calc(100% - 2px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid rgba(18, 18, 18, 0.06);
+    box-shadow: 0 6px 16px rgba(39, 24, 18, 0.08);
+    background: #fff;
+  }
+
+  .ai-bundle-comparison__bundle-name-{{ ai_gen_id }},
+  .ai-bundle-comparison__bundle-namelink-{{ ai_gen_id }} {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.08;
+    color: {{ cmp_text_color }};
+    text-align: center;
+    max-width: 100%;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .ai-bundle-comparison__bundle-namelink-{{ ai_gen_id }}:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .ai-bundle-comparison__bundle-price-{{ ai_gen_id }} {
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1;
+    text-align: center;
+    color: var(--text-strong);
+    margin: 0;
+    padding: 0 2px;
+    letter-spacing: -0.03em;
+  }
+
+  .ai-bundle-comparison__bundle-link-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 999px;
+    background: {{ cmp_button_background }};
+    color: {{ cmp_button_text_color }};
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(18, 18, 18, 0.16);
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease,
+      background-color 0.18s ease,
+      opacity 0.18s ease;
+  }
+
+  .ai-bundle-comparison__bundle-link-{{ ai_gen_id }}:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 24px rgba(18, 18, 18, 0.18);
+    background: {{ cmp_button_hover_background }};
+  }
+
+  .ai-bundle-comparison__bundle-link-{{ ai_gen_id }}[disabled] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .ai-bundle-comparison__cart-icon-{{ ai_gen_id }} {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  .ai-bundle-comparison__table-{{ ai_gen_id }} tbody tr.ai-bundle-comparison__row {
+    border-bottom: 1px solid var(--line-main);
+  }
+
+  .ai-bundle-comparison__category-cell {
+    padding: 12px 10px;
+    font-weight: 600;
+    color: {{ cmp_text_color }};
+    background: {{ cmp_category_background }};
+    vertical-align: top;
+    border-right: 1px solid var(--line-soft);
+  }
+
+  .ai-bundle-comparison__category-title {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    margin-bottom: 8px;
+    border-radius: 999px;
+    background: #f6ebe6;
+    color: #86665d;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .ai-bundle-comparison__item-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .ai-bundle-comparison__product-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .ai-bundle-comparison__product-link:hover .ai-bundle-comparison__product-name {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .ai-bundle-comparison__product-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(18, 18, 18, 0.06);
+    box-shadow: 0 8px 18px rgba(39, 24, 18, 0.08);
+    background: #fff;
+  }
+
+  .ai-bundle-comparison__product-name {
+    font-size: 13px;
+    color: var(--text-strong);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .ai-bundle-comparison__check-cell {
+    padding: 12px 6px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .ai-bundle-comparison__checkmark,
+  .ai-bundle-comparison__empty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+  }
+
+  .ai-bundle-comparison__checkmark {
+    color: {{ cmp_checkmark_color }};
+    background: rgba(0, 128, 96, 0.10);
+    box-shadow: inset 0 0 0 1px rgba(0, 128, 96, 0.14);
+  }
+
+  .ai-bundle-comparison__empty {
+    color: {{ cmp_empty_color }};
+    background: rgba(18, 18, 18, 0.04);
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  {% for i in (1..5) %}
+    {% liquid
+      assign bundle_product = blank
+
+      if tab_mode
+        assign tab_product_index = 0
+        for block in section.blocks
+          assign block_tab_key = block.settings.tab_key | strip
+          if block.type == 'product_card' and block.settings.product != blank and block_tab_key == current_tab_key
+            assign tab_product_index = tab_product_index | plus: 1
+            if tab_product_index == i
+              assign bundle_product = block.settings.product
+              break
+            endif
+          endif
+        endfor
+      else
+        assign bundle_product_key = 'bundle_' | append: i | append: '_product'
+        assign bundle_product = section.settings[bundle_product_key]
+      endif
+
+      assign col_index = i | plus: 1
+    %}
+    {% if bundle_product == blank %}
+      .ai-bundle-comparison__table-{{ ai_gen_id }} th:nth-child({{ col_index }}),
+      .ai-bundle-comparison__table-{{ ai_gen_id }} td:nth-child({{ col_index }}) {
+        display: none;
+      }
+    {% endif %}
+  {% endfor %}
+
+  @media screen and (max-width: 749px) {
+    .ai-bundle-comparison-{{ ai_gen_id }} {
+      --first-col: 33%;
+    }
+
+    .ai-bundle-comparison__wrapper-{{ ai_gen_id }} {
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(39, 24, 18, 0.08);
+    }
+
+    .ai-bundle-comparison__header-cell-{{ ai_gen_id }} {
+      padding: 4px 2px 6px;
+    }
+
+    .ai-bundle-comparison__header-cell-{{ ai_gen_id }}:first-child {
+      padding-left: 8px;
+      font-size: 11px;
+    }
+
+    .ai-bundle-comparison__bundle-header-{{ ai_gen_id }} {
+      gap: 4px;
+      padding: 4px 2px 6px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(39, 24, 18, 0.05);
+    }
+
+    .ai-bundle-comparison__bundle-image-{{ ai_gen_id }} {
+      width: calc(100% - 1px);
+      border-radius: 6px;
+    }
+
+    .ai-bundle-comparison__bundle-name-{{ ai_gen_id }},
+    .ai-bundle-comparison__bundle-namelink-{{ ai_gen_id }} {
+      font-size: 9px;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .ai-bundle-comparison__bundle-price-{{ ai_gen_id }} {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .ai-bundle-comparison__bundle-link-{{ ai_gen_id }} {
+      min-width: 30px;
+      height: 30px;
+      padding: 0 8px;
+    }
+
+    .ai-bundle-comparison__cart-icon-{{ ai_gen_id }} {
+      width: 13px;
+      height: 13px;
+    }
+
+    .ai-bundle-comparison__category-cell {
+      padding: 8px 4px;
+    }
+
+    .ai-bundle-comparison__check-cell {
+      padding: 8px 4px;
+    }
+
+    .ai-bundle-comparison__category-title {
+      font-size: 8px;
+      padding: 3px 6px;
+      margin-bottom: 6px;
+    }
+
+    .ai-bundle-comparison__item-cell {
+      gap: 8px;
+      padding: 2px 0;
+    }
+
+    .ai-bundle-comparison__product-link {
+      gap: 8px;
+    }
+
+    .ai-bundle-comparison__product-image {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+    }
+
+    .ai-bundle-comparison__product-name {
+      font-size: 10px;
+      line-height: 1.12;
+    }
+
+    .ai-bundle-comparison__checkmark,
+    .ai-bundle-comparison__empty {
+      width: 22px;
+      height: 22px;
+    }
+
+    .ai-bundle-comparison__empty {
+      font-size: 13px;
+    }
+  }
+{% endstyle %}
+
+{% if compare_rows_count > 0 %}
+  <div class="ai-bundle-comparison-{{ ai_gen_id }}" {{ section.shopify_attributes }}>
+    <div class="ai-bundle-comparison__wrapper-{{ ai_gen_id }}">
+      <div class="ai-bundle-comparison__scaler-{{ ai_gen_id }}" data-scale="1">
+        <table class="ai-bundle-comparison__table-{{ ai_gen_id }}">
+          <thead>
+            <tr>
+              <th class="ai-bundle-comparison__header-cell-{{ ai_gen_id }}">Porównanie zawartości</th>
+
+              {% for i in (1..5) %}
+                {% liquid
+                  assign bundle_product = blank
+                  assign custom_label = ''
+
+                  if tab_mode
+                    assign tab_product_index = 0
+                    for block in section.blocks
+                      assign block_tab_key = block.settings.tab_key | strip
+                      if block.type == 'product_card' and block.settings.product != blank and block_tab_key == current_tab_key
+                        assign tab_product_index = tab_product_index | plus: 1
+                        if tab_product_index == i
+                          assign bundle_product = block.settings.product
+                          break
+                        endif
+                      endif
+                    endfor
+                  else
+                    assign bundle_product_key = 'bundle_' | append: i | append: '_product'
+                    assign bundle_product = section.settings[bundle_product_key]
+
+                    assign custom_label_key = 'bundle_' | append: i | append: '_custom_label'
+                    assign custom_label = section.settings[custom_label_key]
+                  endif
+
+                  assign display_name = ''
+                  if custom_label != blank
+                    assign display_name = custom_label
+                  elsif bundle_product != blank
+                    assign display_name = bundle_product.title
+                  endif
+                %}
+
+                <th class="ai-bundle-comparison__header-cell-{{ ai_gen_id }}">
+                  {% if bundle_product != blank %}
+                    <div class="ai-bundle-comparison__bundle-header-{{ ai_gen_id }}">
+                      {% if bundle_product.featured_image %}
+                        <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-imglink-{{ ai_gen_id }}">
+                          {% assign bundle_img_class = 'ai-bundle-comparison__bundle-image-' | append: ai_gen_id %}
+                          {{
+                            bundle_product.featured_image
+                            | image_url: width: 900
+                            | image_tag:
+                              class: bundle_img_class,
+                              loading: 'lazy',
+                              widths: '240,360,480,600,750,900',
+                              sizes: '(max-width: 749px) 22vw, (max-width: 1200px) 14vw, 180px',
+                              alt: display_name
+                          }}
+                        </a>
+                      {% endif %}
+
+                      <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-namelink-{{ ai_gen_id }}">
+                        {{ display_name | escape }}
+                      </a>
+
+                      <div class="ai-bundle-comparison__bundle-price-{{ ai_gen_id }}">
+                        {{ bundle_product.price | money }}
+                      </div>
+
+                      {% assign v = bundle_product.selected_or_first_available_variant %}
+
+                      {% if v %}
+                        <form method="post" action="{{ routes.cart_add_url }}" style="margin:0;">
+                          <input type="hidden" name="id" value="{{ v.id }}">
+                          <input type="hidden" name="quantity" value="1">
+                          <button
+                            type="submit"
+                            class="ai-bundle-comparison__bundle-link-{{ ai_gen_id }}"
+                            {% unless v.available %}disabled{% endunless %}
+                          >
+                            {% if v.available %}
+                              <svg
+                                class="ai-bundle-comparison__cart-icon-{{ ai_gen_id }}"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.6"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                                focusable="false"
+                              >
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.6 12.3a2 2 0 0 0 2 1.7h9.7a2 2 0 0 0 2-1.6L23 6H6"></path>
+                              </svg>
+                            {% else %}
+                              Brak
+                            {% endif %}
+                          </button>
+                        </form>
+                      {% else %}
+                        <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-link-{{ ai_gen_id }}">
+                          Zobacz
+                        </a>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </th>
+              {% endfor %}
+            </tr>
+          </thead>
+
+          <tbody>
+            {% if tab_mode %}
+              {% for block in section.blocks %}
+                {% assign block_tab_key = block.settings.tab_key | strip %}
+                {% if block.type == 'bundle-comparison-row' and block_tab_key == current_tab_key %}
+                  {% render block %}
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              {% for block in section.blocks %}
+                {% if block.type == 'bundle-comparison-row' %}
+                  {% render block %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.querySelector('.ai-bundle-comparison-{{ ai_gen_id }}');
+      if (!root || root.dataset.scalerInit === '1') return;
+      root.dataset.scalerInit = '1';
+
+      var wrapper = root.querySelector('.ai-bundle-comparison__wrapper-{{ ai_gen_id }}');
+      var scaler = root.querySelector('.ai-bundle-comparison__scaler-{{ ai_gen_id }}');
+      var table = root.querySelector('.ai-bundle-comparison__table-{{ ai_gen_id }}');
+
+      if (!wrapper || !scaler || !table) return;
+
+      function applyScale() {
+        scaler.style.transform = 'scale(1)';
+        wrapper.style.height = 'auto';
+        root.classList.remove('is-scaled');
+
+        var wrapW = wrapper.clientWidth;
+        if (!wrapW) return;
+
+        var naturalW = table.scrollWidth;
+        if (!naturalW) return;
+
+        var scale = Math.min(1, wrapW / naturalW);
+
+        if (scale < 0.999) {
+          scaler.style.transform = 'scale(' + scale.toFixed(4) + ')';
+          scaler.dataset.scale = scale.toFixed(4);
+          root.classList.add('is-scaled');
+
+          var naturalH = table.offsetHeight;
+          wrapper.style.height = (naturalH * scale) + 'px';
+        } else {
+          scaler.style.transform = 'scale(1)';
+          scaler.dataset.scale = '1';
+          wrapper.style.height = 'auto';
+        }
+      }
+
+      requestAnimationFrame(applyScale);
+      setTimeout(applyScale, 150);
+      window.addEventListener('resize', applyScale, { passive: true });
+
+      if ('ResizeObserver' in window) {
+        var ro = new ResizeObserver(function () { applyScale(); });
+        ro.observe(wrapper);
+        ro.observe(table);
+      }
+
+      document.addEventListener('shopify:section:load', function () { setTimeout(applyScale, 50); });
+      document.addEventListener('shopify:section:reorder', function () { setTimeout(applyScale, 50); });
+      document.addEventListener('shopify:block:select', function () { setTimeout(applyScale, 50); });
+      document.addEventListener('shopify:block:deselect', function () { setTimeout(applyScale, 50); });
+    })();
+  </script>
+{% endif %}

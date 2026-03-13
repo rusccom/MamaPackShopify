@@ -1,0 +1,53 @@
+{% render 'comparison-table-content',
+  section: section,
+  settings: section.settings,
+  table_id: section.id
+%}
+
+{% schema %}
+{
+  "name": "Bundle compare",
+  "settings": [
+    { "type": "header", "content": "Bundles" },
+
+    { "type": "product", "id": "bundle_1_product", "label": "Bundle 1 product" },
+    { "type": "text", "id": "bundle_1_custom_label", "label": "Bundle 1 custom label" },
+    { "type": "product", "id": "bundle_2_product", "label": "Bundle 2 product" },
+    { "type": "text", "id": "bundle_2_custom_label", "label": "Bundle 2 custom label" },
+    { "type": "product", "id": "bundle_3_product", "label": "Bundle 3 product" },
+    { "type": "text", "id": "bundle_3_custom_label", "label": "Bundle 3 custom label" },
+    { "type": "product", "id": "bundle_4_product", "label": "Bundle 4 product" },
+    { "type": "text", "id": "bundle_4_custom_label", "label": "Bundle 4 custom label" },
+    { "type": "product", "id": "bundle_5_product", "label": "Bundle 5 product" },
+    { "type": "text", "id": "bundle_5_custom_label", "label": "Bundle 5 custom label" },
+
+    { "type": "header", "content": "Display options" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "checkbox", "id": "show_category_title", "label": "Show category title", "default": true },
+
+    { "type": "header", "content": "Style" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "header_background", "label": "Header background", "default": "#f3f3f3" },
+    { "type": "color", "id": "category_background", "label": "Category background", "default": "#f9f9f9" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#121212" },
+    { "type": "color", "id": "border_color", "label": "Border", "default": "#e0e0e0" },
+    { "type": "color", "id": "checkmark_color", "label": "Checkmark", "default": "#008060" },
+    { "type": "color", "id": "empty_color", "label": "Empty state", "default": "#cccccc" },
+    { "type": "color", "id": "button_background", "label": "Button background", "default": "#121212" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#ffffff" },
+    { "type": "color", "id": "button_hover_background", "label": "Button hover background", "default": "#000000" },
+    { "type": "range", "id": "border_radius", "label": "Border radius", "min": 0, "max": 20, "step": 2, "unit": "px", "default": 8 }
+  ],
+  "blocks": [
+    { "type": "bundle-comparison-row" }
+  ],
+  "presets": [
+    {
+      "name": "Bundle compare",
+      "blocks": [
+        { "type": "bundle-comparison-row" }
+      ]
+    }
+  ]
+}
+{% endschema %}}
