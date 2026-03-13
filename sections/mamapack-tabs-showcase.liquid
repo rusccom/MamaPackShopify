@@ -724,17 +724,12 @@
 }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tabs {
-  grid-template-columns: none;
-  grid-auto-flow: column;
-  grid-auto-columns: 100%;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  overflow-x: auto;
+  grid-template-columns: repeat({% if tabs_count > 0 %}{{ tabs_count }}{% else %}1{% endif %}, minmax(0, 1fr));
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  overflow-x: visible;
   overflow-y: visible;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x proximity;
   gap: 6px;
   padding: 12px 0 4px;
   scrollbar-width: none;
@@ -746,7 +741,6 @@
 
    .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-wrap {
   padding: 0;
-  scroll-snap-align: start;
 }
 
     .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab:hover {
@@ -931,7 +925,7 @@
                       | image_tag:
                         loading: 'lazy',
                         widths: '320,480,640,800,1000',
-                        sizes: '(max-width: 749px) 100vw, 33vw',
+                        sizes: '(max-width: 749px) calc(100vw / {% if tabs_count > 0 %}{{ tabs_count }}{% else %}1{% endif %}), 33vw',
                         alt: block.settings.title
                     }}
                   {% else %}
