@@ -23,6 +23,8 @@
   endfor
 %}
 
+{% capture tab_image_sizes %}(max-width: 749px) {% if tabs_count > 0 %}{{ 100.0 | divided_by: tabs_count }}{% else %}100{% endif %}vw, 33vw{% endcapture %}
+
 {% style %}
   .mp-tabs-showcase--{{ section_token }} {
   --mp-bg: {{ section.settings.section_background }};
@@ -925,7 +927,7 @@
                       | image_tag:
                         loading: 'lazy',
                         widths: '320,480,640,800,1000',
-                        sizes: '(max-width: 749px) calc(100vw / {% if tabs_count > 0 %}{{ tabs_count }}{% else %}1{% endif %}), 33vw',
+                        sizes: tab_image_sizes,
                         alt: block.settings.title
                     }}
                   {% else %}
