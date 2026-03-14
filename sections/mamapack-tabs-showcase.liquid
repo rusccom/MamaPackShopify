@@ -45,6 +45,9 @@
   --mp-tab-hover-shadow: drop-shadow(0 24px 34px rgba(20, 20, 20, 0.18));
   --mp-tab-active-shadow: drop-shadow(0 34px 46px rgba(20, 20, 20, 0.26));
 
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
   background: transparent;
   color: var(--mp-text);
   padding: 24px 0;
@@ -86,6 +89,8 @@
     grid-template-columns: repeat({% if tabs_count > 0 %}{{ tabs_count }}{% else %}1{% endif %}, minmax(0, 1fr));
     gap: 12px;
     align-items: end;
+    position: relative;
+    z-index: 0;
     margin-bottom: 14px;
     padding: 12px 0 4px;
     overflow: visible;
@@ -115,6 +120,9 @@
     overflow: visible;
     transform: translateY(0);
     transform-origin: center bottom;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform;
     transition:
       transform 0.22s ease,
       opacity 0.2s ease,
@@ -691,6 +699,23 @@
       padding: 0 6px;
     }
 
+    .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-wrap {
+      width: 100vw;
+      margin-top: 14px;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      padding: 0 4px;
+      box-sizing: border-box;
+    }
+
+    .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-panel {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
     .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tabs {
       grid-template-columns: repeat({% if tabs_count > 0 %}{{ tabs_count }}{% else %}1{% endif %}, minmax(0, 1fr));
       width: 100%;
@@ -727,102 +752,123 @@
       font-size: 14px;
     }
 
+    .ai-bundle-comparison--{{ section_token }} {
+      width: 100%;
+      --first-col: 34%;
+      box-sizing: border-box;
+    }
+
+    .ai-bundle-comparison__wrapper--{{ section_token }} {
+      overflow: visible;
+    }
+
     .ai-bundle-comparison__table--{{ section_token }} {
-      min-width: 680px;
+      min-width: 0;
     }
 
     .ai-bundle-comparison__header-cell--{{ section_token }} {
-      padding: 4px 2px 6px;
+      padding: 3px 1px 5px;
     }
 
     .ai-bundle-comparison__header-cell--{{ section_token }}:first-child {
-      padding-left: 8px;
-      font-size: 11px;
+      padding-left: 6px;
+      font-size: 10px;
+      line-height: 1.1;
     }
 
     .ai-bundle-comparison__bundle-header--{{ section_token }} {
-      gap: 4px;
-      padding: 4px 2px 6px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(39, 24, 18, 0.05);
+      gap: 3px;
+      padding: 3px 1px 4px;
+      border-radius: 6px;
+      box-shadow: none;
     }
 
     .ai-bundle-comparison__bundle-image--{{ section_token }} {
-      width: calc(100% - 1px);
-      border-radius: 6px;
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: none;
     }
 
     .ai-bundle-comparison__bundle-namelink--{{ section_token }} {
-      font-size: 9px;
-      line-height: 1.02;
+      font-size: 7px;
+      line-height: 1.05;
       letter-spacing: -0.03em;
     }
 
     .ai-bundle-comparison__bundle-price--{{ section_token }} {
-      font-size: 13px;
+      font-size: 10px;
       line-height: 1;
     }
 
     .ai-bundle-comparison__bundle-link--{{ section_token }} {
-      min-width: 30px;
-      height: 30px;
-      padding: 0 8px;
+      min-width: 24px;
+      height: 24px;
+      padding: 0 4px;
+      box-shadow: none;
     }
 
     .ai-bundle-comparison__cart-icon--{{ section_token }} {
-      width: 13px;
-      height: 13px;
+      width: 10px;
+      height: 10px;
     }
 
     .ai-bundle-comparison__category-cell--{{ section_token }} {
-      padding: 8px 4px;
+      padding: 6px 3px;
     }
 
     .ai-bundle-comparison__check-cell--{{ section_token }} {
-      padding: 8px 4px;
+      padding: 6px 2px;
     }
 
     .ai-bundle-comparison__category-title--{{ section_token }} {
-      font-size: 8px;
-      padding: 3px 6px;
-      margin-bottom: 6px;
+      font-size: 7px;
+      padding: 2px 4px;
+      margin-bottom: 4px;
     }
 
     .ai-bundle-comparison__item-cell--{{ section_token }} {
-      gap: 8px;
-      padding: 2px 0;
+      gap: 5px;
+      padding: 1px 0;
     }
 
     .ai-bundle-comparison__product-link--{{ section_token }} {
-      gap: 8px;
+      gap: 5px;
     }
 
     .ai-bundle-comparison__product-image--{{ section_token }} {
-      width: 46px;
-      height: 46px;
-      border-radius: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: none;
     }
 
     .ai-bundle-comparison__product-name--{{ section_token }} {
-      font-size: 10px;
-      line-height: 1.12;
+      font-size: 8px;
+      line-height: 1.1;
     }
 
     .ai-bundle-comparison__checkmark--{{ section_token }},
     .ai-bundle-comparison__empty--{{ section_token }} {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
+    }
+
+    .ai-bundle-comparison__checkmark--{{ section_token }} svg {
+      width: 11px;
+      height: 11px;
     }
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab:hover .mp-tabs-showcase__tab-media img,
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab:hover .mp-tabs-showcase__tab-media svg {
     filter: var(--mp-tab-hover-shadow);
+    -webkit-filter: var(--mp-tab-hover-shadow);
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab.is-active .mp-tabs-showcase__tab-media img,
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab.is-active .mp-tabs-showcase__tab-media svg {
     filter: var(--mp-tab-active-shadow);
+    -webkit-filter: var(--mp-tab-active-shadow);
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__tab-media img,
@@ -833,6 +879,13 @@
     border-radius: inherit;
     object-fit: cover;
     filter: var(--mp-tab-shadow);
+    -webkit-filter: var(--mp-tab-shadow);
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform, filter;
+    contain: paint;
     transition: filter 0.22s ease;
   }
 {% endstyle %}
