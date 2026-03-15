@@ -1113,12 +1113,14 @@
               endif
 
               assign compare_table = tab_block.settings.compare_table
+              assign has_compare_table = false
               assign compare_table_header_products = blank
               assign compare_table_rows = blank
               assign compare_rows_count = 0
               assign compare_products_count = 0
 
               if compare_table != blank
+                assign has_compare_table = true
                 assign compare_table_header_products = compare_table.header_products.value
                 assign compare_table_rows = compare_table.rows.value
 
@@ -1153,6 +1155,7 @@
               class="mp-tabs-showcase__compare-panel ai-bundle-comparison-wrap--{{ section_token }}"
               data-compare-panel="{{ tab_key }}"
               data-editor-tab-key="{{ tab_key }}"
+              data-has-compare-table="{% if has_compare_table %}true{% else %}false{% endif %}"
               data-has-compare="{% if has_compare %}true{% else %}false{% endif %}"
               {% unless is_active %}hidden{% endunless %}
             >
@@ -1320,7 +1323,11 @@
                 </div>
               {% else %}
                 <div class="mp-tabs-showcase__empty">
-                  Для этой вкладки пока нет данных для сравнения.
+                  {% if has_compare_table %}
+                    This tab has a compare table assigned, but it does not contain synced rows yet.
+                  {% else %}
+                    Assign a compare table to this tab before running compare sync.
+                  {% endif %}
                 </div>
               {% endif %}
             </div>
@@ -1778,7 +1785,8 @@
         {
           "type": "metaobject",
           "id": "compare_table",
-          "label": "Compare table",
+          "label": "Compare table (required for sync)",
+          "info": "Assign the compare_table metaobject that the sync action should update for this tab.",
           "metaobject_type": "compare_table"
         }
       ]
