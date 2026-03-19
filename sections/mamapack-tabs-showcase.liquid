@@ -338,42 +338,24 @@
     color: var(--mp-text);
   }
 
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-toggle-row {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-toggle {
-    min-height: 48px;
-    padding: 0 20px;
-    border: 1px solid var(--mp-border);
-    border-radius: 999px;
-    background: var(--mp-soft-bg);
-    color: var(--mp-text);
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition:
-      transform 0.18s ease,
-      background-color 0.18s ease,
-      border-color 0.18s ease,
-      box-shadow 0.18s ease;
-  }
-
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-toggle:hover {
-    transform: translateY(-1px);
-    border-color: var(--mp-accent);
-    box-shadow: 0 12px 24px rgba(20, 20, 20, 0.08);
-  }
-
-  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-toggle:focus-visible {
-    outline: 2px solid var(--mp-accent);
-    outline-offset: 3px;
-  }
-
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-wrap {
     margin-top: 18px;
+  }
+
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-description {
+    padding: 18px 18px 0;
+    margin-bottom: 18px;
+    color: var(--mp-muted);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-description p:first-child {
+    margin-top: 0;
+  }
+
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-description p:last-child {
+    margin-bottom: 0;
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-panel {
@@ -1090,20 +1072,7 @@
         {% endif %}
       {% endfor %}
 
-      <div class="mp-tabs-showcase__compare-toggle-row">
-        <button
-          type="button"
-          class="mp-tabs-showcase__compare-toggle"
-          data-compare-toggle
-          data-show-label="{{ section.settings.compare_show_label }}"
-          data-hide-label="{{ section.settings.compare_hide_label }}"
-          aria-expanded="false"
-        >
-          {{ section.settings.compare_show_label }}
-        </button>
-      </div>
-
-      <div class="mp-tabs-showcase__compare-wrap" data-compare-wrap hidden>
+      <div class="mp-tabs-showcase__compare-wrap" data-compare-wrap>
         {% for tab_block in section.blocks %}
           {% if tab_block.type == 'tab_item' %}
             {% liquid
@@ -1112,6 +1081,7 @@
                 assign tab_key = tab_block.id
               endif
 
+              assign compare_description = tab_block.settings.compare_description
               assign compare_table = tab_block.settings.compare_table
               assign has_compare_table = false
               assign compare_table_header_products = blank
@@ -1159,8 +1129,14 @@
               data-has-compare="{% if has_compare %}true{% else %}false{% endif %}"
               {% unless is_active %}hidden{% endunless %}
             >
-              {% if has_compare %}
-                <div class="ai-bundle-comparison--{{ section_token }}">
+              <div class="ai-bundle-comparison--{{ section_token }}">
+                {% if compare_description != blank %}
+                  <div class="mp-tabs-showcase__compare-description" data-editor-tab-key="{{ tab_key }}">
+                    {{ compare_description }}
+                  </div>
+                {% endif %}
+
+                {% if has_compare %}
                   <div class="ai-bundle-comparison__wrapper--{{ section_token }}">
                     <table class="ai-bundle-comparison__table--{{ section_token }}">
                       <thead>
@@ -1198,42 +1174,6 @@
                                     {{ bundle_product.price | money }}
                                   </div>
 
-                                  {% assign variant = bundle_product.selected_or_first_available_variant %}
-                                  {% if variant %}
-                                    <form method="post" action="{{ routes.cart_add_url }}" style="margin:0;">
-                                      <input type="hidden" name="id" value="{{ variant.id }}">
-                                      <input type="hidden" name="quantity" value="1">
-                                      <button
-                                        type="submit"
-                                        class="ai-bundle-comparison__bundle-link--{{ section_token }}"
-                                        {% unless variant.available %}disabled{% endunless %}
-                                      >
-                                        {% if variant.available %}
-                                          <svg
-                                            class="ai-bundle-comparison__cart-icon--{{ section_token }}"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2.6"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            aria-hidden="true"
-                                            focusable="false"
-                                          >
-                                            <circle cx="9" cy="21" r="1"></circle>
-                                            <circle cx="20" cy="21" r="1"></circle>
-                                            <path d="M1 1h4l2.6 12.3a2 2 0 0 0 2 1.7h9.7a2 2 0 0 0 2-1.6L23 6H6"></path>
-                                          </svg>
-                                        {% else %}
-                                          Brak
-                                        {% endif %}
-                                      </button>
-                                    </form>
-                                  {% else %}
-                                    <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-link--{{ section_token }}">
-                                      Zobacz
-                                    </a>
-                                  {% endif %}
                                 </div>
                               {% endif %}
                             </th>
@@ -1317,19 +1257,19 @@
                             </tr>
                           {% endif %}
                         {% endfor %}
-                      </tbody>
-                    </table>
+                        </tbody>
+                      </table>
+                </div>
+                {% else %}
+                  <div class="mp-tabs-showcase__empty">
+                    {% if has_compare_table %}
+                      This tab has a compare table assigned, but it does not contain synced rows yet.
+                    {% else %}
+                      Assign a compare table to this tab before running compare sync.
+                    {% endif %}
                   </div>
-                </div>
-              {% else %}
-                <div class="mp-tabs-showcase__empty">
-                  {% if has_compare_table %}
-                    This tab has a compare table assigned, but it does not contain synced rows yet.
-                  {% else %}
-                    Assign a compare table to this tab before running compare sync.
-                  {% endif %}
-                </div>
-              {% endif %}
+                {% endif %}
+              </div>
             </div>
           {% endif %}
         {% endfor %}
@@ -1362,48 +1302,19 @@
           var contentPanels = getContentPanels(root);
           var comparePanels = getComparePanels(root);
           var compareWrap = root.querySelector('[data-compare-wrap]');
-          var compareToggle = root.querySelector('[data-compare-toggle]');
 
           if (!tabButtons.length) return;
 
           var defaultKey = root.getAttribute('data-default-tab') || tabButtons[0].getAttribute('data-tab-button');
           var activeKey = defaultKey;
 
-          function hasCompareForKey(key) {
-            for (var i = 0; i < comparePanels.length; i++) {
-              if (
-                comparePanels[i].getAttribute('data-compare-panel') === key &&
-                comparePanels[i].getAttribute('data-has-compare') === 'true'
-              ) {
-                return true;
-              }
-            }
-
-            return false;
-          }
-
           function updateCompareState() {
-            var canCompare = hasCompareForKey(activeKey);
-
-            if (compareToggle) {
-              var showLabel = compareToggle.getAttribute('data-show-label') || 'Compare';
-              var hideLabel = compareToggle.getAttribute('data-hide-label') || 'Hide comparison';
-              var isOpen = compareWrap ? !compareWrap.hidden : false;
-
-              compareToggle.hidden = !canCompare;
-              compareToggle.disabled = !canCompare;
-              compareToggle.setAttribute('aria-expanded', canCompare && isOpen ? 'true' : 'false');
-              compareToggle.textContent = canCompare && isOpen ? hideLabel : showLabel;
-            }
-
             if (compareWrap) {
-              if (!canCompare) {
-                compareWrap.hidden = true;
-              }
+              compareWrap.hidden = false;
 
               comparePanels.forEach(function (panel) {
                 var sameKey = panel.getAttribute('data-compare-panel') === activeKey;
-                panel.hidden = compareWrap.hidden || !sameKey;
+                panel.hidden = !sameKey;
               });
             }
           }
@@ -1427,10 +1338,6 @@
             contentPanels.forEach(function (panel) {
               panel.hidden = panel.getAttribute('data-tab-content') !== key;
             });
-
-            if (options.openCompare === true && compareWrap && hasCompareForKey(key)) {
-              compareWrap.hidden = false;
-            }
 
             updateCompareState();
           }
@@ -1475,15 +1382,6 @@
             });
           });
 
-          if (compareToggle && compareWrap) {
-            compareToggle.addEventListener('click', function () {
-              if (!hasCompareForKey(activeKey)) return;
-
-              compareWrap.hidden = !compareWrap.hidden;
-              updateCompareState();
-            });
-          }
-
           root._mpActivateTab = activateTab;
           activateTab(defaultKey);
         }
@@ -1523,12 +1421,8 @@
             if (!keyedElement) return;
 
             var key = keyedElement.getAttribute('data-editor-tab-key');
-            var isCompareArea =
-              keyedElement.hasAttribute('data-compare-panel') ||
-              !!keyedElement.closest('[data-compare-panel]');
-
             if (key && typeof root._mpActivateTab === 'function') {
-              root._mpActivateTab(key, { openCompare: isCompareArea });
+              root._mpActivateTab(key);
             }
           });
         }
@@ -1788,6 +1682,11 @@
           "label": "Compare table (required for sync)",
           "info": "Assign the compare_table metaobject that the sync action should update for this tab.",
           "metaobject_type": "compare_table"
+        },
+        {
+          "type": "richtext",
+          "id": "compare_description",
+          "label": "Compare description"
         }
       ]
     },
