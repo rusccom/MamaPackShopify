@@ -11,10 +11,72 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "rich_text_JdMX4j": {
+      "type": "rich-text",
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 4,
+        "padding_bottom": 8
+      }
+    },
+    "image_banner_6DGLp7": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/hero1.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "rich_text_HLiqVF": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_drEKn9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Kliknij kategorię i znajdź swoją gotową torbę",
+            "heading_size": "h1"
+          }
+        },
+        "text_A8dXTz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wybierz zestaw <strong>dla mamy, dla dziecka lub dla mamy i noworodka</strong>.<br/><br/>Po kliknięciu zobaczysz odpowiednią grupę produktów i porównasz dostępne warianty.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_drEKn9",
+        "text_A8dXTz"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 8
       }
     },
     "mamapack_tabs_showcase_7PjxJY": {
@@ -111,7 +173,8 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_8bnjdr8bnjdr8bnj_1_1.png",
             "title": "",
             "subtitle": "",
-            "default_open": false
+            "default_open": false,
+            "compare_table": "baby"
           }
         },
         "tab_item_KCwN4z": {
@@ -121,7 +184,8 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_8bnjdr8bnjdr8bnj_1_2.png",
             "title": "",
             "subtitle": "",
-            "default_open": true
+            "default_open": true,
+            "compare_table": "baby-1"
           }
         },
         "tab_item_64mNmM": {
@@ -131,7 +195,32 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_8bnjdr8bnjdr8bnj_1_3.png",
             "title": "",
             "subtitle": "",
-            "default_open": false
+            "default_open": false,
+            "compare_table": "mama-baby"
+          }
+        },
+        "text_block_kktFXh": {
+          "type": "text_block",
+          "settings": {
+            "tab_key": "1",
+            "position": "top",
+            "text": "<p>Przygotowaliśmy ten zestaw tak, jak same chciałybyśmy spakować torbę do szpitala — z troską, uwagą i wyborem naprawdę potrzebnych produktów.<br/><br/>- starannie opracowana lista<br/>- wybrane produkty dobrej jakości<br/>- wygoda i spokój w ważnym momencie</p>"
+          }
+        },
+        "text_block_hdazjC": {
+          "type": "text_block",
+          "settings": {
+            "tab_key": "2",
+            "position": "top",
+            "text": "<p>Z myślą o pierwszych dniach życia dziecka wybraliśmy produkty, które są praktyczne, potrzebne i przyjemne w codziennym użyciu.<br/><br/>- troskliwie skompletowana wyprawka<br/>- sprawdzone i wygodne rozwiązania<br/>- wszystko, co ważne, w jednym miejscu</p>"
+          }
+        },
+        "text_block_KPjjUF": {
+          "type": "text_block",
+          "settings": {
+            "tab_key": "3",
+            "position": "top",
+            "text": "<p>To zestaw przygotowany z sercem — tak, aby mama i dziecko miały pod ręką to, co naprawdę potrzebne od pierwszych chwil.<br/><br/>- starannie dobrane produkty dla mamy i maluszka<br/>- przemyślana zawartość i dobra jakość<br/>- gotowa wyprawka bez chaosu i pośpiechu</p>"
           }
         }
       },
@@ -150,12 +239,15 @@
         "product_card_xzAFpp",
         "tab_item_HDwzAG",
         "tab_item_KCwN4z",
-        "tab_item_64mNmM"
+        "tab_item_64mNmM",
+        "text_block_kktFXh",
+        "text_block_hdazjC",
+        "text_block_KPjjUF"
       ],
       "name": "MamaPack tabs showcase",
       "settings": {
-        "section_heading": "Gotowe torby do szpitala",
-        "section_subtext": "<p>Wybierz zestaw dla mamy, dla noworodka lub dla mamy i dziecka.</p>",
+        "section_heading": "",
+        "section_subtext": "",
         "compare_show_label": "Porównaj zawartość",
         "compare_hide_label": "Ukryj porównanie",
         "compare_table_heading": "Porównanie zawartości",
@@ -183,133 +275,6 @@
         "compare_button_text_color": "#ffffff",
         "compare_button_hover_background": "#000000",
         "compare_border_radius": 8
-      }
-    },
-    "image_banner_UNJwUc": {
-      "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/2_27f47981-cc57-4efb-80b7-0a4b1654a379.png",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "rich_text_zGrYkM": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_qpwCGY": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>GOTOWE WYPRAWKI</strong> dla mamy i noworodka",
-            "heading_size": "h1"
-          }
-        },
-        "text_Beajtb": {
-          "type": "text",
-          "settings": {
-            "text": "<h3>Starannie skompletowane zestawy, dzięki którym przygotujesz się do porodu szybciej, wygodniej i bez chaosu.</h3>"
-          }
-        },
-        "button_PyxR8z": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_qpwCGY",
-        "text_Beajtb",
-        "button_PyxR8z"
-      ],
-      "disabled": true,
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-b80f97e5-8e96-4a79-9202-38cbcb721e6f",
-        "full_width": true,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "multicolumn_E88XbB": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_gxf4Gq": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "<p><br/>Gotowe zestawy<br/><br/></p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_Erwdp8": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "<p><br/>Szybka wysyłka<br/><br/></p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_XW8mq9": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "<p><br/>Starannie dobrane produkty<br/><br/></p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_mzPKeU": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "<p><br/>Mniej stresu przed porodem<br/><br/></p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_gxf4Gq",
-        "column_Erwdp8",
-        "column_XW8mq9",
-        "column_mzPKeU"
-      ],
-      "disabled": true,
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "Multicolumn",
-        "heading_size": "h2",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-805bfd18-f519-4ea5-9bb0-73cc857d3954",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "bundle_compare_section_iEwiae": {
@@ -878,6 +843,7 @@
         "bundle_comparison_row_3rz9iW",
         "bundle_comparison_row_tcNJMH"
       ],
+      "disabled": true,
       "name": "Bundle compare",
       "settings": {
         "bundle_1_product": "podstawowy-md",
@@ -903,51 +869,6 @@
         "button_text_color": "#ffffff",
         "button_hover_background": "#000000",
         "border_radius": 8
-      }
-    },
-    "rich_text_nbwnkC": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_E4yWxq": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>GOTOWE WYPRAWKI</strong>  dla mamy",
-            "heading_size": "h1"
-          }
-        },
-        "text_YEbYVy": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<h2><strong><br/>Przejrzyj porównanie i wybierz zestaw, który najlepiej odpowiada Twoim oczekiwaniom.<br/><br/></strong></h2>"
-          }
-        },
-        "button_AM9wFR": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_E4yWxq",
-        "text_YEbYVy",
-        "button_AM9wFR"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-b80f97e5-8e96-4a79-9202-38cbcb721e6f",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     },
     "bundle_compare_section_t4khXe": {
@@ -1329,6 +1250,7 @@
         "bundle_comparison_row_rDLeW3",
         "bundle_comparison_row_L36b6i"
       ],
+      "disabled": true,
       "name": "Bundle compare",
       "settings": {
         "bundle_1_product": "bundle-product-13",
@@ -1354,51 +1276,6 @@
         "button_text_color": "#ffffff",
         "button_hover_background": "#000000",
         "border_radius": 8
-      }
-    },
-    "rich_text_Pcdh4H": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_Baqmz9": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>GOTOWE WYPRAWKI </strong>dla noworodka",
-            "heading_size": "h1"
-          }
-        },
-        "text_mT6hVw": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<h2><strong><br/>Przejrzyj porównanie i wybierz zestaw, który najlepiej odpowiada Twoim oczekiwaniom.<br/><br/></strong></h2>"
-          }
-        },
-        "button_7GPbrw": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_Baqmz9",
-        "text_mT6hVw",
-        "button_7GPbrw"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-b80f97e5-8e96-4a79-9202-38cbcb721e6f",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     },
     "bundle_compare_section_WPYyQb": {
@@ -1865,6 +1742,7 @@
         "bundle_comparison_row_AGzFWh",
         "bundle_comparison_row_zaBnF7"
       ],
+      "disabled": true,
       "name": "Bundle compare",
       "settings": {
         "bundle_1_product": "torba-do-szpitala-dla-noworodka-gotowa-wyprawka-premium",
@@ -1895,14 +1773,12 @@
   },
   "order": [
     "main",
+    "rich_text_JdMX4j",
+    "image_banner_6DGLp7",
+    "rich_text_HLiqVF",
     "mamapack_tabs_showcase_7PjxJY",
-    "image_banner_UNJwUc",
-    "rich_text_zGrYkM",
-    "multicolumn_E88XbB",
     "bundle_compare_section_iEwiae",
-    "rich_text_nbwnkC",
     "bundle_compare_section_t4khXe",
-    "rich_text_Pcdh4H",
     "bundle_compare_section_WPYyQb"
   ]
 }
