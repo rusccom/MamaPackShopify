@@ -104,34 +104,6 @@
             "product": "bundle-product-16"
           }
         },
-        "compare_row_WKWFN7": {
-          "type": "compare_row",
-          "settings": {
-            "tab_key": "1",
-            "category_collection": "",
-            "product": "akuku-a0003-platki-kosmetyczne-dla-niemowlat-0m-60szt",
-            "custom_label": "",
-            "include_in_product_1": true,
-            "include_in_product_2": true,
-            "include_in_product_3": false,
-            "include_in_product_4": false,
-            "include_in_product_5": false
-          }
-        },
-        "compare_row_ELKrUb": {
-          "type": "compare_row",
-          "settings": {
-            "tab_key": "1",
-            "category_collection": "",
-            "product": "canpol-78-001-oddychajace-podklady-poporodowe-na-noc-10szt",
-            "custom_label": "",
-            "include_in_product_1": false,
-            "include_in_product_2": false,
-            "include_in_product_3": false,
-            "include_in_product_4": false,
-            "include_in_product_5": false
-          }
-        },
         "tab_item_HDwzAG": {
           "type": "tab_item",
           "settings": {
@@ -176,8 +148,6 @@
         "product_card_4aFdAx",
         "product_card_ge3JF9",
         "product_card_xzAFpp",
-        "compare_row_WKWFN7",
-        "compare_row_ELKrUb",
         "tab_item_HDwzAG",
         "tab_item_KCwN4z",
         "tab_item_64mNmM"
