@@ -41,7 +41,7 @@
 </div>
 
 
-  <div id="global-modal" class="modal">
+  <div id="global-modal" class="modal" data-nosnippet>
     <table style="table-layout: fixed; width: 100%;">
       <tr>
         <td style="width: 100px; height: 100px;">
@@ -62,7 +62,7 @@
     </table>
   </div>
 
-  <div id="productModal" class="pModal">
+  <div id="productModal" class="pModal" data-nosnippet>
     <div class="contentMP">
       <span id="closeModalProduct" class="closeMP">&times;</span>
       <h2>Opis</h2>
@@ -73,7 +73,7 @@
     </div>
   </div>
 
-  <div class="categorySelectMainButtons">
+  <div class="categorySelectMainButtons" data-nosnippet>
     {% assign sorted_collections = collections | sort: 'metafields.custom.collectionusertype' | reverse %}
     {% for collection in sorted_collections %}
       {% assign usertype = collection.metafields.custom.collectionusertype %}
@@ -93,7 +93,7 @@
   {% for collection in sorted_collections %}
     {% assign usertype = collection.metafields.custom.collectionusertype %}
     {% if usertype == '1' or usertype == '2' %}
-      <div id="group-{{ collection.handle }}" class="product-group">
+      <div id="group-{{ collection.handle }}" class="product-group" data-nosnippet>
         {% assign coll_strings = '' %}
 
         {% for coll in collections %}
@@ -355,7 +355,7 @@
     {% endif %}
   {% endfor %}
 
-  <div class="categorySelectMainButtons">
+  <div class="categorySelectMainButtons" data-nosnippet>
     {% assign sorted_collections = collections | sort: 'metafields.custom.collectionusertype' | reverse %}
     {% for collection in sorted_collections %}
       {% assign usertype = collection.metafields.custom.collectionusertype %}
