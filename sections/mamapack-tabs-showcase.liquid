@@ -14,9 +14,7 @@
     assign seo_heading = 'Gotowe torby do szpitala'
   endif
 
-  capture default_seo_subtext
-    <p>Wybierz gotow&#261; torb&#281; dla mamy, noworodka lub dla mamy i dziecka. Por&oacute;wnaj warianty i znajd&#378; zestaw dopasowany do porodu.</p>
-  endcapture
+  assign default_seo_subtext = '<p>Wybierz gotow&#261; torb&#281; dla mamy, noworodka lub dla mamy i dziecka. Por&oacute;wnaj warianty i znajd&#378; zestaw dopasowany do porodu.</p>'
 
   if section.settings.section_subtext != blank
     assign seo_subtext = section.settings.section_subtext
