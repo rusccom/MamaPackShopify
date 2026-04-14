@@ -2,6 +2,27 @@
   assign section_token = section.id | replace: '_', '-'
   assign tabs_count = 0
   assign default_tab_key = ''
+  assign is_ready_bags_page = false
+
+  if request.page_type == 'page' and page.handle == 'gotowe-torby'
+    assign is_ready_bags_page = true
+  endif
+
+  assign seo_heading = section.settings.section_heading | strip
+
+  if seo_heading == blank
+    assign seo_heading = 'Gotowe torby do szpitala'
+  endif
+
+  capture default_seo_subtext
+    <p>Wybierz gotow&#261; torb&#281; dla mamy, noworodka lub dla mamy i dziecka. Por&oacute;wnaj warianty i znajd&#378; zestaw dopasowany do porodu.</p>
+  endcapture
+
+  if section.settings.section_subtext != blank
+    assign seo_subtext = section.settings.section_subtext
+  else
+    assign seo_subtext = default_seo_subtext
+  endif
 
   for block in section.blocks
     if block.type == 'tab_item'
@@ -62,6 +83,25 @@
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__intro {
     margin-bottom: 22px;
     text-align: center;
+  }
+
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__seo-intro {
+    max-width: 920px;
+    margin: 0 auto 24px;
+    padding: 28px 30px;
+    text-align: center;
+    border: 1px solid var(--mp-border);
+    border-radius: calc(var(--mp-radius) + 6px);
+    background: linear-gradient(180deg, var(--mp-soft-bg) 0%, var(--mp-card-bg) 100%);
+    box-shadow: var(--mp-shadow-soft);
+  }
+
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__seo-intro .mp-tabs-showcase__heading {
+    margin-bottom: 12px;
+  }
+
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__seo-intro .mp-tabs-showcase__subtext {
+    max-width: 760px;
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__heading {
@@ -685,6 +725,12 @@
       padding: 0 6px;
     }
 
+    .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__seo-intro {
+      margin-bottom: 18px;
+      padding: 22px 18px;
+      border-radius: calc(var(--mp-radius) + 2px);
+    }
+
     .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__compare-wrap {
       width: 100vw;
       margin-top: 14px;
@@ -883,7 +929,20 @@
   {{ section.shopify_attributes }}
 >
   <div class="mp-tabs-showcase__inner">
-    {% if section.settings.section_heading != blank or section.settings.section_subtext != blank %}
+    {% if is_ready_bags_page %}
+      <div class="mp-tabs-showcase__seo-intro">
+        <h1 class="mp-tabs-showcase__heading">{{ seo_heading }}</h1>
+        <div class="mp-tabs-showcase__subtext">
+          {% if seo_subtext != blank %}
+            {{ seo_subtext }}
+          {% else %}
+            <p>Wybierz gotową torbę dla mamy, noworodka lub dla mamy i dziecka. Porównaj warianty i znajdź zestaw dopasowany do porodu.</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if is_ready_bags_page == false and (section.settings.section_heading != blank or section.settings.section_subtext != blank) %}
       <div class="mp-tabs-showcase__intro">
         {% if section.settings.section_heading != blank %}
           <h2 class="mp-tabs-showcase__heading">{{ section.settings.section_heading }}</h2>
