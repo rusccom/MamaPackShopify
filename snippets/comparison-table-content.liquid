@@ -270,6 +270,7 @@
     display: block;
     width: 100%;
     line-height: 0;
+    cursor: pointer;
     text-decoration: none;
   }
 
@@ -294,6 +295,7 @@
     color: {{ cmp_text_color }};
     text-align: center;
     max-width: 100%;
+    cursor: pointer;
     text-decoration: none;
     letter-spacing: -0.02em;
     margin: 0;
@@ -398,6 +400,7 @@
     align-items: center;
     gap: 12px;
     width: 100%;
+    cursor: pointer;
     text-decoration: none;
     color: inherit;
   }
@@ -587,7 +590,7 @@
 {% endstyle %}
 
 {% if compare_rows_count > 0 %}
-  <div class="ai-bundle-comparison-{{ ai_gen_id }}" {{ section.shopify_attributes }}>
+  <div class="ai-bundle-comparison-{{ ai_gen_id }}" data-nosnippet {{ section.shopify_attributes }}>
     <div class="ai-bundle-comparison__wrapper-{{ ai_gen_id }}">
       <div class="ai-bundle-comparison__scaler-{{ ai_gen_id }}" data-scale="1">
         <table class="ai-bundle-comparison__table-{{ ai_gen_id }}">
@@ -632,7 +635,13 @@
                   {% if bundle_product != blank %}
                     <div class="ai-bundle-comparison__bundle-header-{{ ai_gen_id }}">
                       {% if bundle_product.featured_image %}
-                        <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-imglink-{{ ai_gen_id }}">
+                        <div
+                          class="ai-bundle-comparison__bundle-imglink-{{ ai_gen_id }}"
+                          role="link"
+                          tabindex="0"
+                          data-seo-nav-url="{{ bundle_product.url }}"
+                          aria-label="{{ display_name | escape }}"
+                        >
                           {% assign bundle_img_class = 'ai-bundle-comparison__bundle-image-' | append: ai_gen_id %}
                           {{
                             bundle_product.featured_image
@@ -644,12 +653,18 @@
                               sizes: '(max-width: 749px) 22vw, (max-width: 1200px) 14vw, 180px',
                               alt: display_name
                           }}
-                        </a>
+                        </div>
                       {% endif %}
 
-                      <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-namelink-{{ ai_gen_id }}">
+                      <div
+                        class="ai-bundle-comparison__bundle-namelink-{{ ai_gen_id }}"
+                        role="link"
+                        tabindex="0"
+                        data-seo-nav-url="{{ bundle_product.url }}"
+                        aria-label="{{ display_name | escape }}"
+                      >
                         {{ display_name | escape }}
-                      </a>
+                      </div>
 
                       <div class="ai-bundle-comparison__bundle-price-{{ ai_gen_id }}">
                         {{ bundle_product.price | money }}
@@ -688,9 +703,15 @@
                           </button>
                         </form>
                       {% else %}
-                        <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-link-{{ ai_gen_id }}">
+                        <div
+                          class="ai-bundle-comparison__bundle-link-{{ ai_gen_id }}"
+                          role="link"
+                          tabindex="0"
+                          data-seo-nav-url="{{ bundle_product.url }}"
+                          aria-label="{{ display_name | escape }}"
+                        >
                           Zobacz
-                        </a>
+                        </div>
                       {% endif %}
                     </div>
                   {% endif %}
@@ -731,6 +752,29 @@
       var table = root.querySelector('.ai-bundle-comparison__table-{{ ai_gen_id }}');
 
       if (!wrapper || !scaler || !table) return;
+
+      root.addEventListener('click', function (event) {
+        var linkLike = event.target.closest('[data-seo-nav-url]');
+        if (!linkLike || !root.contains(linkLike)) return;
+
+        var url = linkLike.getAttribute('data-seo-nav-url');
+        if (url) {
+          window.location.assign(url);
+        }
+      });
+
+      root.addEventListener('keydown', function (event) {
+        var linkLike = event.target.closest('[data-seo-nav-url]');
+        if (!linkLike || !root.contains(linkLike)) return;
+
+        if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
+
+        event.preventDefault();
+        var url = linkLike.getAttribute('data-seo-nav-url');
+        if (url) {
+          window.location.assign(url);
+        }
+      });
 
       function applyScale() {
         scaler.style.transform = 'scale(1)';

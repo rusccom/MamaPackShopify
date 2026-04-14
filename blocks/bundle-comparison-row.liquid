@@ -35,7 +35,13 @@
   {% if display_name != blank %}
     <div class="ai-bundle-comparison__item-cell">
       {% if product %}
-        <a href="{{ product.url }}" class="ai-bundle-comparison__product-link" aria-label="{{ product.title | escape }}">
+        <div
+          class="ai-bundle-comparison__product-link"
+          role="link"
+          tabindex="0"
+          data-seo-nav-url="{{ product.url }}"
+          aria-label="{{ product.title | escape }}"
+        >
           {% if product.featured_image %}
             <img
               src="{{ product.featured_image | image_url: width: 140 }}"
@@ -48,7 +54,7 @@
           {% endif %}
 
           <span class="ai-bundle-comparison__product-name">{{ display_name }}</span>
-        </a>
+        </div>
       {% else %}
         <div class="ai-bundle-comparison__product-name">{{ display_name }}</div>
       {% endif %}

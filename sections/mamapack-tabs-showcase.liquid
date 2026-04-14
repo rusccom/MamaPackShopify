@@ -283,6 +283,7 @@
     flex-direction: column;
     gap: 10px;
     min-width: 0;
+    cursor: pointer;
     border: 1px solid var(--mp-border);
     border-radius: calc(var(--mp-radius) + 2px);
     background: var(--mp-card-bg);
@@ -476,6 +477,7 @@
     display: block;
     width: 100%;
     line-height: 0;
+    cursor: pointer;
     text-decoration: none;
   }
 
@@ -499,6 +501,7 @@
     color: {{ section.settings.compare_text_color }};
     text-align: center;
     max-width: 100%;
+    cursor: pointer;
     text-decoration: none;
     letter-spacing: -0.02em;
     margin: 0;
@@ -599,6 +602,7 @@
     align-items: center;
     gap: 12px;
     width: 100%;
+    cursor: pointer;
     text-decoration: none;
     color: inherit;
   }
@@ -882,7 +886,11 @@
     {% if section.settings.section_heading != blank or section.settings.section_subtext != blank %}
       <div class="mp-tabs-showcase__intro">
         {% if section.settings.section_heading != blank %}
-          <h2 class="mp-tabs-showcase__heading">{{ section.settings.section_heading }}</h2>
+          {% if request.page_type == 'page' and page.handle == 'gotowe-torby' %}
+            <h1 class="mp-tabs-showcase__heading">{{ section.settings.section_heading }}</h1>
+          {% else %}
+            <h2 class="mp-tabs-showcase__heading">{{ section.settings.section_heading }}</h2>
+          {% endif %}
         {% endif %}
 
         {% if section.settings.section_subtext != blank %}
@@ -1025,16 +1033,19 @@
                 {% liquid
                   assign visible_products_count = 0
                 %}
-                <div class="mp-tabs-showcase__products">
+                <div class="mp-tabs-showcase__products" data-nosnippet>
                   {% for block in section.blocks %}
                     {% assign block_tab_key = block.settings.tab_key | strip %}
                     {% if block.type == 'product_card' and block.settings.product != blank and block_tab_key == tab_key and visible_products_count < 5 %}
                       {% assign visible_products_count = visible_products_count | plus: 1 %}
                       {% assign product = block.settings.product %}
 
-                      <a
-                        href="{{ product.url }}"
+                      <div
                         class="mp-tabs-showcase__product"
+                        role="link"
+                        tabindex="0"
+                        data-seo-nav-url="{{ product.url }}"
+                        aria-label="{{ product.title | escape }}"
                         data-editor-tab-key="{{ tab_key }}"
                         {{ block.shopify_attributes }}
                       >
@@ -1056,7 +1067,7 @@
 
                         <p class="mp-tabs-showcase__product-title">{{ product.title }}</p>
                         <p class="mp-tabs-showcase__product-price">{{ product.price | money }}</p>
-                      </a>
+                      </div>
                     {% endif %}
                   {% endfor %}
                 </div>
@@ -1072,7 +1083,7 @@
         {% endif %}
       {% endfor %}
 
-      <div class="mp-tabs-showcase__compare-wrap" data-compare-wrap>
+      <div class="mp-tabs-showcase__compare-wrap" data-compare-wrap data-nosnippet>
         {% for tab_block in section.blocks %}
           {% if tab_block.type == 'tab_item' %}
             {% liquid
@@ -1152,7 +1163,13 @@
 
                                 <div class="ai-bundle-comparison__bundle-header--{{ section_token }}">
                                   {% if bundle_product.featured_image %}
-                                    <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-imglink--{{ section_token }}">
+                                    <div
+                                      class="ai-bundle-comparison__bundle-imglink--{{ section_token }}"
+                                      role="link"
+                                      tabindex="0"
+                                      data-seo-nav-url="{{ bundle_product.url }}"
+                                      aria-label="{{ bundle_product.title | escape }}"
+                                    >
                                       {{
                                         bundle_product.featured_image
                                         | image_url: width: 900
@@ -1163,12 +1180,18 @@
                                           sizes: '(max-width: 749px) 22vw, (max-width: 1200px) 14vw, 180px',
                                           alt: bundle_product.title
                                       }}
-                                    </a>
+                                    </div>
                                   {% endif %}
 
-                                  <a href="{{ bundle_product.url }}" class="ai-bundle-comparison__bundle-namelink--{{ section_token }}">
+                                  <div
+                                    class="ai-bundle-comparison__bundle-namelink--{{ section_token }}"
+                                    role="link"
+                                    tabindex="0"
+                                    data-seo-nav-url="{{ bundle_product.url }}"
+                                    aria-label="{{ bundle_product.title | escape }}"
+                                  >
                                     {{ bundle_product.title }}
-                                  </a>
+                                  </div>
 
                                   <div class="ai-bundle-comparison__bundle-price--{{ section_token }}">
                                     {{ bundle_product.price | money }}
@@ -1206,7 +1229,13 @@
                                 {% if row_display_name != blank %}
                                   <div class="ai-bundle-comparison__item-cell--{{ section_token }}">
                                     {% if row_product %}
-                                      <a href="{{ row_product.url }}" class="ai-bundle-comparison__product-link--{{ section_token }}">
+                                      <div
+                                        class="ai-bundle-comparison__product-link--{{ section_token }}"
+                                        role="link"
+                                        tabindex="0"
+                                        data-seo-nav-url="{{ row_product.url }}"
+                                        aria-label="{{ row_display_name | escape }}"
+                                      >
                                         {% if row_product.featured_image %}
                                           <img
                                             src="{{ row_product.featured_image | image_url: width: 140 }}"
@@ -1218,7 +1247,7 @@
                                           >
                                         {% endif %}
                                         <span class="ai-bundle-comparison__product-name--{{ section_token }}">{{ row_display_name }}</span>
-                                      </a>
+                                      </div>
                                     {% else %}
                                       <div class="ai-bundle-comparison__product-name--{{ section_token }}">{{ row_display_name }}</div>
                                     {% endif %}
@@ -1302,6 +1331,33 @@
           var contentPanels = getContentPanels(root);
           var comparePanels = getComparePanels(root);
           var compareWrap = root.querySelector('[data-compare-wrap]');
+
+          if (root.dataset.navBound !== '1') {
+            root.dataset.navBound = '1';
+
+            root.addEventListener('click', function (event) {
+              var linkLike = event.target.closest('[data-seo-nav-url]');
+              if (!linkLike || !root.contains(linkLike)) return;
+
+              var url = linkLike.getAttribute('data-seo-nav-url');
+              if (url) {
+                window.location.assign(url);
+              }
+            });
+
+            root.addEventListener('keydown', function (event) {
+              var linkLike = event.target.closest('[data-seo-nav-url]');
+              if (!linkLike || !root.contains(linkLike)) return;
+
+              if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
+
+              event.preventDefault();
+              var url = linkLike.getAttribute('data-seo-nav-url');
+              if (url) {
+                window.location.assign(url);
+              }
+            });
+          }
 
           if (!tabButtons.length) return;
 
