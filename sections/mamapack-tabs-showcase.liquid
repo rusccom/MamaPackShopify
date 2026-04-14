@@ -886,11 +886,7 @@
     {% if section.settings.section_heading != blank or section.settings.section_subtext != blank %}
       <div class="mp-tabs-showcase__intro">
         {% if section.settings.section_heading != blank %}
-          {% if request.page_type == 'page' and page.handle == 'gotowe-torby' %}
-            <h1 class="mp-tabs-showcase__heading">{{ section.settings.section_heading }}</h1>
-          {% else %}
-            <h2 class="mp-tabs-showcase__heading">{{ section.settings.section_heading }}</h2>
-          {% endif %}
+          <h2 class="mp-tabs-showcase__heading">{{ section.settings.section_heading }}</h2>
         {% endif %}
 
         {% if section.settings.section_subtext != blank %}
