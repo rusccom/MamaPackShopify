@@ -1099,7 +1099,7 @@
                         class="mp-tabs-showcase__product"
                         role="link"
                         tabindex="0"
-                        data-seo-nav-url="{{ product.url }}"
+                        data-product-handle="{{ product.handle }}"
                         aria-label="{{ product.title | escape }}"
                         data-editor-tab-key="{{ tab_key }}"
                         {{ block.shopify_attributes }}
@@ -1222,7 +1222,7 @@
                                       class="ai-bundle-comparison__bundle-imglink--{{ section_token }}"
                                       role="link"
                                       tabindex="0"
-                                      data-seo-nav-url="{{ bundle_product.url }}"
+                                      data-product-handle="{{ bundle_product.handle }}"
                                       aria-label="{{ bundle_product.title | escape }}"
                                     >
                                       {{
@@ -1242,7 +1242,7 @@
                                     class="ai-bundle-comparison__bundle-namelink--{{ section_token }}"
                                     role="link"
                                     tabindex="0"
-                                    data-seo-nav-url="{{ bundle_product.url }}"
+                                    data-product-handle="{{ bundle_product.handle }}"
                                     aria-label="{{ bundle_product.title | escape }}"
                                   >
                                     {{ bundle_product.title }}
@@ -1288,7 +1288,7 @@
                                         class="ai-bundle-comparison__product-link--{{ section_token }}"
                                         role="link"
                                         tabindex="0"
-                                        data-seo-nav-url="{{ row_product.url }}"
+                                        data-product-handle="{{ row_product.handle }}"
                                         aria-label="{{ row_display_name | escape }}"
                                       >
                                         {% if row_product.featured_image %}
@@ -1391,25 +1391,29 @@
             root.dataset.navBound = '1';
 
             root.addEventListener('click', function (event) {
-              var linkLike = event.target.closest('[data-seo-nav-url]');
+              var linkLike = event.target.closest('[data-product-handle]');
               if (!linkLike || !root.contains(linkLike)) return;
 
-              var url = linkLike.getAttribute('data-seo-nav-url');
-              if (url) {
-                window.location.assign(url);
+              var handle = linkLike.getAttribute('data-product-handle');
+              if (handle) {
+                var rootPath = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+                if (rootPath.slice(-1) !== '/') rootPath += '/';
+                window.location.assign(rootPath + 'products/' + handle);
               }
             });
 
             root.addEventListener('keydown', function (event) {
-              var linkLike = event.target.closest('[data-seo-nav-url]');
+              var linkLike = event.target.closest('[data-product-handle]');
               if (!linkLike || !root.contains(linkLike)) return;
 
               if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
 
               event.preventDefault();
-              var url = linkLike.getAttribute('data-seo-nav-url');
-              if (url) {
-                window.location.assign(url);
+              var handle = linkLike.getAttribute('data-product-handle');
+              if (handle) {
+                var rootPath = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+                if (rootPath.slice(-1) !== '/') rootPath += '/';
+                window.location.assign(rootPath + 'products/' + handle);
               }
             });
           }
