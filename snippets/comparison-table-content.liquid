@@ -639,7 +639,7 @@
                           class="ai-bundle-comparison__bundle-imglink-{{ ai_gen_id }}"
                           role="link"
                           tabindex="0"
-                          data-seo-nav-url="{{ bundle_product.url }}"
+                          data-product-handle="{{ bundle_product.handle }}"
                           aria-label="{{ display_name | escape }}"
                         >
                           {% assign bundle_img_class = 'ai-bundle-comparison__bundle-image-' | append: ai_gen_id %}
@@ -660,7 +660,7 @@
                         class="ai-bundle-comparison__bundle-namelink-{{ ai_gen_id }}"
                         role="link"
                         tabindex="0"
-                        data-seo-nav-url="{{ bundle_product.url }}"
+                        data-product-handle="{{ bundle_product.handle }}"
                         aria-label="{{ display_name | escape }}"
                       >
                         {{ display_name | escape }}
@@ -707,7 +707,7 @@
                           class="ai-bundle-comparison__bundle-link-{{ ai_gen_id }}"
                           role="link"
                           tabindex="0"
-                          data-seo-nav-url="{{ bundle_product.url }}"
+                          data-product-handle="{{ bundle_product.handle }}"
                           aria-label="{{ display_name | escape }}"
                         >
                           Zobacz
@@ -754,25 +754,35 @@
       if (!wrapper || !scaler || !table) return;
 
       root.addEventListener('click', function (event) {
-        var linkLike = event.target.closest('[data-seo-nav-url]');
+        var linkLike = event.target.closest('[data-product-handle]');
         if (!linkLike || !root.contains(linkLike)) return;
 
-        var url = linkLike.getAttribute('data-seo-nav-url');
-        if (url) {
-          window.location.assign(url);
+        var handle = linkLike.getAttribute('data-product-handle');
+        if (handle) {
+          var rootPath = '/';
+          if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) {
+            rootPath = window.Shopify.routes.root;
+          }
+
+          window.location.assign(rootPath + 'products/' + handle);
         }
       });
 
       root.addEventListener('keydown', function (event) {
-        var linkLike = event.target.closest('[data-seo-nav-url]');
+        var linkLike = event.target.closest('[data-product-handle]');
         if (!linkLike || !root.contains(linkLike)) return;
 
         if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
 
         event.preventDefault();
-        var url = linkLike.getAttribute('data-seo-nav-url');
-        if (url) {
-          window.location.assign(url);
+        var handle = linkLike.getAttribute('data-product-handle');
+        if (handle) {
+          var rootPath = '/';
+          if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) {
+            rootPath = window.Shopify.routes.root;
+          }
+
+          window.location.assign(rootPath + 'products/' + handle);
         }
       });
 
