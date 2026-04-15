@@ -596,7 +596,10 @@
         <table class="ai-bundle-comparison__table-{{ ai_gen_id }}">
           <thead>
             <tr>
-              <th class="ai-bundle-comparison__header-cell-{{ ai_gen_id }}">Porównanie zawartości</th>
+              <th class="ai-bundle-comparison__header-cell-{{ ai_gen_id }}">
+                <span style="color:#e7b7ab;font-weight:700;margin-right:6px;" aria-hidden="true">*</span>
+                Porównanie zawartości
+              </th>
 
               {% for i in (1..5) %}
                 {% liquid
