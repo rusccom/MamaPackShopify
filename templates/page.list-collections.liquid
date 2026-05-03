@@ -1,3 +1,8 @@
+{% liquid
+  assign allowed_parent_usertypes = '1,2' | split: ','
+  assign allowed_child_usertypes = '1-1,2-2' | split: ','
+%}
+
 <div class="baseSettingCustomPage">
   <div class="infoImageDesktop" style="padding-top: 10px; padding-bottom: 0px;">
     <img src="{{"ListBox_desktop-1.jpg" | file_img_url: '2550x577'}}" style="max-width: 100%; height: auto;">
@@ -76,8 +81,8 @@
   <div class="categorySelectMainButtons" data-nosnippet>
     {% assign sorted_collections = collections | sort: 'metafields.custom.collectionusertype' | reverse %}
     {% for collection in sorted_collections %}
-      {% assign usertype = collection.metafields.custom.collectionusertype %}
-      {% if usertype == '1' or usertype == '2' %}
+      {% assign usertype = collection.metafields.custom.collectionusertype.value | default: collection.metafields.custom.collectionusertype %}
+      {% if allowed_parent_usertypes contains usertype %}
         <button
           name="baseCatButton-{{ usertype }}"
           class="categorySelectMainButton"
@@ -91,14 +96,15 @@
   </div>
 
   {% for collection in sorted_collections %}
-    {% assign usertype = collection.metafields.custom.collectionusertype %}
-    {% if usertype == '1' or usertype == '2' %}
+    {% assign usertype = collection.metafields.custom.collectionusertype.value | default: collection.metafields.custom.collectionusertype %}
+    {% if allowed_parent_usertypes contains usertype %}
       <div id="group-{{ collection.handle }}" class="product-group" data-nosnippet>
         {% assign coll_strings = '' %}
 
         {% for coll in collections %}
-          {% if coll.metafields.custom.sortbyvalue %}
-            {% assign coll_string = coll.metafields.custom.sortbyvalue
+          {% assign coll_sort_value = coll.metafields.custom.sortbyvalue.value | default: coll.metafields.custom.sortbyvalue %}
+          {% if coll_sort_value != blank %}
+            {% assign coll_string = coll_sort_value
               | append: ','
               | append: coll.handle
               | append: ','
@@ -113,41 +119,77 @@
 
         {% for child_collection in coll_array %}
           {% assign coll = child_collection | split: ',' %}
-          {% assign coll_id = coll[2] %}
           {% assign coll_handle = coll[1] %}
+          {% assign child_collection_object = collections[coll_handle] %}
+          {% assign child_usertype = child_collection_object.metafields.custom.collectionusertype.value | default: child_collection_object.metafields.custom.collectionusertype %}
+          {% assign normalized_child_usertype = child_usertype | replace: '.', '-' %}
+          {% assign parent_usertype = normalized_child_usertype | split: '-' | first %}
+          {% assign has_visible_products = true %}
 
-          {% assign child_usertype = collections[coll_handle].metafields.custom.collectionusertype %}
-          {% if child_usertype contains usertype and child_usertype != usertype %}
+          {% if allowed_child_usertypes contains normalized_child_usertype and parent_usertype == usertype %}
+            {% assign has_visible_products = false %}
+            {% for product in child_collection_object.products %}
+              {% assign is_zlozsam_product = false %}
+
+              {% if product.metafields.custom.iszlozsam != blank %}
+                {% if product.metafields.custom.iszlozsam.value == true
+                  or product.metafields.custom.iszlozsam == true
+                  or product.metafields.custom.iszlozsam == 'true'
+                %}
+                  {% assign is_zlozsam_product = true %}
+                {% endif %}
+              {% endif %}
+
+              {% if is_zlozsam_product %}
+                {% assign has_visible_products = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
+          {% if allowed_child_usertypes contains normalized_child_usertype and parent_usertype == usertype and has_visible_products %}
             <div class="categoryHeadBody">
               <table class="categoryNameTable">
                 <tbody>
                   <tr class="categoryTr">
                     <td class="categoryTd1">
-                      {{ collections[coll_handle].title }}
-                      <button class="groupInfoButton" onclick="productsGroupInfo('{{ collections[coll_handle].id }}')">
+                      {{ child_collection_object.title }}
+                      <button class="groupInfoButton" onclick="productsGroupInfo('{{ child_collection_object.id }}')">
                         ?
                       </button>
                     </td>
                     <td class="categoryTd2">
                       <button
                         class="showCategoryButton"
-                        onclick="toggleProducts('{{ collections[coll_handle].handle }}')"
+                        onclick="toggleProducts('{{ child_collection_object.handle }}')"
                       >
                         &gt;
                       </button>
                     </td>
                   </tr>
-                  <tr id="categoryTr-{{ collections[coll_handle].id }}" class="categoryTrInfo">
+                  <tr id="categoryTr-{{ child_collection_object.id }}" class="categoryTrInfo">
                     <td colspan="2" class="categoryTdInfo">
-                      <div class="groupInfoDescription">{{ collections[coll_handle].description }}</div>
+                      <div class="groupInfoDescription">{{ child_collection_object.description }}</div>
                     </td>
                   </tr>
                 </tbody>
               </table>
 
-              <table class="productsCategoryTable" id="products-{{ collections[coll_handle].handle }}">
+              <table class="productsCategoryTable" id="products-{{ child_collection_object.handle }}">
                 <tbody>
-                  {% for product in collections[coll_handle].products %}
+                  {% for product in child_collection_object.products %}
+                    {% assign should_render_product = false %}
+
+                    {% if product.metafields.custom.iszlozsam != blank %}
+                      {% if product.metafields.custom.iszlozsam.value == true
+                        or product.metafields.custom.iszlozsam == true
+                        or product.metafields.custom.iszlozsam == 'true'
+                      %}
+                        {% assign should_render_product = true %}
+                      {% endif %}
+                    {% endif %}
+
+                    {% if should_render_product %}
                     <tr class="productRow-1">
                       <td class="cbTd">
                         <div class="checkbox-wrapper">
@@ -345,6 +387,7 @@
                         </div>
                       </td>
                     </tr>
+                    {% endif %}
                   {% endfor %}
                 </tbody>
               </table>
@@ -358,8 +401,8 @@
   <div class="categorySelectMainButtons" data-nosnippet>
     {% assign sorted_collections = collections | sort: 'metafields.custom.collectionusertype' | reverse %}
     {% for collection in sorted_collections %}
-      {% assign usertype = collection.metafields.custom.collectionusertype %}
-      {% if usertype == '1' or usertype == '2' %}
+      {% assign usertype = collection.metafields.custom.collectionusertype.value | default: collection.metafields.custom.collectionusertype %}
+      {% if allowed_parent_usertypes contains usertype %}
         <button
           name="baseCatButton-{{ usertype }}"
           class="categorySelectMainButton"

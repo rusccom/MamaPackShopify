@@ -42,6 +42,19 @@
   endfor
 %}
 
+{% if is_ready_bags_page %}
+  <meta name="robots" content="noindex" data-mamapack-ready-bags-noindex>
+  <script>
+    (() => {
+      const meta = document.querySelector("[data-mamapack-ready-bags-noindex]");
+
+      if (meta) {
+        document.head.appendChild(meta);
+      }
+    })();
+  </script>
+{% endif %}
+
 {% capture tab_image_sizes %}(max-width: 749px) {% if tabs_count > 0 %}{{ 100.0 | divided_by: tabs_count }}{% else %}100{% endif %}vw, 33vw{% endcapture %}
 
 {% style %}
@@ -308,6 +321,19 @@
     background: transparent;
     color: var(--mp-text);
     border: 1px solid var(--mp-border);
+  }
+
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__catalog-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    padding: 0 18px;
+  }
+
+  .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__catalog-button {
+    max-width: 100%;
+    min-width: 270px;
+    text-align: center;
   }
 
   .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__products {
@@ -763,6 +789,16 @@
 
     .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__content-panel {
       padding: 16px;
+    }
+
+    .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__catalog-cta {
+      margin-top: 20px;
+      padding: 0 10px;
+    }
+
+    .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__catalog-button {
+      min-width: 0;
+      width: 100%;
     }
 
     .mp-tabs-showcase--{{ section_token }} .mp-tabs-showcase__products {
@@ -1359,6 +1395,17 @@
           {% endif %}
         {% endfor %}
       </div>
+
+      {% if is_ready_bags_page %}
+        <div class="mp-tabs-showcase__catalog-cta">
+          <a
+            href="/collections/gotowe-torby-do-szpitala"
+            class="mp-tabs-showcase__button mp-tabs-showcase__button--primary mp-tabs-showcase__catalog-button"
+          >
+            Zobacz wszystkie gotowe torby
+          </a>
+        </div>
+      {% endif %}
     {% endif %}
   </div>
 </div>
