@@ -24,8 +24,9 @@
   }
   .mp-category-card--{{ section_key }} .mp-category-card__inner {
     max-width: {{ section.settings.max_width }}px;
-    margin: 0 auto;
+    margin: 0 auto 0 0;
   }
+  .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__inner { margin: 0 0 0 auto; }
   .mp-category-card--{{ section_key }} .mp-category-card__panel {
     display: grid;
     grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
@@ -36,6 +37,7 @@
     background: var(--mp-card-bg);
     box-shadow: 0 12px 34px rgba(35, 28, 24, var(--mp-shadow-alpha));
   }
+  .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__panel { grid-template-columns: minmax(0, 1fr) minmax(260px, 34%); }
   .mp-category-card--{{ section_key }} .mp-category-card__media {
     position: relative;
     min-height: 196px;
@@ -59,12 +61,18 @@
     gap: 22px;
     padding: 30px 30px 28px 36px;
   }
+  .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__media { order: 2; }
+  .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__content { order: 1; padding: 30px 36px 28px 30px; }
   .mp-category-card--{{ section_key }} .mp-category-card__head {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 18px;
     align-items: center;
   }
+  .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__head { grid-template-columns: auto minmax(0, 1fr); }
+  .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__main-link { order: 1; }
+  .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__title-group { order: 2; justify-self: end; }
+  .mp-category-card--{{ section_key }} .mp-category-card__title-group { display: flex; min-width: 0; gap: 18px; align-items: center; }
   .mp-category-card--{{ section_key }} .mp-category-card__number {
     display: inline-grid;
     width: 50px;
@@ -153,38 +161,35 @@
     border-bottom: 1px solid rgba(75, 62, 54, 0.35);
   }
   @media screen and (max-width: 749px) {
+    .mp-category-card--{{ section_key }} { padding-left: 8px; padding-right: 8px; }
     .mp-category-card--{{ section_key }} .mp-category-card__panel {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(112px, 34%) minmax(0, 1fr);
+      min-height: 142px; border-radius: min(var(--mp-radius), 18px);
     }
+    .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__panel { grid-template-columns: minmax(0, 1fr) minmax(112px, 34%); }
     .mp-category-card--{{ section_key }} .mp-category-card__media,
     .mp-category-card--{{ section_key }} .mp-category-card__image,
-    .mp-category-card--{{ section_key }} .mp-category-card__placeholder {
-      min-height: 210px;
-    }
-    .mp-category-card--{{ section_key }} .mp-category-card__content {
-      gap: 20px;
-      padding: 24px 18px 26px;
-    }
+    .mp-category-card--{{ section_key }} .mp-category-card__placeholder { min-height: 142px; }
+    .mp-category-card--{{ section_key }} .mp-category-card__content { gap: 10px; padding: 14px 10px; }
+    .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__content { padding: 14px 10px; }
     .mp-category-card--{{ section_key }} .mp-category-card__head {
-      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) auto; gap: 6px;
     }
-    .mp-category-card--{{ section_key }} .mp-category-card__main-link {
-      grid-column: 1 / -1;
-      width: 100%;
-    }
-    .mp-category-card--{{ section_key }} .mp-category-card__title {
-      font-size: 26px;
-    }
+    .mp-category-card--{{ section_key }}.mp-category-card--mirrored .mp-category-card__head { grid-template-columns: auto minmax(0, 1fr); }
+    .mp-category-card--{{ section_key }} .mp-category-card__title-group { gap: 6px; }
+    .mp-category-card--{{ section_key }} .mp-category-card__number { width: 26px; height: 26px; font-size: 13px; }
+    .mp-category-card--{{ section_key }} .mp-category-card__title { font-size: clamp(14px, 3.8vw, 18px); }
+    .mp-category-card--{{ section_key }} .mp-category-card__main-link { gap: 4px; min-height: 26px; padding: 0 7px; border-radius: 8px; font-size: 10px; }
+    .mp-category-card--{{ section_key }} .mp-category-card__main-link svg { width: 10px; height: 10px; }
     .mp-category-card--{{ section_key }} .mp-category-card__links {
-      grid-template-columns: 1fr;
-      gap: 15px;
+      grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 12px;
     }
-    .mp-category-card--{{ section_key }} .mp-category-card__item {
-      font-size: 17px;
-    }
+    .mp-category-card--{{ section_key }} .mp-category-card__item { gap: 8px; font-size: clamp(12px, 3.2vw, 18px); }
+    .mp-category-card--{{ section_key }} .mp-category-card__icon { flex-basis: 22px; }
+    .mp-category-card--{{ section_key }} .mp-category-card__icon svg { width: 22px; height: 22px; }
   }
 {% endstyle %}
-<section class="mp-category-card mp-category-card--{{ section_key }}">
+<section class="mp-category-card mp-category-card--{{ section_key }}{% if section.settings.mirror_layout %} mp-category-card--mirrored{% endif %}">
   <div class="mp-category-card__inner">
     <div class="mp-category-card__panel">
       <div class="mp-category-card__media">
@@ -196,8 +201,10 @@
       </div>
       <div class="mp-category-card__content">
         <div class="mp-category-card__head">
-          <span class="mp-category-card__number">{{ section.settings.group_number | escape }}</span>
-          <h2 class="mp-category-card__title">{{ group_title | escape }}</h2>
+          <div class="mp-category-card__title-group">
+            <span class="mp-category-card__number">{{ section.settings.group_number | escape }}</span>
+            <h2 class="mp-category-card__title">{{ group_title | escape }}</h2>
+          </div>
           {% if section.settings.main_button_label != blank and main_url != blank %}
             <a class="mp-category-card__main-link" href="{{ main_url }}">
               {{ section.settings.main_button_label | escape }}
@@ -258,6 +265,7 @@
     { "type": "url", "id": "main_link", "label": "Main button fallback link" },
     { "type": "text", "id": "main_button_label", "label": "Main button label", "default": "Zobacz wszystko" },
     { "type": "header", "content": "Layout" },
+    { "type": "checkbox", "id": "mirror_layout", "label": "Mirror layout", "default": false },
     { "type": "range", "id": "max_width", "label": "Max width", "min": 720, "max": 1600, "step": 20, "unit": "px", "default": 1280 },
     { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 24 },
     { "type": "range", "id": "padding_bottom", "label": "Bottom spacing", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 24 },

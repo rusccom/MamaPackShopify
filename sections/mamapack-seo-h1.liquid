@@ -1,0 +1,54 @@
+{% liquid
+  assign section_key = section.id | replace: '_', '-'
+  assign heading = section.settings.heading | strip
+%}
+
+{% if heading != blank %}
+  {% style %}
+    .mp-seo-h1--{{ section_key }} {
+      color: {{ section.settings.text_color }};
+      padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+      text-align: {{ section.settings.text_alignment }};
+    }
+
+    .mp-seo-h1--{{ section_key }} .mp-seo-h1__inner {
+      max-width: {{ section.settings.max_width }}px;
+      margin: 0 auto;
+    }
+
+    .mp-seo-h1--{{ section_key }} .mp-seo-h1__heading {
+      margin: 0;
+      color: inherit;
+      font-size: clamp({{ section.settings.mobile_font_size }}px, 4vw, {{ section.settings.desktop_font_size }}px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+  {% endstyle %}
+
+  <section class="mp-seo-h1 mp-seo-h1--{{ section_key }}">
+    <div class="mp-seo-h1__inner">
+      <h1 class="mp-seo-h1__heading">{{ heading | escape }}</h1>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Mamapack SEO H1",
+  "enabled_on": { "templates": ["*"] },
+  "settings": [
+    { "type": "text", "id": "heading", "label": "H1 text", "default": "Wyprawka do szpitala i produkty dla mamy i dziecka" },
+    { "type": "text_alignment", "id": "text_alignment", "label": "Text alignment", "default": "center" },
+    { "type": "range", "id": "max_width", "label": "Max width", "min": 720, "max": 1600, "step": 20, "unit": "px", "default": 1280 },
+    { "type": "range", "id": "desktop_font_size", "label": "Desktop font size", "min": 24, "max": 64, "step": 2, "unit": "px", "default": 42 },
+    { "type": "range", "id": "mobile_font_size", "label": "Mobile font size", "min": 20, "max": 42, "step": 1, "unit": "px", "default": 28 },
+    { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom spacing", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 12 },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#2c2723" }
+  ],
+  "presets": [
+    { "name": "Mamapack SEO H1" }
+  ]
+}
+{% endschema %}
